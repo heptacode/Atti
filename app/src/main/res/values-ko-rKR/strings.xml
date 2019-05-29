@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ATti</string>
+    <string name="next">Next</string>
+    <string name="step1">한국인이신가요?</string>
+    <string name="step1_Korean">내국인</string>
+    <string name="step1_Foreigner">외국인</string>
+    <string name="step2">성함이 어떻게 되십니까?</string>
+    <string name="step2_hint">성명을 입력하세요</string>
+    <string name="step3">이메일 주소를 알려주세요!</string>
+    <string name="step3_hint">이메일을 입력하세요</string>
+    <string name="step4">이제 비밀번호를 설정하세요!</string>
+    <string name="step4_hint">비밀번호를 입력하세요</string>
+    <string name="step5_0">가입 끝!</string>
+    <string name="step5">이제, 아띠와 함께 더 나은\n여행 경험을 즐겨보세요!</string>
+    <string name="look_around">로그인</string>
+
+</resources>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "913785973409",
+    "firebase_url": "https://atti-core.firebaseio.com",
+    "project_id": "atti-core",
+    "storage_bucket": "atti-core.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:913785973409:android:82b3842b5d63b98b",
+        "android_client_info": {
+          "package_name": "com.example.justbreathe.atti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "913785973409-h9la1rmrhdir7dts6smnlqf258i8or87.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5EzVJTG9migGbdHiH8rj7PqfsILuW1nE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "913785973409-h9la1rmrhdir7dts6smnlqf258i8or87.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

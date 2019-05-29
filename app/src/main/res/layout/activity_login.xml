@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    android:padding="32dp"
+    tools:context=".Activity.Activities.LoginActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:shadowColor="#666666"
+        android:shadowDx="3.0"
+        android:shadowDy="3.0"
+        android:shadowRadius="5.0"
+        android:text="아띠"
+        android:textColor="#fff"
+        android:textSize="50sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:shadowColor="#666666"
+        android:shadowDx="3.0"
+        android:shadowDy="3.0"
+        android:shadowRadius="5.0"
+        android:text="Travel Experience"
+        android:textColor="#fff"
+        android:textSize="32sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="75dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/login_et_id"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_margin="3dp"
+                android:background="@drawable/login_edittext_background"
+                android:elevation="2dp"
+                android:hint="Email"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
+                android:textSize="17sp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="15dp" />
+
+            <EditText
+                android:id="@+id/login_et_pw"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_margin="3dp"
+                android:background="@drawable/login_edittext_background"
+                android:elevation="2dp"
+                android:hint="PW"
+                android:inputType="textPassword"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="1dp" />
+
+        <Button
+            android:id="@+id/login_btn_login"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/login_edittext_background"
+            android:text="LOGIN"
+            android:textColor="@color/colorPrimary" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/login_btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110dp"
+        android:layout_marginRight="110dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/login_edittext_background"
+        android:text="새로 시작하기"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp" />
+
+</LinearLayout>

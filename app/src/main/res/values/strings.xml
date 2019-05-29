@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ATti</string>
+    <string name="next">Next</string>
+    <string name="step1">Are you Korean?</string>
+    <string name="step1_Korean">Korean</string>
+    <string name="step1_Foreigner">Foreigner</string>
+    <string name="step2">What is your name?</string>
+    <string name="step2_hint">Enter your name</string>
+    <string name="step3">Please, Enter your\nemail address</string>
+    <string name="step3_hint">Enter your email</string>
+    <string name="step4">Now, Create your password!</string>
+    <string name="step4_hint">Enter your password</string>
+    <string name="step5_0">Done!</string>
+    <string name="step5">Now, Have a better travel\nexperience with ATti!</string>
+    <string name="look_around">asd??</string>
+
+</resources>

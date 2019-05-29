@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.Activities.Register.RegisterAcitivty1">
+
+    <ImageView
+        android:id="@+id/step1_shape"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitStart"
+        android:src="@drawable/shape1" />
+
+    <TextView
+        android:id="@+id/step1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="120dp"
+        android:text="Step 1"
+        android:textColor="#fff"
+        android:textSize="50sp" />
+
+    <TextView
+        android:id="@+id/areyoukorean"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/step1"
+        android:layout_marginLeft="32dp"
+        android:text="@string/step1"
+        android:textColor="#fff"
+        android:textSize="32sp" />
+
+    <Button
+        android:id="@+id/reg1_btn_korean"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/step1_Korean"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        android:layout_below="@id/areyoukorean"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="150dp"
+        android:background="@drawable/register_edittext_background" />
+
+    <Button
+        android:textAllCaps="false"
+        android:id="@+id/reg1_btn_foreigner"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/step1_Foreigner"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        android:layout_below="@id/reg1_btn_korean"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/register_edittext_background" />
+
+</RelativeLayout>
