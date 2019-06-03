@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    android:paddingTop="30dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="70dp"
+            android:id="@+id/Recycler_profile_img"
+            android:layout_height="70dp"
+            android:padding="5dp"
+            tools:src="@drawable/explore"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:id="@+id/Recylcer_title"
+                android:layout_weight="2"
+                android:gravity="center|left"
+                android:paddingLeft="20dp"
+                android:textSize="26sp"
+                tools:text="제목"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:gravity="center|left"
+                android:paddingLeft="20dp"
+                android:textSize="16sp"
+                android:id="@+id/Recylcer_nickname"
+                android:layout_weight="1"
+                tools:text="Nickname"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <ImageView
+                tools:src="@drawable/arrow_next"
+                android:layout_width="match_parent"
+                android:padding="5dp"
+                android:id="@+id/Recycler_bookmark"
+                android:layout_height="50dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:padding="5dp"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:id="@+id/Recycler_korean"
+                tools:text="한국인"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginTop="40dp"
+            android:id="@+id/Recycler_content"
+            tools:text="ㅣㅏㅓ리ㅏ너미ㅏ거ㄴ마ㅓㅣㄱㄴ어기ㅏㅓㅇ니ㅏ건마이거ㅣㅏㅇㄴㅁㅁㄴㅇ거ㅏ
+ㅁㄴ어ㅣㅏ러니ㅏㅇㅁ러ㅏㅣㅇㄴㅁ러ㅏ임너라ㅣㄴ머라ㅣㄴㅁ어ㅏㅁ나ㅣㄹ
+ㅏㅣㄴㅇ머리ㅏㅇㄴ머리ㅏㄴㅇ머ㅣㅏㄹㄴ머ㅏㅣ러ㅏㄴ미러ㅏ님
+낭미러ㅣㅏㄴㅁ러ㅏㅣ너라ㅣ"
+            android:textSize="20sp"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_width="260dp"
+            android:layout_gravity="center"
+            tools:src="@drawable/explore"
+            android:id="@+id/Recycler_content_img"
+            android:layout_height="260dp" />
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/Recycler_like"
+            android:src="@drawable/explore"/>
+    </LinearLayout>
+
+</LinearLayout>

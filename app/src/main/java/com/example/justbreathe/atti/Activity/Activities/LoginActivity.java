@@ -6,16 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.example.justbreathe.atti.Activity.Activities.Register.RegisterAcitivty1;
-import com.example.justbreathe.atti.Activity.Object.LoginData;
-import com.example.justbreathe.atti.Activity.Server.NetworkHelper;
+import com.example.justbreathe.atti.Activity.Activities.Register.RegisterActivity4;
 import com.example.justbreathe.atti.R;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
     Button login, register;
@@ -77,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent register_intent = new Intent(LoginActivity.this,RegisterAcitivty1.class);
+                Intent register_intent = new Intent(LoginActivity.this,RegisterActivity4.class);
                 startActivity(register_intent);
                 //회원가입 후 다시 돌아오기 위해 finish() 안함
             }

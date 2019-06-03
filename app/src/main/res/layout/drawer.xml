@@ -5,7 +5,7 @@
     android:layout_width="250dp"
     android:layout_height="wrap_content"
     android:layout_gravity="start"
-    android:background="#b8b8b8"
+    android:background="#e8e8e8"
     android:orientation="vertical">
 
 
@@ -13,9 +13,10 @@
         android:id="@+id/profile_img"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:src="@drawable/explore"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
-        android:src="@drawable/register_edittext_background" />
+        />
 
     <TextView
         android:id="@+id/profile_name"
@@ -25,48 +26,36 @@
         android:layout_marginTop="10dp"
         android:textAlignment="center"
         android:textSize="25sp"
-        android:textColor="#e8e8e8"
+        android:textColor="#000"
         android:textStyle="bold"
         tools:text="사용자" />
 
     <TextView
+        android:id="@+id/drawer_stopwatch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="#e8e8e8"
-        android:padding="15dp"
-        android:text="뭔가 쓰자"
-        android:textSize="20sp" />
+        android:paddingBottom="10dp"
+        android:paddingStart="15sp"
+        android:paddingTop="10dp"
+        android:text="스톱워치"
+        android:textSize="30sp" />
 
     <TextView
+        android:id="@+id/drawer_gps"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#e8e8e8"
-        android:padding="15dp"
-        android:text="뭔가 쓰자"
-        android:textSize="20sp" />
+        android:paddingBottom="10dp"
+        android:paddingStart="15sp"
+        android:paddingTop="10dp"
+        android:text="GPS"
+        android:textSize="30sp" />
 
     <View
         android:layout_width="1dp"
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:id="@+id/setting"
-        android:layout_marginRight="32dp"
-        android:layout_marginBottom="16dp"/>
-
-    <Button
-        android:id="@+id/logout"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/register_edittext_background"
-        android:text="로그아웃"
-        android:textColor="@color/colorPrimary"
-        android:textSize="18sp" />
 </LinearLayout>

@@ -7,34 +7,39 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.justbreathe.atti.R;
 
 public class RegisterActivity2 extends AppCompatActivity {
-    boolean korean;
-    LinearLayout next;
-    EditText name;
-
+    private LinearLayout next;
+    private EditText pw;
+    private String str_email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register2);
-        next = findViewById(R.id.reg2_LL_next);
-        name = findViewById(R.id.reg2_et_name);
+        setContentView(R.layout.activity_register4);
+        next = findViewById(R.id.reg4_LL_next);
+        pw = findViewById(R.id.reg4_et_pw);
+        Intent prev = getIntent();
+        str_email = prev.getStringExtra("email");
 
-        Intent reg1ac = getIntent();
-        korean = reg1ac.getBooleanExtra("korean",false);
-        Log.e("ac2",String.valueOf(korean));
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent next = new Intent(RegisterActivity2.this,RegisterActivity3.class);
-                String str_name = name.getText().toString();
-                next.putExtra("korean",korean);
-                next.putExtra("name",str_name);
-                startActivity(next);
-                finish();
+                if (pw.length() >= 8 && pw.length() <= 16) {  //패스워드 길이 체크
+                    Intent next = new Intent(RegisterActivity2.this, RegisterActivity3.class);
+                    String str_pw = pw.getText().toString();
+
+                    next.putExtra("email",str_email);
+                    next.putExtra("pw",str_pw);
+
+                    startActivity(next);
+                    finish();
+                } else {
+                    Toast.makeText(RegisterActivity2.this, "비밀번호는 8자에서 16자로 설정해주세요", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

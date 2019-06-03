@@ -19,10 +19,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.Activities.LoginActivity" />
-        <activity android:name=".Activity.Activities.Register.RegisterAcitivty1" />
-        <activity android:name=".Activity.Activities.Register.RegisterActivity2" />
-        <activity android:name=".Activity.Activities.Register.RegisterActivity3" />
         <activity android:name=".Activity.Activities.Register.RegisterActivity4" />
+        <activity android:name=".Activity.Activities.Register.RegisterActivity3" />
+        <activity android:name=".Activity.Activities.Register.RegisterActivity1" />
+        <activity android:name=".Activity.Activities.Register.RegisterActivity2" />
         <activity android:name=".Activity.Activities.Register.RegisterActivity5" />
         <activity android:name=".Activity.Activities.MainActivity"></activity>
     </application>
