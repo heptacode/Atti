@@ -7,73 +7,57 @@
     tools:context=".Activity.Activities.Register.RegisterActivity4">
 
     <ImageView
-        android:id="@+id/step4_shape"
+        android:id="@+id/step1_shape"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="fitStart"
         android:src="@drawable/shape1" />
 
     <TextView
-        android:id="@+id/step4"
+        android:id="@+id/step1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="110dp"
-        android:text="Step 4"
+        android:layout_marginTop="120dp"
+        android:text="Step 1"
         android:textColor="#fff"
         android:textSize="50sp" />
 
     <TextView
-        android:id="@+id/whatisyourpassword"
+        android:id="@+id/areyoukorean"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/step4"
+        android:layout_below="@+id/step1"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/step4"
+        android:text="@string/step1"
         android:textColor="#fff"
-        android:textSize="26sp" />
+        android:textSize="32sp" />
 
-    <EditText
-        android:id="@+id/reg4_et_pw"
+    <Button
+        android:id="@+id/reg1_btn_korean"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_below="@id/whatisyourpassword"
+        android:text="@string/step1_Korean"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        android:layout_below="@id/areyoukorean"
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
-        android:layout_marginTop="155dp"
-        android:background="@drawable/register_edittext_background"
-        android:hint="@string/step4_hint"
-        android:paddingLeft="18dp"
-        android:paddingRight="18dp"
+        android:layout_marginTop="150dp"
+        android:background="@drawable/register_edittext_background" />
+
+    <Button
+        android:textAllCaps="false"
+        android:id="@+id/reg1_btn_foreigner"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/step1_Foreigner"
         android:textColor="@color/colorPrimary"
-        android:textSize="18sp" />
-
-    <LinearLayout
-        android:id="@+id/reg4_LL_next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/reg4_et_pw"
+        android:textSize="24sp"
+        android:layout_below="@id/reg1_btn_korean"
+        android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
-        android:layout_marginTop="45dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/next"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:src="@drawable/arrow_next" />
-    </LinearLayout>
-
+        android:layout_marginTop="30dp"
+        android:background="@drawable/register_edittext_background" />
 
 </RelativeLayout>
