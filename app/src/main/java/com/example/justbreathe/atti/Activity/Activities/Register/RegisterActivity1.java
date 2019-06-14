@@ -37,9 +37,10 @@ public class RegisterActivity1 extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     if (android.util.Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()) { //이메일 형식 확인 ejrlwael@sdafjlk.rewaj  이렇게 쳐도 인식 되긴 함
-                        Log.e("email_valid", "Success");
                         /////////이메일 중복 확인 하기
                         final String str_email = email.getText().toString();
+                        Log.e("email_valid", "Success"+str_email);
+
                         prevent_duplication=true;
 
                         DocumentReference docRef = db.collection("accounts").document(str_email);
@@ -47,9 +48,11 @@ public class RegisterActivity1 extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                 if (task.isSuccessful()) {
+                                    Log.e("1","1");
+
                                     DocumentSnapshot document = task.getResult();
                                     if (!document.exists()) {
-
+                                        Log.e("2","2");
                                         Intent next = new Intent(RegisterActivity1.this, RegisterActivity2.class);
                                         next.putExtra("email", str_email);
                                         startActivity(next);

@@ -18,11 +18,16 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class LoginActivity extends AppCompatActivity {
     Button login, register;
     EditText id, pw;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-
+    JSONObject jsonObject;
+    String name;
+    boolean korean;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,8 +59,20 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) { // 이메일에 해당하는 레코드가 존재할 때
-                                document.getData();
-                                //json 데이터
+                                String datas = String.valueOf(document.getData());
+                                try {
+                                    jsonObject = new JSONObject(datas);
+
+                                    name = jsonObject.getString("name");
+                                    korean = Boolean.parseBoolean(jsonObject.getString("korean"));
+                                    Log.e(name, String.valueOf(korean));
+                                    Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
                             } else {
                                 Toast.makeText(LoginActivity.this, "계정 정보가 올바르지 않습니다.", Toast.LENGTH_SHORT).show();
                             }
@@ -79,9 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                                 //
                                 //
 
-                                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                                startActivity(intent);
-                                finish();
+
 //                            }
 //                        }else if(response.code()==123){
 //                            Toast.makeText(LoginActivity.this, "아이디 혹은 비밀번호를 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
