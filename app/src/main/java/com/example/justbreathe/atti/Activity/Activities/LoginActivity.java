@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String sid = id.getText().toString();
-                String spw = pw.getText().toString();
+                final String spw = pw.getText().toString();
                 //아이디 비번 서버 전송
                 //서버에서 이름(String) 한국인 여부(boolean) 받기
 
@@ -62,14 +62,17 @@ public class LoginActivity extends AppCompatActivity {
                                 String datas = String.valueOf(document.getData());
                                 try {
                                     jsonObject = new JSONObject(datas);
-
-                                    name = jsonObject.getString("name");
-                                    korean = Boolean.parseBoolean(jsonObject.getString("korean"));
-                                    Log.e(name, String.valueOf(korean));
-                                    Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                                    startActivity(intent);
-                                    finish();
-
+                                    if(jsonObject.getString("passwd").equals(spw)){
+                                        name = jsonObject.getString("name");
+                                        korean = Boolean.parseBoolean(jsonObject.getString("korean"));
+                                        Log.e(name, String.valueOf(korean));
+                                        Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                    else{
+                                        Toast.makeText(LoginActivity.this, "계정 정보가 올바르지 않습니다.", Toast.LENGTH_SHORT).show();
+                                    }
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -81,32 +84,6 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 });
-
-//                Call<LoginData> call = NetworkHelper.getInstance().signin(sid,spw);
-//                call.enqueue(new Callback<LoginData>() {
-//                    @Override
-//                    public void onResponse(Call<LoginData> call, Response<LoginData> response) {
-//                        if(response.code()==123){
-//                            if(response.body()!=null){
-//                                //서버에서 이름 가져오기
-//                                String name = response.body().getName();
-//                                boolean korean = response.body().isKorean();
-                                //쉐어드로 자동로그인 저장 및 아이디,비번,이름,한국인인지 User모델에 넣기
-                                //id.getText().toString(), pw.getText().toString(), name, korean
-                                //
-                                //
-
-
-//                            }
-//                        }else if(response.code()==123){
-//                            Toast.makeText(LoginActivity.this, "아이디 혹은 비밀번호를 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                    @Override
-//                    public void onFailure(Call<LoginData> call, Throwable t) {
-//                        Toast.makeText(LoginActivity.this, "서버 요청에 문제가 생겼습니다. 잠시후 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
             }
         });
         register.setOnClickListener(new View.OnClickListener() {
