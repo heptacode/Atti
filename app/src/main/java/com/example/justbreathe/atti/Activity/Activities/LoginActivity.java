@@ -32,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         login = findViewById(R.id.login_btn_login);
         register = findViewById(R.id.login_btn_register);
 
+
         //쉐어드프리퍼런스로 자동로그인
         //
         //
@@ -53,12 +54,13 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) { // 이메일에 해당하는 레코드가 존재할 때
-                                Log.d("DB", "Doc DATA : " + document.getData());
+                                document.getData();
+                                //json 데이터
                             } else {
                                 Toast.makeText(LoginActivity.this, "계정 정보가 올바르지 않습니다.", Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Log.d("DB", "get failed with ", task.getException());
+                            Log.e("DB", "get failed with ", task.getException());
                         }
                     }
                 });
