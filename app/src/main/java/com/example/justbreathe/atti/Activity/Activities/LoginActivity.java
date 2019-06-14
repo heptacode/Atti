@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.justbreathe.atti.Activity.Activities.Register.RegisterActivity1;
-import com.example.justbreathe.atti.Activity.Activities.Register.RegisterActivity2;
 import com.example.justbreathe.atti.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

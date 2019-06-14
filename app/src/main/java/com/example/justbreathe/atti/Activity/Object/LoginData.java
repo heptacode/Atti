@@ -1,9 +1,9 @@
 package com.example.justbreathe.atti.Activity.Object;
 
 public class LoginData {
-    boolean korean;
-    String name;
-
+    private boolean korean;
+    private String name;
+    private String profile_url;
     public boolean isKorean() {
         return korean;
     }
@@ -20,8 +20,8 @@ public class LoginData {
         this.name = name;
     }
 
-    public LoginData(boolean korean, String name) {
-
+    public LoginData(boolean korean, String name,String profile_url) {
+        this.profile_url = profile_url;
         this.korean = korean;
         this.name = name;
     }

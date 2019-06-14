@@ -13,6 +13,7 @@ public class RegisterActivity3 extends AppCompatActivity {
     private LinearLayout next;
     private EditText name;
     private String str_email, str_pw;
+    private boolean prevent_duplication=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,21 +25,23 @@ public class RegisterActivity3 extends AppCompatActivity {
         Intent prev = getIntent();
         str_email = prev.getStringExtra("email");
         str_pw = prev.getStringExtra("pw");
+        if(!prevent_duplication) {
+            prevent_duplication=true;
+            next.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent next = new Intent(RegisterActivity3.this, RegisterActivity4.class);
+                    String str_name = name.getText().toString();
 
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent next = new Intent(RegisterActivity3.this,RegisterActivity4.class);
-                String str_name = name.getText().toString();
+                    next.putExtra("name", str_name);
+                    next.putExtra("email", str_email);
+                    next.putExtra("pw", str_pw);
 
-                next.putExtra("name",str_name);
-                next.putExtra("email",str_email);
-                next.putExtra("pw",str_pw);
-
-                startActivity(next);
-                finish();
-            }
-        });
+                    startActivity(next);
+                    finish();
+                }
+            });
+        }
     }
 
     @Override

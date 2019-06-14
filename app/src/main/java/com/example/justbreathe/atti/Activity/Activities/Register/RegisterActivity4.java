@@ -11,6 +11,8 @@ import com.example.justbreathe.atti.R;
 public class RegisterActivity4 extends AppCompatActivity {
     private Button korean,foreigner;
     private String str_email, str_pw, str_name;
+    private boolean prevent_duplication=false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,21 +24,22 @@ public class RegisterActivity4 extends AppCompatActivity {
         str_email = prev.getStringExtra("email");
         str_pw = prev.getStringExtra("pw");
         str_name = prev.getStringExtra("name");
+        if(!prevent_duplication) {
+            prevent_duplication=true;
+            korean.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intention(true);
 
-        korean.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intention(true);
-
-            }
-        });
-        foreigner.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intention(false);
-            }
-        });
-
+                }
+            });
+            foreigner.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intention(false);
+                }
+            });
+        }
     }
 
     private void Intention(boolean korean){
