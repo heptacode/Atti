@@ -1,6 +1,7 @@
 package com.example.justbreathe.atti.Activity.Activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,6 +23,12 @@ public class MainActivity extends AppCompatActivity {
         ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //일단 누르면 자동로그인 풀림
+                SharedPreferences mprefs = getSharedPreferences("Profile_Data",MODE_PRIVATE);
+                SharedPreferences.Editor mEditor = mprefs.edit();
+                mEditor.clear();
+                mEditor.apply();
+
                 Intent intent = new Intent(MainActivity.this, RecommendActiivity.class);
                 startActivity(intent);
             }

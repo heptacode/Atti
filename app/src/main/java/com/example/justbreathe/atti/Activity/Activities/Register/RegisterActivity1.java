@@ -54,6 +54,7 @@ public class RegisterActivity1 extends AppCompatActivity {
                                     if (!document.exists()) {
                                         Log.e("2","2");
                                         Intent next = new Intent(RegisterActivity1.this, RegisterActivity2.class);
+                                        next.setFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
                                         next.putExtra("email", str_email);
                                         startActivity(next);
                                         finish();
@@ -75,11 +76,6 @@ public class RegisterActivity1 extends AppCompatActivity {
                 }
             });
         }
-    }
-
-
-    @Override
-    public void onBackPressed() {
     }
 }
 

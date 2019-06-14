@@ -55,8 +55,12 @@ public class RegisterActivity5 extends AppCompatActivity {
 
                                     //지금은 로그인 화면으로 돌아감
                                     //쉐어드프리퍼런스에 위의 값 저장하기
-                                    Intent intent = new Intent(RegisterActivity5.this, LoginActivity.class);
-                                    startActivity(intent);
+                                    Intent intent = new Intent();
+                                    intent.putExtra("email",str_email);
+                                    intent.putExtra("pw",str_pw);
+                                    intent.putExtra("name",str_name);
+                                    intent.putExtra("korean",korean);//boolean
+                                    setResult(RESULT_OK,intent);
                                     finish();
 
                                 }

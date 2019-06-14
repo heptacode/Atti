@@ -49,6 +49,7 @@ public class RegisterActivity4 extends AppCompatActivity {
         next.putExtra("name",str_name);
         next.putExtra("email",str_email);
         next.putExtra("pw",str_pw);
+        next.setFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
 
         startActivity(next);
         finish();

@@ -22,7 +22,7 @@ public class RecommendActiivity extends AppCompatActivity {
         rcv = findViewById(R.id.recommend_recycler);
         Recommend_RecyclerAdapter adapter = new Recommend_RecyclerAdapter(items);
 
-        items.add(new RecAC_list("https://firebasestorage.googleapis.com/v0/b/atti-core.appspot.com/o/images%2Fcompressed%2Fdpi_size.jpg?alt=media&token=b243b57e-00bc-488e-8fd6-424d60ee7809","적당한 제목"));
+        items.add(new RecAC_list("https://firebasestorage.googleapis.com/v0/b/atti-core.appspot.com/o/images%2Fcompressed%2Fimage_001_00.jpg?alt=media&token=c39ec978-c2b9-442e-a34b-4d9174b41e40","적당한 제목"));
         rcv.setLayoutManager(new LinearLayoutManager(this));
         rcv.setAdapter(adapter);
     }
