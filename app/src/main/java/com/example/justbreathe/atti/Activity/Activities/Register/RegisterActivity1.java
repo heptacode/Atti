@@ -22,9 +22,9 @@ public class RegisterActivity1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register3);
-        next = findViewById(R.id.reg3_LL_next);
-        email = findViewById(R.id.reg3_et_email);
+        setContentView(R.layout.activity_register1);
+        next = findViewById(R.id.reg1_LL_next);
+        email = findViewById(R.id.reg1_et_email);
 
 
         next.setOnClickListener(new View.OnClickListener() {

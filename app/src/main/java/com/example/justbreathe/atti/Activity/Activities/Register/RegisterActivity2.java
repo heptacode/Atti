@@ -18,9 +18,9 @@ public class RegisterActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register4);
-        next = findViewById(R.id.reg4_LL_next);
-        pw = findViewById(R.id.reg4_et_pw);
+        setContentView(R.layout.activity_register2);
+        next = findViewById(R.id.reg2_LL_next);
+        pw = findViewById(R.id.reg2_et_pw);
         Intent prev = getIntent();
         str_email = prev.getStringExtra("email");
 

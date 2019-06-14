@@ -3,23 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/colorPrimary"
     android:layout_height="match_parent"
     tools:context=".Activity.Activities.Register.RegisterActivity2">
 
-    <ImageView
-        android:id="@+id/step4_shape"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="fitStart"
-        android:src="@drawable/shape1" />
+    <!--<ImageView-->
+    <!--android:id="@+id/step2_shape"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:scaleType="fitStart"-->
+    <!--android:src="@drawable/shape1" />-->
 
     <TextView
-        android:id="@+id/step4"
+        android:id="@+id/step2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="110dp"
-        android:text="Step 4"
+        android:layout_marginTop="120dp"
+        android:text="Step 2"
         android:textColor="#fff"
         android:textSize="50sp" />
 
@@ -27,21 +28,21 @@
         android:id="@+id/whatisyourpassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/step4"
+        android:layout_below="@id/step2"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:text="@string/step4"
         android:textColor="#fff"
         android:textSize="26sp" />
 
     <EditText
-        android:id="@+id/reg4_et_pw"
+        android:id="@+id/reg2_et_pw"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_below="@id/whatisyourpassword"
         android:layout_marginLeft="60dp"
+        android:layout_marginTop="115dp"
         android:layout_marginRight="60dp"
-        android:layout_marginTop="155dp"
         android:background="@drawable/register_edittext_background"
         android:hint="@string/step4_hint"
         android:paddingLeft="18dp"
@@ -50,20 +51,20 @@
         android:textSize="18sp" />
 
     <LinearLayout
-        android:id="@+id/reg4_LL_next"
+        android:id="@+id/reg2_LL_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/reg2_et_pw"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/reg4_et_pw"
+        android:layout_marginTop="75dp"
         android:layout_marginRight="60dp"
-        android:layout_marginTop="45dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/next"
-            android:textColor="@color/colorPrimary"
+            android:textColor="#fff"
             android:textSize="20sp"
             android:textStyle="bold" />
 

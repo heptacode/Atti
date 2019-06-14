@@ -17,9 +17,9 @@ public class RegisterActivity3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register2);
-        next = findViewById(R.id.reg2_LL_next);
-        name = findViewById(R.id.reg2_et_name);
+        setContentView(R.layout.activity_register3);
+        next = findViewById(R.id.reg3_LL_next);
+        name = findViewById(R.id.reg3_et_name);
 
         Intent prev = getIntent();
         str_email = prev.getStringExtra("email");

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 public class MainAC_RecyclerAdapter extends RecyclerView.Adapter<MainAC_RecyclerAdapter.ViewHolder> {
     ArrayList<MainAC_Post> items;
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView content;
         TextView title;
@@ -33,7 +34,7 @@ public class MainAC_RecyclerAdapter extends RecyclerView.Adapter<MainAC_Recycler
     @Override
     public MainAC_RecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater inflater = (LayoutInflater) viewGroup.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View v = inflater.inflate(R.layout.recylcer_view_item,viewGroup,false);
+        View v = inflater.inflate(R.layout.recycler_view_item,viewGroup,false);
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }

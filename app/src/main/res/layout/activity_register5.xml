@@ -4,32 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.Activities.Register.RegisterActivity4">
+    android:background="@color/colorPrimary"
+    tools:context=".Activity.Activities.Register.RegisterActivity5">
 
-    <ImageView
-        android:id="@+id/step5_shape"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="fitStart"
-        android:src="@drawable/shape2" />
+    <!--<ImageView-->
+    <!--android:id="@+id/step5_shape"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:scaleType="fitStart"-->
+    <!--android:src="@drawable/shape2" />-->
 
     <TextView
         android:id="@+id/step5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="140dp"
         android:text="@string/step5_0"
         android:textColor="#fff"
-        android:textSize="36sp" />
+        android:textSize="43sp" />
+
     <View
-        android:layout_below="@id/step5"
+        android:id="@+id/step5_underline"
         android:layout_width="180dp"
         android:layout_height="1dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/step5_underline"
+        android:layout_below="@id/step5"
         android:layout_marginLeft="32dp"
-        android:background="#fff"/>
+        android:layout_marginTop="20dp"/>
+    <!--android:background="#fff"-->
 
     <TextView
         android:id="@+id/step5_end"
@@ -37,7 +39,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/step5_underline"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
+        android:lineHeight="40sp"
         android:text="@string/step5"
         android:textColor="#fff"
         android:textSize="28sp" />
@@ -47,26 +50,27 @@
         android:id="@+id/reg5_LL_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
         android:layout_below="@id/step5_end"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="140dp"
         android:layout_marginRight="60dp"
-        android:layout_marginTop="190dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/look_around"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
+            android:textColor="#fff"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
+            android:backgroundTint="#fff"
             android:layout_gravity="center"
             android:layout_marginLeft="8dp"
-            android:src="@drawable/explore" />
+            android:src="@drawable/arrow_next" />
     </LinearLayout>
 
 

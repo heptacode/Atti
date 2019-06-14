@@ -63,10 +63,11 @@
 ㅏㅣㄴㅇ머리ㅏㅇㄴ머리ㅏㄴㅇ머ㅣㅏㄹㄴ머ㅏㅣ러ㅏㄴ미러ㅏ님
 낭미러ㅣㅏㄴㅁ러ㅏㅣ너라ㅣ" />
 
-        <ListView
+        <ImageView
             android:id="@+id/Recycler_content_img"
             android:layout_width="260dp"
             android:layout_height="260dp"
+            android:src="@mipmap/ic_launcher"
             android:layout_gravity="center"/>
 
         <ImageView

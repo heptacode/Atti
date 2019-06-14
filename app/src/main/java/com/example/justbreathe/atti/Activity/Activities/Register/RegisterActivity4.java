@@ -14,9 +14,9 @@ public class RegisterActivity4 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register1);
-        korean = findViewById(R.id.reg1_btn_korean);
-        foreigner = findViewById(R.id.reg1_btn_foreigner);
+        setContentView(R.layout.activity_register4);
+        korean = findViewById(R.id.reg4_btn_korean);
+        foreigner = findViewById(R.id.reg4_btn_foreigner);
 
         Intent prev = getIntent();
         str_email = prev.getStringExtra("email");

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/recom_rec_img"
+            android:layout_width="412dp"
+            android:layout_height="257dp"
+            android:src="@drawable/dpi_size"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/recom_rec_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#8fff"
+            android:text="제목"
+            android:textAlignment="center"
+            android:textColor="#000"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/recom_rec_img" />
+
+    </android.support.constraint.ConstraintLayout>
+</LinearLayout>
