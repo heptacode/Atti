@@ -76,5 +76,4 @@
             android:src="@drawable/ic_nextpage_white" />
     </LinearLayout>
 
-
 </RelativeLayout>
