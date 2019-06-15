@@ -43,18 +43,17 @@ public class LoginActivity extends AppCompatActivity {
         pw = findViewById(R.id.login_et_pw);
         login = findViewById(R.id.login_btn_login);
         register = findViewById(R.id.login_btn_register);
-        asyncDialog= new ProgressDialog(this);
+        asyncDialog = new ProgressDialog(this);
 
         //쉐어드프리퍼런스로 자동로그인
         SharedPreferences mprefs = getSharedPreferences("Profile_Data", MODE_PRIVATE);
         Boolean Auto_Login = mprefs.getBoolean("S_Login", false);
         Log.e("Auto_Login", String.valueOf(Auto_Login));
-        if(Auto_Login){
+        if (Auto_Login) {
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
         }
-
 
 
         login.setOnClickListener(new View.OnClickListener() {
@@ -62,25 +61,25 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String lid = id.getText().toString();
                 String lpw = pw.getText().toString();
-                Login(lid,lpw,"",false);
+                Login(lid, lpw, "", false);
             }
         });
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent register_intent = new Intent(LoginActivity.this, RegisterActivity1.class);
-                startActivityForResult(register_intent,2323);
+                startActivityForResult(register_intent, 2323);
             }
         });
     }
 
-    void Login(final String sid, final String spw,final String sname,final boolean skorean) {
+    void Login(final String sid, final String spw, final String sname, final boolean skorean) {
 
         if (sid.equals("") || spw.equals("")) {
             Toast.makeText(this, "이메일 또는 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show();
         } else {
             if (android.util.Patterns.EMAIL_ADDRESS.matcher(sid).matches()) {
-                if (spw.length() >= 8 ) {
+                if (spw.length() >= 8) {
                     asyncDialog.setMessage("요청중입니다.");
                     asyncDialog.show();
                     DocumentReference docRef = db.collection("accounts").document(sid);
@@ -124,7 +123,7 @@ public class LoginActivity extends AppCompatActivity {
                             asyncDialog.dismiss();
                         }
                     });
-                }else{
+                } else {
                     Toast.makeText(this, "8자 이상의 비밀번호를 입력해주세요", Toast.LENGTH_SHORT).show();
                 }
             } else {
@@ -135,30 +134,31 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(resultCode == RESULT_OK){
+        if (resultCode == RESULT_OK) {
             Log.e("requestCode", String.valueOf(requestCode));
-            switch (requestCode){
+            switch (requestCode) {
                 case 2323:
                     String thisname = data.getStringExtra("name");
                     String thisemail = data.getStringExtra("email");
                     String thispasswd = data.getStringExtra("pw");
-                    boolean thiskorean = data.getBooleanExtra("korean",false);
+                    boolean thiskorean = data.getBooleanExtra("korean", false);
 
-                    Login(thisemail,thispasswd,thisname,thiskorean);
+                    Login(thisemail, thispasswd, thisname, thiskorean);
                     break;
             }
         }
 
     }
-    private void SaveProfileData(String _email,String _passwd, String _name, boolean _korean){
+
+    private void SaveProfileData(String _email, String _passwd, String _name, boolean _korean) {
         //쉐어드 저장
-        SharedPreferences mprefs = getSharedPreferences("Profile_Data",MODE_PRIVATE);
+        SharedPreferences mprefs = getSharedPreferences("Profile_Data", MODE_PRIVATE);
         SharedPreferences.Editor mEditor = mprefs.edit();
-        mEditor.putString("S_email",_email);
-        mEditor.putString("S_paawd",_passwd);
-        mEditor.putString("S_name",_name);
-        mEditor.putBoolean("S_korean",_korean);
-        mEditor.putBoolean("S_Login",true);//자동로그인 값
+        mEditor.putString("S_email", _email);
+        mEditor.putString("S_paawd", _passwd);
+        mEditor.putString("S_name", _name);
+        mEditor.putBoolean("S_korean", _korean);
+        mEditor.putBoolean("S_Login", true);//자동로그인 값
         mEditor.apply();
     }
 }
