@@ -15,7 +15,7 @@
             android:id="@+id/recom_rec_img"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/dpi_size"
+            android:src="@drawable/ic_map"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
 

@@ -4,15 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="#fff"
     tools:context=".Activity.Activities.Register.RegisterActivity4">
 
-    <!--<ImageView-->
-    <!--android:id="@+id/step4_shape"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:scaleType="fitStart"-->
-    <!--android:src="@drawable/shape1" />-->
+    <ImageView
+        android:id="@+id/step1_shape"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitStart"
+        android:layout_marginTop="-10dp"
+        android:layout_marginLeft="-10dp"
+        android:layout_marginRight="-10dp"
+        android:src="@drawable/ic_wave_register" />
 
     <TextView
         android:id="@+id/step4"
@@ -41,7 +44,7 @@
         android:layout_height="60dp"
         android:layout_below="@id/areyoukorean"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="130dp"
         android:layout_marginRight="60dp"
         android:background="@drawable/register_edittext_background"
         android:text="@string/step1_Korean"

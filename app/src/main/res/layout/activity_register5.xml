@@ -4,15 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="#fff"
     tools:context=".Activity.Activities.Register.RegisterActivity5">
-
-    <!--<ImageView-->
-    <!--android:id="@+id/step5_shape"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:scaleType="fitStart"-->
-    <!--android:src="@drawable/shape2" />-->
+    <ImageView
+        android:id="@+id/step1_shape"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:layout_marginBottom="-110dp"
+        android:layout_marginLeft="-110dp"
+        android:layout_marginRight="-110dp"
+        android:layout_marginTop="-110dp"
+        android:src="@drawable/ic_success_make_account_wave" />
 
     <TextView
         android:id="@+id/step5"
@@ -70,7 +73,7 @@
             android:backgroundTint="#fff"
             android:layout_gravity="center"
             android:layout_marginLeft="8dp"
-            android:src="@drawable/arrow_next" />
+            android:src="@drawable/ic_nextpage_white" />
     </LinearLayout>
 
 
