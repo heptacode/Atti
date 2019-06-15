@@ -4,6 +4,7 @@
     <string name="app_name_Eng">Atti</string>
     <string name="login">Login</string>
     <string name="Register">Register</string>
+
     <string name="next">Next</string>
     <string name="step1">Are you Korean?</string>
     <string name="step1_Korean">Korean</string>
@@ -17,8 +18,9 @@
     <string name="step5_0">Done!</string>
     <string name="step5">Now, Have a better travel\nexperience with Atti!</string>
     <string name="look_around">Start</string>
+
     <string name="chatting">Live Chat (1:1)</string>
-    <string name="recommend">Recommended\nSights</string>
-    <string name="Medical_Convenience">Medical\nConvenience</string>
+    <string name="recommend">Recommended Sights</string>
+    <string name="Medical_Convenience">Medical Convenience</string>
 
 </resources>

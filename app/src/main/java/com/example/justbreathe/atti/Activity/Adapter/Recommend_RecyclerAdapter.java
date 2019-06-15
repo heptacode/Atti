@@ -39,7 +39,6 @@ public class Recommend_RecyclerAdapter extends RecyclerView.Adapter<Recommend_Re
 
     public Recommend_RecyclerAdapter(ArrayList<RecAC_list> items) {
         this.items = items;
-        Log.e("No error", "Adapter created");
     }
 
 
@@ -48,7 +47,6 @@ public class Recommend_RecyclerAdapter extends RecyclerView.Adapter<Recommend_Re
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activity_recommend_listitem, viewGroup, false);
         Recommend_RecyclerAdapter.ViewHolder vh = new Recommend_RecyclerAdapter.ViewHolder(v);
-        Log.e("No error", "Inflating");
         return vh;
     }
 
@@ -66,7 +64,6 @@ public class Recommend_RecyclerAdapter extends RecyclerView.Adapter<Recommend_Re
         String str_title = items.get(i).getTitle();
         String str_url = items.get(i).getUrl();
         vh.title.setText(str_title);
-        Log.e("No error", str_title);
         Glide.with(vh.itemView.getContext()).load(str_url).into(vh.image);
     }
 

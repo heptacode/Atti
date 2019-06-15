@@ -4,6 +4,7 @@
     <string name="app_name_Eng">Atti</string>
     <string name="login">로그인</string>
     <string name="Register">새로 시작하기</string>
+
     <string name="next">Next</string>
     <string name="step1">한국인이신가요?</string>
     <string name="step1_Korean">내국인</string>
@@ -14,9 +15,10 @@
     <string name="step3_hint">이메일을 입력하세요</string>
     <string name="step4">이제 비밀번호를 설정하세요!</string>
     <string name="step4_hint">비밀번호를 입력하세요</string>
-    <string name="step5_0">시작하기</string>
+    <string name="step5_0">가입완료</string>
     <string name="step5">이제 아띠와 함께 더 나은\n여행 경험을 즐겨보세요!</string>
-    <string name="look_around">돌아가기</string>
+    <string name="look_around">시작</string>
+
     <string name="chatting">실시간 채팅 (1:1)</string>
     <string name="recommend">추천 명소</string>
     <string name="Medical_Convenience">의료, 편의시설</string>

@@ -8,17 +8,13 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.justbreathe.atti.Activity.Object.RecAC_list;
 import com.example.justbreathe.atti.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -36,7 +32,7 @@ public class Recommend_Detail_Acitivty extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recommend__detail__acitivty);
+        setContentView(R.layout.activity_recommend_detail_acitivty);
         tv = findViewById(R.id.rec_dt_ac_tv);
         Intent intent = getIntent();
         tmp = intent.getIntExtra("PageNum", 0);

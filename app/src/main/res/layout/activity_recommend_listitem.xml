@@ -24,6 +24,7 @@
             android:id="@+id/recom_rec_title"
             android:layout_width="0dp"
             android:layout_weight="0.4"
+            android:fontFamily="@font/nanumbarungothic"
             android:gravity="center"
             android:layout_height="match_parent"
             android:text="세글자"
@@ -55,6 +56,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="match_parent"
+                        android:fontFamily="@font/nanumbarungothiclight"
                         android:textSize="12sp"
                         android:paddingLeft="2dp"
                         android:gravity="left|center"
@@ -77,6 +79,7 @@
                         android:textSize="12sp"
                         android:layout_weight="1"
                         android:layout_height="match_parent"
+                        android:fontFamily="@font/nanumbarungothiclight"
                         android:textColor="@color/colorPrimary"
                         android:text="전시관별 참여"/>
                 </LinearLayout>
@@ -98,6 +101,7 @@
                     android:layout_weight="1"
                     android:paddingLeft="2dp"
                     android:text="태그"
+                    android:fontFamily="@font/nanumbarungothiclight"
                     android:textColor="@color/colorPrimary"/>
             </LinearLayout>
         </LinearLayout>

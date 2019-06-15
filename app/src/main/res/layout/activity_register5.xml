@@ -24,6 +24,7 @@
         android:layout_marginLeft="32dp"
         android:layout_marginTop="140dp"
         android:text="@string/step5_0"
+        android:fontFamily="@font/nanumbarungothic"
         android:textColor="#fff"
         android:textSize="43sp" />
 
@@ -40,6 +41,7 @@
         android:id="@+id/step5_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/nanumbarungothic"
         android:layout_below="@id/step5_underline"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="40dp"
@@ -63,6 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/look_around"
+            android:fontFamily="@font/nanumbarungothiclight"
             android:textColor="#fff"
             android:textSize="20sp"
             android:textStyle="bold" />

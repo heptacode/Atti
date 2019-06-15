@@ -19,8 +19,10 @@ public class MainAC_RecyclerAdapter extends RecyclerView.Adapter<MainAC_Recycler
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView content;
         TextView title;
+        View view;
         public ViewHolder(View itemView) {
             super(itemView);
+            view = itemView;
             content = itemView.findViewById(R.id.Recycler_content);
             title = itemView.findViewById(R.id.Recylcer_title);
         }
@@ -41,6 +43,12 @@ public class MainAC_RecyclerAdapter extends RecyclerView.Adapter<MainAC_Recycler
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //아이템 클릭
+            }
+        });
         String title = items.get(position).getTitle();
         String content = items.get(position).getContent();
         holder.title.setText(title);
