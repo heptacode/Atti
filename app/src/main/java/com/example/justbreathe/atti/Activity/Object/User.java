@@ -1,10 +1,10 @@
 package com.example.justbreathe.atti.Activity.Object;
 
 public class User {
-    boolean korean;
-    String name;
-    String email;
-    String passwd;
+    private boolean korean;
+    private String name;
+    private String email;
+    private String passwd;
 
     public boolean isKorean() {
         return korean;
