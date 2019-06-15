@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.Target;
 import com.example.justbreathe.atti.Activity.Activities.Recommend.Recommend_Detail_Acitivty;
 import com.example.justbreathe.atti.Activity.Object.RecAC_list;
 import com.example.justbreathe.atti.R;
@@ -65,9 +66,8 @@ public class Recommend_RecyclerAdapter extends RecyclerView.Adapter<Recommend_Re
         String str_title = items.get(i).getTitle();
         String str_url = items.get(i).getUrl();
         vh.title.setText(str_title);
-        Log.e("No error", str_url);
+        Log.e("No error", str_title);
         Glide.with(vh.itemView.getContext()).load(str_url).into(vh.image);
-        Log.e("Glide","Finish");
     }
 
     @Override

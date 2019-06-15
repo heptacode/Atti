@@ -14,11 +14,11 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="height" value="14" />
-                            <entry key="outputName" value="ic_nextpage" />
+                            <entry key="height" value="128" />
+                            <entry key="outputName" value="ic_watch" />
                             <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="C:\Users\dlarb\AndroidStudioProjects\Atti\app\src\main\res\drawable\nextpage.svg" />
-                            <entry key="width" value="10" />
+                            <entry key="sourceFile" value="C:\Users\Gyu-Won\AndroidStudioProjects\Atti\app\src\main\res\drawable\watch.svg" />
+                            <entry key="width" value="128" />
                           </map>
                         </option>
                       </PersistentState>
