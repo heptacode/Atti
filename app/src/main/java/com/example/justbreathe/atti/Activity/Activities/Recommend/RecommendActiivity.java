@@ -22,7 +22,10 @@ public class RecommendActiivity extends AppCompatActivity {
         rcv = findViewById(R.id.recommend_recycler);
         Recommend_RecyclerAdapter adapter = new Recommend_RecyclerAdapter(items);
 
-        items.add(new RecAC_list("https://firebasestorage.googleapis.com/v0/b/atti-core.appspot.com/o/images%2Fcompressed%2Fimage_001_00.jpg?alt=media&token=c39ec978-c2b9-442e-a34b-4d9174b41e40","적당한 제목"));
+        //데이터 받기 - 서버
+
+        //데이터 추가 - 클라
+        items.add(new RecAC_list("https://firebasestorage.googleapis.com/v0/b/atti-core.appspot.com/o/images%2Fcompressed%2Fimage_001_00.jpg?alt=media&token=c39ec978-c2b9-442e-a34b-4d9174b41e40", "적당한 제목"));
         rcv.setLayoutManager(new LinearLayoutManager(this));
         rcv.setAdapter(adapter);
     }

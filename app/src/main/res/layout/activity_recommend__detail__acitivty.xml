@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".Activity.Activities.Recommend.Recommend_Detail_Acitivty">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="50sp"
+        android:id="@+id/rec_dt_ac_tv"
+        android:text="몇 번째 화면"/>
 
 
 </LinearLayout>
