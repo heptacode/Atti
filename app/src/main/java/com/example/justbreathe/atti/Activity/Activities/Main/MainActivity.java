@@ -1,18 +1,17 @@
-package com.example.justbreathe.atti.Activity.Activities;
+package com.example.justbreathe.atti.Activity.Activities.Main;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.justbreathe.atti.Activity.Activities.LoginActivity;
 import com.example.justbreathe.atti.Activity.Activities.Recommend.RecommendActiivity;
 import com.example.justbreathe.atti.R;
 
@@ -31,6 +30,17 @@ public class MainActivity extends AppCompatActivity {
         profile_name=findViewById(R.id.drawer_name);
 
         nameAppearance();
+
+
+
+
+
+
+
+
+
+
+
 
         recommend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor mEditor = mprefs.edit();
                 mEditor.clear();
                 mEditor.apply();
-                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }

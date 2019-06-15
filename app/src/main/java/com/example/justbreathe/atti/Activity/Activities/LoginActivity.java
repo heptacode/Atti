@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.justbreathe.atti.Activity.Activities.Main.MainActivity;
 import com.example.justbreathe.atti.Activity.Activities.Register.RegisterActivity1;
 import com.example.justbreathe.atti.R;
 import com.google.android.gms.tasks.OnCompleteListener;

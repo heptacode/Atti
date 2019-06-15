@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.Activities.Recommend.Recommend_Detail_Acitivty"></activity>
+        <activity android:name=".Activity.Activities.Main.MainActivity_Detail"></activity>
+        <activity android:name=".Activity.Activities.Recommend.Recommend_Detail_Acitivty" />
         <activity android:name=".Activity.Activities.Recommend.RecommendActiivity" />
         <activity android:name=".Activity.Activities.Chatting.ChattingActivity" />
         <activity android:name=".Activity.Activities.Chatting.ChattingLobbyActivity" />
@@ -28,7 +29,7 @@
         <activity android:name=".Activity.Activities.Register.RegisterActivity1" />
         <activity android:name=".Activity.Activities.Register.RegisterActivity2" />
         <activity android:name=".Activity.Activities.Register.RegisterActivity5" />
-        <activity android:name=".Activity.Activities.MainActivity" />
+        <activity android:name=".Activity.Activities.Main.MainActivity" />
     </application>
 
 </manifest>
