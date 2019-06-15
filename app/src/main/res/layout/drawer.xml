@@ -18,7 +18,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@drawable/ic_logo" />
 
     <TextView
         android:id="@+id/drawer_name"
@@ -43,16 +43,16 @@
         android:background="#fff" />
 
     <LinearLayout
+        android:id="@+id/drawer_chat"
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
+        android:gravity="center"
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/drawer_chat"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="실시간 채팅 (1:1)"
             android:textAlignment="center"
@@ -72,21 +72,27 @@
         android:background="#fff" />
 
     <LinearLayout
+        android:id="@+id/drawer_recommend"
         android:layout_width="match_parent"
         android:orientation="horizontal"
+        android:paddingLeft="30dp"
+        android:gravity="center"
+        android:paddingRight="30dp"
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/drawer_recommend"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="추천 명소"
+            android:text="추천명소"
             android:textAlignment="center"
             android:textColor="#fff"
             android:textSize="22sp" />
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_marginLeft="10dp"
+            android:layout_width="30dp"
+            android:src="@drawable/ic_location_white"
+            android:layout_height="30dp" />
+
     </LinearLayout>
 
     <View
@@ -96,21 +102,27 @@
         android:background="#fff" />
 
     <LinearLayout
+        android:id="@+id/drawer_med_conv"
         android:layout_width="match_parent"
         android:orientation="horizontal"
+        android:paddingLeft="30dp"
+        android:gravity="center"
+        android:paddingRight="30dp"
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/drawer_Medical_Convenience"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="의료, 편의시설"
             android:textAlignment="center"
             android:textColor="#fff"
             android:textSize="22sp" />
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_marginLeft="10dp"
+            android:layout_width="30dp"
+            android:src="@drawable/ic_map_white"
+            android:layout_height="30dp" />
+
     </LinearLayout>
 
     <View
