@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.example.justbreathe.atti.R;
 
 import java.util.ArrayList;
+import java.util.logging.Handler;
 
 public class Recommend_Detail_RecyclerAdapter extends RecyclerView.Adapter<Recommend_Detail_RecyclerAdapter.ViewHolder> {
     ArrayList<String> items;
@@ -38,11 +39,13 @@ public class Recommend_Detail_RecyclerAdapter extends RecyclerView.Adapter<Recom
 
         return vh;
     }
-
     @Override
-    public void onBindViewHolder(@NonNull Recommend_Detail_RecyclerAdapter.ViewHolder vh, final int i) {
-        String str_url = items.get(i);
+    public void onBindViewHolder(final @NonNull Recommend_Detail_RecyclerAdapter.ViewHolder vh, int i) {
+        final String str_url = items.get(i);
+
         Glide.with(vh.itemView.getContext()).load(str_url).into(vh.image);
+
+        Log.e("Extra glide",str_url);
     }
 
     @Override

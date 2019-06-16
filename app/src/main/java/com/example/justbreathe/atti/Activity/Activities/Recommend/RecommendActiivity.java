@@ -29,6 +29,7 @@ public class RecommendActiivity extends AppCompatActivity {
     String image;
     String name;
     Recommend_RecyclerAdapter adapter;
+    String location, day;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +52,12 @@ public class RecommendActiivity extends AppCompatActivity {
                                     jsonObject=new JSONObject(document.getData());
                                     image = jsonObject.getJSONArray("images").getString(0);
                                     name=jsonObject.getString("name");
+                                    location=jsonObject.getString("location");
+                                    day=jsonObject.getString("day");
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-                                items.add(new RecAC_list(image,name));
+                                items.add(new RecAC_list(image,name,location,day));
                                 adapter.notifyDataSetChanged();
                             }
                         } else {

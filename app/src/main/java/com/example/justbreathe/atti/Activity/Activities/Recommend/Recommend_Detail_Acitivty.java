@@ -58,10 +58,6 @@ public class Recommend_Detail_Acitivty extends AppCompatActivity {
 
         adapter= new Recommend_Detail_RecyclerAdapter(image_urls);
 
-        rcv_img.setLayoutManager(new LinearLayoutManager(this));
-
-        rcv_img.setAdapter(adapter);
-
         Intent intent = getIntent();
         tmp = intent.getIntExtra("PageNum", 0);
 
@@ -86,10 +82,12 @@ public class Recommend_Detail_Acitivty extends AppCompatActivity {
                             jsonObject = new JSONObject(document.getData());
                             JSONArray array = jsonObject.getJSONArray("images");
                             str_mainimg_url=array.getString(0);
+
                             for (int i = 1; i < array.length(); i++) {
                                 image_urls.add(array.getString(i));
                                 adapter.notifyDataSetChanged();
                             }
+
 
                             str_title = jsonObject.getString("name");
                             str_content = jsonObject.getString("desc");
@@ -122,6 +120,7 @@ public class Recommend_Detail_Acitivty extends AppCompatActivity {
                             etc.setVisibility(View.GONE);
                         }
                         Glide.with(getApplicationContext()).load(str_mainimg_url).into(mainimg);
+
                     } else {
                         Toast.makeText(Recommend_Detail_Acitivty.this, "정보가 존재하지 않습니다.", Toast.LENGTH_SHORT).show();
                     }
@@ -130,7 +129,7 @@ public class Recommend_Detail_Acitivty extends AppCompatActivity {
                 }
             }
         });
-
-
+        rcv_img.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        rcv_img.setAdapter(adapter);
     }
 }

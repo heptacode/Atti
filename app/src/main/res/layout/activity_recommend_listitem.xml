@@ -16,95 +16,85 @@
         android:scaleType="fitCenter"
         android:src="@drawable/ic_map" />
 
+
+    <TextView
+        android:id="@+id/recom_rec_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:fontFamily="@font/nanumbarungothic"
+        android:gravity="center"
+        android:text="세글자"
+        android:textColor="#666"
+        android:textSize="30sp" />
+
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="72dp">
-
-        <TextView
-            android:id="@+id/recom_rec_title"
-            android:layout_width="0dp"
-            android:layout_weight="0.4"
-            android:fontFamily="@font/nanumbarungothic"
-            android:gravity="center"
-            android:layout_height="match_parent"
-            android:text="세글자"
-            android:textColor="#666"
-            android:textSize="30sp"/>
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="0dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="12dp"
-            android:paddingBottom="12dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_height="25dp"
+            android:layout_weight="1">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_location"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/nanumbarungothiclight"
-                        android:textSize="12sp"
-                        android:paddingLeft="2dp"
-                        android:gravity="left|center"
-                        android:textColor="@color/colorPrimary"
-                        android:text="서울특별시 중구 을지로 281"/>
-                </LinearLayout>
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_location" />
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.54">
-                    <ImageView
-                        android:layout_width="16dp"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_watch"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:paddingLeft="5dp"
-                        android:gravity="left|center"
-                        android:textSize="12sp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/nanumbarungothiclight"
-                        android:textColor="@color/colorPrimary"
-                        android:text="전시관별 참여"/>
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_like"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:gravity="left|center"
-                    android:textSize="12sp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:paddingLeft="2dp"
-                    android:text="태그"
-                    android:fontFamily="@font/nanumbarungothiclight"
-                    android:textColor="@color/colorPrimary"/>
-            </LinearLayout>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/nanumbarungothiclight"
+                android:gravity="left|center"
+                android:paddingLeft="2dp"
+                android:text="서울특별시 중구 을지로 281"
+                android:id="@+id/recom_rec_location"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_weight="0.75">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_watch" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/nanumbarungothiclight"
+                android:gravity="left|center"
+                android:id="@+id/recom_rec_day"
+                android:paddingLeft="5dp"
+                android:text="전시관별 참여"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/nanumbarungothiclight"
+            android:gravity="left|center"
+            android:paddingLeft="2dp"
+            android:text="태그"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp" />
     </LinearLayout>
 </LinearLayout>
+

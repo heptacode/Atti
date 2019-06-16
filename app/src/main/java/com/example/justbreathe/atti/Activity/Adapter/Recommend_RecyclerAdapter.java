@@ -27,6 +27,8 @@ public class Recommend_RecyclerAdapter extends RecyclerView.Adapter<Recommend_Re
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView image;
         TextView title;
+        TextView location;
+        TextView day;
         View view;
 
         public ViewHolder(View itemView) {
@@ -34,6 +36,8 @@ public class Recommend_RecyclerAdapter extends RecyclerView.Adapter<Recommend_Re
             view = itemView;
             image = itemView.findViewById(R.id.recom_rec_img);
             title = itemView.findViewById(R.id.recom_rec_title);
+            location = itemView.findViewById(R.id.recom_rec_location);
+            day = itemView.findViewById(R.id.recom_rec_day);
         }
     }
 
@@ -63,8 +67,14 @@ public class Recommend_RecyclerAdapter extends RecyclerView.Adapter<Recommend_Re
         });
         String str_title = items.get(i).getTitle();
         String str_url = items.get(i).getUrl();
+        String str_loc = items.get(i).getLocation();
+        String str_day = items.get(i).getDay();
         vh.title.setText(str_title);
+        vh.day.setText(str_day);
+        vh.location.setText(str_loc);
+
         Glide.with(vh.itemView.getContext()).load(str_url).into(vh.image);
+
     }
 
     @Override
