@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#fff"
     android:layout_height="match_parent"
+    android:background="#fff"
     tools:context=".Activity.Activities.Register.RegisterActivity3">
 
     <ImageView
         android:id="@+id/step1_shape"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitStart"
-        android:layout_marginTop="-10dp"
         android:layout_marginLeft="-10dp"
+        android:layout_marginTop="-10dp"
         android:layout_marginRight="-10dp"
+        android:scaleType="fitStart"
         android:src="@drawable/ic_wave_register" />
 
     <TextView
@@ -23,8 +22,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="120dp"
-        android:text="Step 3"
         android:fontFamily="@font/nanumbarungothic"
+        android:text="Step 3"
         android:textColor="#fff"
         android:textSize="50sp" />
 
@@ -35,8 +34,8 @@
         android:layout_below="@+id/step3"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="30dp"
-        android:text="@string/step2"
         android:fontFamily="@font/nanumbarungothic"
+        android:text="@string/step2"
         android:textColor="#fff"
         android:textSize="26sp" />
 
@@ -49,10 +48,11 @@
         android:layout_marginTop="125dp"
         android:layout_marginRight="60dp"
         android:background="@drawable/register_edittext_background"
+        android:fontFamily="@font/nanumbarungothiclight"
         android:hint="@string/step2_hint"
         android:paddingLeft="18dp"
         android:paddingRight="18dp"
-        android:fontFamily="@font/nanumbarungothiclight"
+        android:singleLine="true"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp" />
 
@@ -69,10 +69,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/nanumbarungothiclight"
             android:text="@string/next"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp"
-            android:fontFamily="@font/nanumbarungothiclight"
             android:textStyle="bold" />
 
         <ImageView
