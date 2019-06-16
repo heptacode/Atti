@@ -59,14 +59,13 @@
             android:layout_marginTop="40dp"
             android:textSize="20sp"
             tools:text="ㅣㅏㅓ리ㅏ너미ㅏ거ㄴ마ㅓㅣㄱㄴ어기ㅏㅓㅇ니ㅏ건마이거ㅣㅏㅇㄴㅁㅁㄴㅇ거ㅏ
-ㅁㄴ어ㅣㅏ러니ㅏㅇㅁ러ㅏㅣㅇㄴㅁ러ㅏ임너라ㅣㄴ머라ㅣㄴㅁ어ㅏㅁ나ㅣㄹ
-ㅏㅣㄴㅇ머리ㅏㅇㄴ머리ㅏㄴㅇ머ㅣㅏㄹㄴ머ㅏㅣ러ㅏㄴ미러ㅏ님
 낭미러ㅣㅏㄴㅁ러ㅏㅣ너라ㅣ" />
 
         <ImageView
             android:id="@+id/Recycler_content_img"
             android:layout_width="260dp"
             android:layout_height="260dp"
+            android:layout_marginTop="5dp"
             android:src="@mipmap/ic_launcher"
             android:layout_gravity="center"/>
 

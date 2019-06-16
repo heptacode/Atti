@@ -1,24 +1,44 @@
 package com.example.justbreathe.atti.Activity.Object;
 
 public class MainAC_Post {
-    private String profile_url="", title, writer, content, image_url="";
-    private int like,ID;
-    public MainAC_Post(String profile_url, String title, String writer, String content, String image_url,int like, int ID) {
-        this.profile_url = profile_url;
+    private String title, writer, content;
+    private int like, ID;
+    private boolean korean;
+    private String image_url;
+
+
+    public MainAC_Post(String title, String writer, String content, String image_url, int like, int ID,boolean korean) {
         this.title = title;
         this.writer = writer;
         this.content = content;
         this.image_url = image_url;
         this.like = like;
         this.ID = ID;
+        this.korean = korean;
     }
 
-    public String getProfile_url() {
-        return profile_url;
+    public int getLike() {
+        return like;
     }
 
-    public void setProfile_url(String profile_url) {
-        this.profile_url = profile_url;
+    public void setLike(int like) {
+        this.like = like;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public boolean isKorean() {
+        return korean;
+    }
+
+    public void setKorean(boolean korean) {
+        this.korean = korean;
     }
 
     public String getTitle() {
