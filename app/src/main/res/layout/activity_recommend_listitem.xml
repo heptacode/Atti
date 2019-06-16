@@ -37,9 +37,9 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="32dp"
-            android:layout_weight="1">
+            >
 
             <ImageView
                 android:layout_width="25dp"
@@ -47,9 +47,8 @@
                 android:src="@drawable/ic_location" />
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="32dp"
-                android:layout_weight="1"
                 android:fontFamily="@font/nanumbarungothiclight"
                 android:gravity="left|center"
                 android:paddingLeft="2dp"
@@ -60,7 +59,9 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="right"
             android:layout_height="32dp">
 
             <ImageView
@@ -69,16 +70,17 @@
                 android:src="@drawable/ic_watch" />
 
             <TextView
-                android:layout_width="0dp"
+                android:textAlignment="viewEnd"
+                android:layout_width="wrap_content"
                 android:layout_height="32dp"
-                android:layout_weight="1"
                 android:fontFamily="@font/nanumbarungothiclight"
                 android:gravity="left|center"
                 android:id="@+id/recom_rec_day"
                 android:paddingLeft="5dp"
                 android:text="전시관별 참여"
                 android:textColor="@color/colorPrimary"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                tools:ignore="RtlCompat" />
         </LinearLayout>
     </LinearLayout>
 

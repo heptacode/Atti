@@ -43,8 +43,7 @@ public class Recommend_Detail_RecyclerAdapter extends RecyclerView.Adapter<Recom
     public void onBindViewHolder(final @NonNull Recommend_Detail_RecyclerAdapter.ViewHolder vh, int i) {
         final String str_url = items.get(i);
 
-        Glide.with(vh.itemView.getContext()).setDefaultRequestOptions(new RequestOptions().dontAnimate().override(vh.image.getWidth(),vh.image.getHeight())).load(str_url).into(vh.image);
-
+        Glide.with(vh.itemView.getContext()).setDefaultRequestOptions(new RequestOptions().dontAnimate().override(5000,5000)).load(str_url).into(vh.image);
         Log.e("Extra glide",str_url);
     }
 

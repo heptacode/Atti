@@ -36,9 +36,9 @@ public class Recommend_Detail_Acitivty extends AppCompatActivity {
     ImageView mainimg;
     RecyclerView rcv_img;
     TextView title, content, site_url, time, day, etc, location;
-    String str_title, str_content, str_url = null, str_time, str_day, str_etc = null, str_location,str_mainimg_url;
+    String str_title, str_content, str_url = null, str_time, str_day, str_etc = null, str_location, str_mainimg_url;
     JSONObject jsonObject;
-    boolean isETCEmpty = false,isURLEmpty=false;
+    boolean isETCEmpty = false, isURLEmpty = false;
     Recommend_Detail_RecyclerAdapter adapter;
 
     @Override
@@ -56,7 +56,7 @@ public class Recommend_Detail_Acitivty extends AppCompatActivity {
         location = findViewById(R.id.rec_dt_ac_location);
         image_urls = new ArrayList<>();
 
-        adapter= new Recommend_Detail_RecyclerAdapter(image_urls);
+        adapter = new Recommend_Detail_RecyclerAdapter(image_urls);
 
         Intent intent = getIntent();
         tmp = intent.getIntExtra("PageNum", 0);
@@ -81,14 +81,12 @@ public class Recommend_Detail_Acitivty extends AppCompatActivity {
                         try {
                             jsonObject = new JSONObject(document.getData());
                             JSONArray array = jsonObject.getJSONArray("images");
-                            str_mainimg_url=array.getString(0);
+                            str_mainimg_url = array.getString(0);
 
                             for (int i = 1; i < array.length(); i++) {
                                 image_urls.add(array.getString(i));
                                 adapter.notifyDataSetChanged();
                             }
-
-
                             str_title = jsonObject.getString("name");
                             str_content = jsonObject.getString("desc");
                             str_day = jsonObject.getString("day");
