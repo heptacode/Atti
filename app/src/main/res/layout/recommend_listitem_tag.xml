@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_marginRight="8dp"
+    android:layout_height="29dp">
+
+    <TextView
+        android:id="@+id/tag_text"
+        android:text="태그"
+        android:gravity="center"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:paddingLeft="10dp"
+        android:background="@drawable/login_edittext_background"
+        android:backgroundTint="@color/colorPrimaryLight"
+        android:paddingRight="10dp"
+        android:textColor="#000"
+        android:fontFamily="@font/nanumbarungothic"
+        android:layout_width="wrap_content"
+        android:layout_height="29dp" />
+
+</LinearLayout>

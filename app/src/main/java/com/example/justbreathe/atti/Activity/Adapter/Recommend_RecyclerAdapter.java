@@ -3,12 +3,14 @@ package com.example.justbreathe.atti.Activity.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +25,7 @@ import java.util.ArrayList;
 public class Recommend_RecyclerAdapter extends RecyclerView.Adapter<Recommend_RecyclerAdapter.ViewHolder> {
 
     ArrayList<RecAC_list> items;
+    Recommend_RecyclerAdpater_Tag adapter;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView image;
@@ -30,6 +33,7 @@ public class Recommend_RecyclerAdapter extends RecyclerView.Adapter<Recommend_Re
         TextView location;
         TextView day;
         View view;
+        RecyclerView rcv;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -38,6 +42,7 @@ public class Recommend_RecyclerAdapter extends RecyclerView.Adapter<Recommend_Re
             title = itemView.findViewById(R.id.recom_rec_title);
             location = itemView.findViewById(R.id.recom_rec_location);
             day = itemView.findViewById(R.id.recom_rec_day);
+            rcv = itemView.findViewById(R.id.rec_listitem_tag);
         }
     }
 
@@ -65,6 +70,13 @@ public class Recommend_RecyclerAdapter extends RecyclerView.Adapter<Recommend_Re
                 //세부사항 화면 넘어가는거
             }
         });
+        adapter=new Recommend_RecyclerAdpater_Tag(items.get(i).getTags());
+        LinearLayoutManager layoutManager = new LinearLayoutManager(vh.itemView.getContext());
+        layoutManager.setOrientation(LinearLayout.HORIZONTAL);
+        //vh.rcv.setNestedScrollingEnabled(false);
+        vh.rcv.setLayoutManager(layoutManager);
+        vh.rcv.setAdapter(adapter);
+
         String str_title = items.get(i).getTitle();
         String str_url = items.get(i).getUrl();
         String str_loc = items.get(i).getLocation();

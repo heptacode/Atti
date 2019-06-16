@@ -13,7 +13,6 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.justbreathe.atti.R;
 
 import java.util.ArrayList;
-import java.util.logging.Handler;
 
 public class Recommend_Detail_RecyclerAdapter extends RecyclerView.Adapter<Recommend_Detail_RecyclerAdapter.ViewHolder> {
     ArrayList<String> items;

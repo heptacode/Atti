@@ -17,8 +17,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class RecommendActiivity extends AppCompatActivity {
@@ -30,6 +32,8 @@ public class RecommendActiivity extends AppCompatActivity {
     String name;
     Recommend_RecyclerAdapter adapter;
     String location, day;
+    ArrayList<String> tags;
+    JSONArray tmp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +41,7 @@ public class RecommendActiivity extends AppCompatActivity {
         setContentView(R.layout.activity_recommend_activity);
         rcv = findViewById(R.id.recommend_recycler);
         adapter = new Recommend_RecyclerAdapter(items);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getApplicationContext(),new LinearLayoutManager(this).getOrientation());
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getApplicationContext(), new LinearLayoutManager(this).getOrientation());
         dividerItemDecoration.setDrawable(getApplicationContext().getResources().getDrawable(R.drawable.rec_list_devieder_stroke));
         rcv.addItemDecoration(dividerItemDecoration);
 
@@ -49,15 +53,22 @@ public class RecommendActiivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 try {
-                                    jsonObject=new JSONObject(document.getData());
+                                    tags=new ArrayList<>();
+                                    jsonObject = new JSONObject(document.getData());
                                     image = jsonObject.getJSONArray("images").getString(0);
-                                    name=jsonObject.getString("name");
-                                    location=jsonObject.getString("location");
-                                    day=jsonObject.getString("day");
+                                    name = jsonObject.getString("name");
+                                    location = jsonObject.getString("location");
+                                    day = jsonObject.getString("day");
+                                    tmp = jsonObject.getJSONArray("tags");
+                                    if(!tmp.getString(0).equals("")) {
+                                        for (int i = 0; i < tmp.length(); i++) {
+                                            tags.add(tmp.getString(i));
+                                        }
+                                    }
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-                                items.add(new RecAC_list(image,name,location,day));
+                                items.add(new RecAC_list(image, name, location, day, tags));
                                 adapter.notifyDataSetChanged();
                             }
                         } else {
