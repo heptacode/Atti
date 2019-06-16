@@ -1,13 +1,18 @@
 package com.example.justbreathe.atti.Activity.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.example.justbreathe.atti.Activity.Activities.Main.MainActivity_Detail;
 import com.example.justbreathe.atti.Activity.Object.MainAC_Post;
 import com.example.justbreathe.atti.R;
 
@@ -17,14 +22,21 @@ public class MainAC_RecyclerAdapter extends RecyclerView.Adapter<MainAC_Recycler
     ArrayList<MainAC_Post> items;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView content;
-        TextView title;
-        View view;
+        TextView title,content,date,name,more;
+        LinearLayout like,LL_intent;
+        ImageView korean;
+        ImageView mainimg;
         public ViewHolder(View itemView) {
             super(itemView);
-            view = itemView;
-            content = itemView.findViewById(R.id.Recycler_content);
-            title = itemView.findViewById(R.id.Recylcer_title);
+            LL_intent=itemView.findViewById(R.id.main_item_LL_intent);
+            content = itemView.findViewById(R.id.main_item_tv_content);
+            title = itemView.findViewById(R.id.main_item_tv_title);
+            date = itemView.findViewById(R.id.main_item_tv_date);
+            name = itemView.findViewById(R.id.main_item_tv_name);
+            more = itemView.findViewById(R.id.main_item_tv_more);
+            like = itemView.findViewById(R.id.main_item_LL_like);
+            korean = itemView.findViewById(R.id.main_item_img_korean);
+            mainimg= itemView.findViewById(R.id.main_item_img_mainimg);
         }
     }
 
@@ -42,17 +54,40 @@ public class MainAC_RecyclerAdapter extends RecyclerView.Adapter<MainAC_Recycler
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.view.setOnClickListener(new View.OnClickListener() {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
+        holder.LL_intent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //아이템 클릭
+                String ID = items.get(position).getID();
+                Intent maindetail = new Intent(holder.itemView.getContext(), MainActivity_Detail.class);
+                maindetail.putExtra("ID",ID);
+                holder.itemView.getContext().startActivity(maindetail);
+            }
+        });
+        holder.like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //좋아요 클릭
             }
         });
         String title = items.get(position).getTitle();
         String content = items.get(position).getContent();
+        String date = items.get(position).getDate();
+        String name = items.get(position).getWriter();
+        int like = items.get(position).getLike();
+        boolean korean = items.get(position).isKorean();
+        String imgurl = items.get(position).getImage_url();
         holder.title.setText(title);
         holder.content.setText(content);
+        holder.date.setText(date);
+        holder.name.setText(name);
+        Glide.with(holder.itemView.getContext()).load(imgurl).into(holder.mainimg);
+        if(korean){
+            holder.korean.setImageResource(R.drawable.ic_korean_flag);
+        }else{
+            //외국인용 국기
+            holder.korean.setImageResource(R.drawable.ic_location);
+        }
         //추가중
     }
 

@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="start"
     android:background="#fff"
+    android:id="@+id/drawer_background"
     android:orientation="vertical"
     android:weightSum="10">
 

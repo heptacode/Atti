@@ -1,20 +1,29 @@
 package com.example.justbreathe.atti.Activity.Object;
 
 public class MainAC_Post {
-    private String title, writer, content;
-    private int like, ID;
+    private String title, writer, content,date,ID;
+    private int like;
     private boolean korean;
     private String image_url;
 
 
-    public MainAC_Post(String title, String writer, String content, String image_url, int like, int ID,boolean korean) {
+    public MainAC_Post(String title,String date, String writer, String content, String image_url, int like, String ID,boolean korean) {
         this.title = title;
+        this.date = date;
         this.writer = writer;
         this.content = content;
         this.image_url = image_url;
         this.like = like;
         this.ID = ID;
         this.korean = korean;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public int getLike() {
@@ -25,11 +34,11 @@ public class MainAC_Post {
         this.like = like;
     }
 
-    public int getID() {
+    public String getID() {
         return ID;
     }
 
-    public void setID(int ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 

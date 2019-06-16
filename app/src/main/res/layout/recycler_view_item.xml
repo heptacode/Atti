@@ -2,79 +2,135 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingLeft="30dp"
     android:paddingTop="30dp"
-    android:paddingRight="30dp">
+    android:paddingBottom="30dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/Recycler_profile_img"
+        <RelativeLayout
+            android:id="@+id/main_item_relative"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:padding="5dp"
-            tools:src="@drawable/ic_default_proifle2" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true">
+
+            <ImageView
+                android:id="@+id/main_item_img_korean"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/ic_korean_flag" />
+
+            <ImageView
+                android:id="@+id/main_item_img_profile"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_default_proifle2" />
+
+        </RelativeLayout>
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_toRightOf="@id/main_item_relative"
+            android:gravity="center|left"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/Recylcer_title"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:gravity="center|left"
-                android:paddingLeft="20dp"
-                android:textSize="26sp"
-                tools:text="제목" />
+                android:id="@+id/main_item_tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumbarungothic"
+                android:textColor="#000"
+                android:textSize="24sp"
+                tools:text="엄희성" />
 
             <TextView
-                android:id="@+id/Recylcer_nickname"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center|left"
-                android:paddingLeft="20dp"
+                android:id="@+id/main_item_tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/main_item_tv_name"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/nanumbarungothic"
+                android:textColor="#000000"
                 android:textSize="16sp"
-                tools:text="Nickname" />
+                tools:text="2019.06.07" />
         </LinearLayout>
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/Recycler_content"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:textSize="20sp"
-            tools:text="ㅣㅏㅓ리ㅏ너미ㅏ거ㄴ마ㅓㅣㄱㄴ어기ㅏㅓㅇ니ㅏ건마이거ㅣㅏㅇㄴㅁㅁㄴㅇ거ㅏ
-낭미러ㅣㅏㄴㅁ러ㅏㅣ너라ㅣ" />
+            android:id="@+id/main_item_LL_intent"
+            android:layout_below="@id/main_item_relative"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/main_item_tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/nanumbarungothic"
+                android:text="문화역서울 284"
+                android:textColor="#000"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/main_item_tv_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/main_item_tv_title"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/nanumbarungothiclight"
+                android:lineHeight="28sp"
+                android:text="1925년에 완공된 서울역사입니다. 개보수 작업을 걸쳐 대중들의 문화공간으로 사용하는 곳이라 의미있고 인상적이었습니다. 보고싶은 전..."
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/main_item_img_mainimg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/main_item_tv_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_map" />
+
+            <TextView
+                android:id="@+id/main_item_tv_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/main_item_img_mainimg"
+                android:layout_marginTop="10dp"
+                android:text="+ more"
+                android:textColor="@color/colorPrimary" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/main_item_LL_like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingRight="20dp">
 
         <ImageView
-            android:id="@+id/Recycler_content_img"
-            android:layout_width="260dp"
-            android:layout_height="260dp"
-            android:layout_marginTop="5dp"
-            android:src="@mipmap/ic_launcher"
-            android:layout_gravity="center"/>
-
-        <ImageView
-            android:id="@+id/Recycler_like"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:src="@drawable/ic_like" />
-    </LinearLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:text="좋아요"
+            android:textColor="@color/colorPrimary" />
+    </LinearLayout>
 </LinearLayout>

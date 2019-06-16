@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -18,9 +19,7 @@ import android.widget.TextView;
 import com.example.justbreathe.atti.Activity.Activities.LoginActivity;
 import com.example.justbreathe.atti.Activity.Activities.Recommend.RecommendActiivity;
 import com.example.justbreathe.atti.Activity.Adapter.MainAC_RecyclerAdapter;
-import com.example.justbreathe.atti.Activity.Adapter.Recommend_RecyclerAdapter;
 import com.example.justbreathe.atti.Activity.Object.MainAC_Post;
-import com.example.justbreathe.atti.Activity.Object.RecAC_list;
 import com.example.justbreathe.atti.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,7 +27,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -38,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     //drawer 관련
     ImageView menu;
     DrawerLayout drawerLayout;
-    LinearLayout chat,recommend,med_conv;
+    LinearLayout chat,recommend,med_conv,drawer_background;
     TextView profile_name;
     TextView profile_korean;
     ImageView profile_flag;
@@ -52,11 +50,9 @@ public class MainActivity extends AppCompatActivity {
     JSONObject jsonObject;
 
     //recyclerview item
-    String db_date,db_content,db_writer,db_title,db_image0;
-    int db_like,db_ID;
+    String db_date,db_content,db_writer,db_title,db_image0,db_ID;
+    int db_like;
     boolean db_korean;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,9 +65,16 @@ public class MainActivity extends AppCompatActivity {
         profile_korean=findViewById(R.id.drawer_korean);
         profile_flag=findViewById(R.id.drawer_flag);
         logout=findViewById(R.id.drawer_logout);
+        rcv=findViewById(R.id.recycler_view);
+        drawer_background=findViewById(R.id.drawer_background);
+
         items=new ArrayList<>();
         adapter = new MainAC_RecyclerAdapter(items);
         DrawerAppearance();
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getApplicationContext(), new LinearLayoutManager(this).getOrientation());
+        dividerItemDecoration.setDrawable(getApplicationContext().getResources().getDrawable(R.drawable.rec_list_devieder_stroke));
+        rcv.addItemDecoration(dividerItemDecoration);
 
         //리스트 띄우기
         db.collection("recommend")
@@ -83,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 try {
                                     jsonObject = new JSONObject(document.getData());
-                                    //image = jsonObject.getJSONArray("images").getString(0);
                                     db_image0 = jsonObject.getJSONArray("images").getString(0);
                                     db_writer = jsonObject.getString("name");
                                     db_date = jsonObject.getString("date");
@@ -91,17 +93,17 @@ public class MainActivity extends AppCompatActivity {
                                     db_korean = jsonObject.getBoolean("korean");
                                     db_like = jsonObject.getInt("like");
                                     db_title = jsonObject.getString("title");
-                                    if(db_content.length()>60) {
-                                        db_content = db_content.substring(0, 60) + "...";
+                                    if(db_content.length()>81) {
+                                        db_content = db_content.substring(0, 81) + "...";
                                     }
-                                    if(db_title.length()>10) {
-                                        db_title = db_title.substring(0, 10) + "...";
+                                    if(db_title.length()>15) {
+                                        db_title = db_title.substring(0, 15) + "...";
                                     }
-                                    db_ID= Integer.parseInt(document.getId());
+                                    db_ID= document.getId();
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-                                items.add(new MainAC_Post(db_title,db_writer,db_content,db_image0,db_like,0,db_korean));
+                                items.add(new MainAC_Post(db_title,db_date,db_writer,db_content,db_image0,db_like,db_ID,db_korean));
                                 adapter.notifyDataSetChanged();
                             }
                         } else {
@@ -109,16 +111,28 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
-        //rcv.setLayoutManager(new LinearLayoutManager(this));
-        //rcv.setAdapter(adapter);
+        rcv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        rcv.setAdapter(adapter);
 
+        drawer_background.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 //드로우어 배경 클릭시 비정상적인 이벤트 발생 방지를 위한 빈 클릭이벤트리스너
+            }
+        });
 
-
-
-
-
-
-
+        chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.closeDrawers();
+            }
+        });
+        med_conv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.closeDrawers();
+            }
+        });
 
         recommend.setOnClickListener(new View.OnClickListener() {
             @Override
