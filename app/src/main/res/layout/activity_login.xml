@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -27,12 +26,12 @@
 
     <TextView
         android:id="@+id/login_title"
-        android:fontFamily="@font/nanumbarungothic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/login_logo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
+        android:fontFamily="@font/nanumbarungothic"
         android:text="Travel Experience"
         android:textColor="#fff"
         android:textSize="32sp" />
@@ -44,14 +43,15 @@
         android:layout_height="35dp"
         android:layout_below="@id/login_title"
         android:layout_marginLeft="40dp"
-        android:fontFamily="@font/nanumbarungothic"
         android:layout_marginTop="70dp"
         android:layout_marginRight="150dp"
         android:background="@drawable/login_edittext_background"
         android:elevation="2dp"
+        android:fontFamily="@font/nanumbarungothic"
         android:hint="Email"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
+        android:singleLine="true"
         android:textColor="@color/colorPrimary"
         android:textColorHint="@color/colorPrimary"
         android:textSize="17sp" />
@@ -61,17 +61,18 @@
         android:id="@+id/login_et_pw"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:fontFamily="@font/nanumbarungothic"
         android:layout_below="@id/login_et_id"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="150dp"
         android:background="@drawable/login_edittext_background"
         android:elevation="2dp"
+        android:fontFamily="@font/nanumbarungothic"
         android:hint="PW"
         android:inputType="textPassword"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
+        android:singleLine="true"
         android:textColor="@color/colorPrimary"
         android:textColorHint="@color/colorPrimary"
         android:textSize="17sp" />
@@ -85,8 +86,8 @@
         android:layout_marginTop="70dp"
         android:layout_marginRight="40dp"
         android:layout_toRightOf="@id/login_title"
-        android:fontFamily="@font/nanumbarungothic"
         android:background="@drawable/login_edittext_background"
+        android:fontFamily="@font/nanumbarungothic"
         android:text="@string/login"
         android:textColor="@color/colorPrimary" />
 
@@ -99,8 +100,8 @@
         android:layout_marginLeft="130dp"
         android:layout_marginTop="60dp"
         android:layout_marginRight="130dp"
-        android:fontFamily="@font/nanumbarungothic"
         android:background="@drawable/login_edittext_background"
+        android:fontFamily="@font/nanumbarungothic"
         android:text="@string/Register"
         android:textColor="@color/colorPrimary"
         android:textSize="15sp" />
