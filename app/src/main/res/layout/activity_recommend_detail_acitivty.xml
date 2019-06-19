@@ -1,87 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
     tools:context=".Activity.Activities.Recommend.Recommend_Detail_Acitivty">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingLeft="50dp"
-        android:paddingTop="50dp"
-        android:paddingRight="50dp">
+        android:layout_height="72dp"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/rec_dt_ac_mainimg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/rec_dt_ac_title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="18dp"
+            android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:textSize="32sp"
-            tools:text="제목제목" />
+            android:src="@drawable/ic_logo" />
 
-        <TextView
-            android:id="@+id/rec_dt_ac_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginTop="10dp"
-            tools:text="asdkjksaldjlkdsa" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rec_dt_ac_recyclerview"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/rec_dt_ac_siteurl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumbarungothic"
+                android:text="추천명소"
+                android:textColor="#fff"
+                android:textSize="24sp" />
 
-            android:layout_marginTop="10dp"
-            android:autoLink="web"
-            tools:text="https://naver.com" />
-
-        <TextView
-            android:id="@+id/rec_dt_ac_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginTop="10dp"
-            tools:text="서울특별시 종로구 사직로 161" />
-
-        <TextView
-            android:id="@+id/rec_dt_ac_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginTop="10dp"
-            tools:text="이용시간" />
-
-        <TextView
-            android:id="@+id/rec_dt_ac_day"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginTop="10dp"
-            tools:text="운영요일" />
-
-        <TextView
-            android:id="@+id/rec_dt_ac_etc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginTop="10dp"
-            tools:text="기타" />
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_location_white" />
+        </LinearLayout>
     </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+
+    <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="30dp"
+            android:paddingTop="30dp"
+            android:paddingRight="30dp">
+
+
+            <TextView
+                android:id="@+id/rec_dt_ac_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumbarungothic"
+                android:textAlignment="center"
+                android:textSize="32sp"
+                tools:text="제목제목" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_location" />
+
+                <TextView
+                    android:id="@+id/rec_dt_ac_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/nanumbarungothic"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimary"
+                    tools:text="서울특별시 종로구 사직로 161" />
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rec_dt_ac_rv_tag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
+
+            <ImageView
+                android:id="@+id/rec_dt_ac_mainimg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp" />
+
+            <TextView
+                android:id="@+id/rec_dt_ac_content"
+                android:layout_width="wrap_content"
+                android:lineHeight="25sp"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nanumbarungothiclight"
+                tools:text="asdkjksaldjlkdsa" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rec_dt_ac_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/rec_dt_ac_siteurl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:autoLink="web"
+                android:fontFamily="@font/nanumbarungothic"
+                android:textColorLink="@color/colorPrimary"
+                tools:text="https://naver.com" />
+
+            <TextView
+                android:id="@+id/rec_dt_ac_etc_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/nanumbarungothiclight"
+                android:text="이것만은 꼭!"
+                android:textColor="#000"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/rec_dt_ac_etc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="15sp"
+                android:lineHeight="22sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/nanumbarungothiclight"
+                android:textAlignment="center"
+                tools:text="기타" />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_gravity="top"
+                    android:src="@drawable/ic_open_days"
+                    android:layout_height="25dp" />
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/rec_dt_ac_day"
+                    android:lineHeight="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:fontFamily="@font/nanumbarungothiclight"
+                    tools:text="운영요일" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_gravity="top"
+                    android:src="@drawable/ic_watch"
+                    android:layout_height="20dp" />
+                <TextView
+                    android:id="@+id/rec_dt_ac_time"
+                    android:textColor="#000"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:lineHeight="20sp"
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/nanumbarungothiclight"
+                    tools:text="이용시간" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="100dp" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

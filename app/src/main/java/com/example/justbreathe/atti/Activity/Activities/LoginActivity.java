@@ -156,7 +156,7 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences mprefs = getSharedPreferences("Profile_Data", MODE_PRIVATE);
         SharedPreferences.Editor mEditor = mprefs.edit();
         mEditor.putString("S_email", _email);
-        mEditor.putString("S_paawd", _passwd);
+        mEditor.putString("S_passwd", _passwd);
         mEditor.putString("S_name", _name);
         mEditor.putBoolean("S_korean", _korean);
         mEditor.putBoolean("S_Login", true);//자동로그인 값

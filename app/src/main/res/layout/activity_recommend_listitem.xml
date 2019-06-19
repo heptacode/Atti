@@ -65,9 +65,9 @@
             android:layout_height="32dp">
 
             <ImageView
-                android:layout_width="16dp"
+                android:layout_width="24dp"
                 android:layout_height="32dp"
-                android:src="@drawable/ic_watch" />
+                android:src="@drawable/ic_open_days" />
 
             <TextView
                 android:textAlignment="viewEnd"

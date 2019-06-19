@@ -18,13 +18,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true">
 
-            <ImageView
-                android:id="@+id/main_item_img_korean"
-                android:layout_width="30dp"
-                android:layout_height="20dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentBottom="true"
-                android:src="@drawable/ic_korean_flag" />
+
 
             <ImageView
                 android:id="@+id/main_item_img_profile"
@@ -32,6 +26,13 @@
                 android:layout_height="60dp"
                 android:layout_centerInParent="true"
                 android:src="@drawable/ic_default_proifle2" />
+            <ImageView
+                android:id="@+id/main_item_img_korean"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/ic_korean_flag" />
 
         </RelativeLayout>
 
@@ -102,35 +103,38 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_map" />
 
-            <TextView
-                android:id="@+id/main_item_tv_more"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/main_item_img_mainimg"
-                android:layout_marginTop="10dp"
-                android:text="+ more"
-                android:textColor="@color/colorPrimary" />
         </LinearLayout>
     </RelativeLayout>
 
     <LinearLayout
+        android:layout_gravity="right"
         android:id="@+id/main_item_LL_like"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="20dp"
+        android:padding="5dp"
+        android:gravity="center"
+        android:background="@drawable/main_like_background"
         android:paddingRight="20dp">
 
         <ImageView
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:src="@drawable/ic_like" />
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:id="@+id/main_like_img"
+            android:src="@drawable/ic_liked_x" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
             android:paddingLeft="10dp"
-            android:text="좋아요"
+            android:paddingRight="10dp"
+            android:id="@+id/main_like_num"
+            android:textSize="17sp"
+            android:fontFamily="@font/nanumbarungothic"
+            android:text="0"
             android:textColor="@color/colorPrimary" />
     </LinearLayout>
 </LinearLayout>

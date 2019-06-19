@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activity.Activities.Main.MainActivity_Write">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+        <View
+            android:layout_width="50dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_logo" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/nanumbarungothic"
+                android:gravity="center"
+                android:text="추천하기"
+                android:textColor="#fff"
+                android:textSize="24sp" />
+        </LinearLayout>
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:id="@+id/main_write_write"
+            android:layout_width="50dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:src="@drawable/ic_write_white"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/main_write_title"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="@font/nanumbarungothic"
+            android:hint="제목"
+            android:paddingLeft="30dp"
+            android:singleLine="true"
+            android:textSize="25sp" />
+
+        <EditText
+            android:id="@+id/main_write_content"
+            android:layout_width="match_parent"
+            android:lineHeight="36sp"
+            android:layout_height="match_parent"
+            android:backgroundTint="#ffffffff"
+            android:gravity="top"
+            android:hint="내용을 입력하세요."
+            android:padding="20dp"
+            android:textSize="22sp" />
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -27,6 +27,16 @@
                 android:layout_marginLeft="10dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_menu"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/main_write"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/ic_write_white"/>
         </LinearLayout>
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"

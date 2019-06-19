@@ -3,6 +3,7 @@ package com.example.justbreathe.atti.Activity.Activities.Main;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     TextView profile_name;
     TextView profile_korean;
     ImageView profile_flag;
-    ImageView logout;
+    ImageView logout, write;
 
     //메인화면 Recyclerview
     RecyclerView rcv;
@@ -53,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
     String db_date,db_content,db_writer,db_title,db_image0,db_ID;
     int db_like;
     boolean db_korean;
+    MainAC_Post tmp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         logout=findViewById(R.id.drawer_logout);
         rcv=findViewById(R.id.recycler_view);
         drawer_background=findViewById(R.id.drawer_background);
+        write = findViewById(R.id.main_write);
 
         items=new ArrayList<>();
         adapter = new MainAC_RecyclerAdapter(items);
@@ -77,40 +81,8 @@ public class MainActivity extends AppCompatActivity {
         rcv.addItemDecoration(dividerItemDecoration);
 
         //리스트 띄우기
-        db.collection("recommend")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                try {
-                                    jsonObject = new JSONObject(document.getData());
-                                    db_image0 = jsonObject.getJSONArray("images").getString(0);
-                                    db_writer = jsonObject.getString("name");
-                                    db_date = jsonObject.getString("date");
-                                    db_content = jsonObject.getString("desc");
-                                    db_korean = jsonObject.getBoolean("korean");
-                                    db_like = jsonObject.getInt("like");
-                                    db_title = jsonObject.getString("title");
-                                    if(db_content.length()>81) {
-                                        db_content = db_content.substring(0, 81) + "...";
-                                    }
-                                    if(db_title.length()>15) {
-                                        db_title = db_title.substring(0, 15) + "...";
-                                    }
-                                    db_ID= document.getId();
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                                items.add(new MainAC_Post(db_title,db_date,db_writer,db_content,db_image0,db_like,db_ID,db_korean));
-                                adapter.notifyDataSetChanged();
-                            }
-                        } else {
-                            Log.e("DB", "Error getting documents: ", task.getException());
-                        }
-                    }
-                });
+        ListLoading();
+
         rcv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         rcv.setAdapter(adapter);
 
@@ -164,6 +136,13 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+        write.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,MainActivity_Write.class);
+                startActivityForResult(intent,1999);
+            }
+        });
     }
     private void DrawerAppearance(){
         SharedPreferences mprefs = getSharedPreferences("Profile_Data",MODE_PRIVATE);
@@ -173,9 +152,62 @@ public class MainActivity extends AppCompatActivity {
             profile_flag.setImageResource(R.drawable.ic_korean_flag);
         }else{
             profile_korean.setText("Foreigner");
-            profile_flag.setImageResource(R.drawable.ic_location);//외국인 전용 그림 넣기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            profile_flag.setImageResource(R.drawable.ic_foreigner_flag);//외국인 전용 그림 넣기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         }
         profile_name.setText(name);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(resultCode==RESULT_OK){
+            switch (requestCode){
+                case 1999:
+                    ListLoading();
+                    break;
+            }
+        }
+    }
+    void ListLoading(){
+        items.clear();
+        Log.e("items",items.toString());
+        db.collection("recommend")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            Log.e("tasK", String.valueOf(task.getResult().getDocuments().size()));
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                try {
+                                    jsonObject = new JSONObject(document.getData());
+                                    db_image0 = jsonObject.getJSONArray("images").getString(0);
+                                    db_writer = jsonObject.getString("name");
+                                    db_date = jsonObject.getString("date");
+                                    db_content = jsonObject.getString("desc");
+                                    db_korean = jsonObject.getBoolean("korean");
+                                    db_like = jsonObject.getInt("like");
+                                    db_title = jsonObject.getString("title");
+                                    if(db_content.length()>81) {
+                                        db_content = db_content.substring(0, 81) + "...";
+                                    }
+                                    if(db_title.length()>15) {
+                                        db_title = db_title.substring(0, 15) + "...";
+                                    }
+                                    db_ID= document.getId();
+                                    Log.e("db_ID","돌아감"+db_ID);
+
+                                } catch (JSONException e) {
+                                    Log.e("db_ID","에러"+db_ID+"이후");
+                                    e.printStackTrace();
+                                }
+                                Log.e("db", String.valueOf(document));
+                                items.add(new MainAC_Post(db_title,db_date,db_writer,db_content,db_image0,db_like,db_ID,db_korean));
+                                adapter.notifyDataSetChanged();
+                            }
+                        } else {
+                            Log.e("DB", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
 }

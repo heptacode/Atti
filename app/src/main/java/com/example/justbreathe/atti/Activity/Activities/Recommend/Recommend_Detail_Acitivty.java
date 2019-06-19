@@ -9,11 +9,13 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.justbreathe.atti.Activity.Adapter.Recommend_Detail_RecyclerAdapter;
+import com.example.justbreathe.atti.Activity.Adapter.Recommend_RecyclerAdpater_Tag;
 import com.example.justbreathe.atti.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -33,13 +35,18 @@ public class Recommend_Detail_Acitivty extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     ArrayList<String> image_urls;
+    ArrayList<String> tags;
+
     ImageView mainimg;
-    RecyclerView rcv_img;
-    TextView title, content, site_url, time, day, etc, location;
+    RecyclerView rcv_img,rcv_tag;
+    TextView title, content, site_url, time, day, etc, location,etc_title;
     String str_title, str_content, str_url = null, str_time, str_day, str_etc = null, str_location, str_mainimg_url;
     JSONObject jsonObject;
     boolean isETCEmpty = false, isURLEmpty = false;
     Recommend_Detail_RecyclerAdapter adapter;
+    Recommend_RecyclerAdpater_Tag tag_adapter;
+    JSONArray tagtmp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +61,17 @@ public class Recommend_Detail_Acitivty extends AppCompatActivity {
         day = findViewById(R.id.rec_dt_ac_day);
         etc = findViewById(R.id.rec_dt_ac_etc);
         location = findViewById(R.id.rec_dt_ac_location);
+        rcv_tag=findViewById(R.id.rec_dt_ac_rv_tag);
+        etc_title=findViewById(R.id.rec_dt_ac_etc_title);
+
+        tags=new ArrayList<>();
         image_urls = new ArrayList<>();
+
+        tag_adapter=new Recommend_RecyclerAdpater_Tag(tags);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayout.HORIZONTAL);
+        rcv_tag.setLayoutManager(layoutManager);
+        rcv_tag.setAdapter(tag_adapter);
 
         adapter = new Recommend_Detail_RecyclerAdapter(image_urls);
 
@@ -70,7 +87,6 @@ public class Recommend_Detail_Acitivty extends AppCompatActivity {
         } else {
             finish();
         }
-        Log.e("Pagenum=", Pagenum);
         DocumentReference docRef = db.collection("places").document(Pagenum);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -82,11 +98,19 @@ public class Recommend_Detail_Acitivty extends AppCompatActivity {
                             jsonObject = new JSONObject(document.getData());
                             JSONArray array = jsonObject.getJSONArray("images");
                             str_mainimg_url = array.getString(0);
+                            tagtmp = jsonObject.getJSONArray("tags");
+                            if(!tagtmp.getString(0).equals("")) {
+                                for (int i = 0; i < tagtmp.length(); i++) {
+                                    tags.add(tagtmp.getString(i));
+                                }
+                            }
 
                             for (int i = 1; i < array.length(); i++) {
                                 image_urls.add(array.getString(i));
-                                adapter.notifyDataSetChanged();
                             }
+                            tag_adapter.notifyDataSetChanged();
+                            adapter.notifyDataSetChanged();
+
                             str_title = jsonObject.getString("name");
                             str_content = jsonObject.getString("desc");
                             str_day = jsonObject.getString("day");
@@ -100,21 +124,41 @@ public class Recommend_Detail_Acitivty extends AppCompatActivity {
                             e.printStackTrace();
                         }
                         //셋텍스트, 글라이드
+                        String[] timetmp=str_time.split(";");
+                        str_time="";
+                        for(int i=0;i<timetmp.length;i++){
+                            if(i==timetmp.length-1){
+                                str_time= str_time+timetmp[i];
+                            }else{
+                                str_time = str_time + timetmp[i] + "\n";
+                            }
+                        }
+                        String[] etctmp=str_etc.split(";");
+                        str_etc="";
+                        for(int i=0;i<etctmp.length;i++){
+                            if(i==etctmp.length-1){
+                                str_etc=str_etc+etctmp[i];
+                            }else{
+                                str_etc= str_etc+ etctmp[i] + "\n";
+                            }
+                        }
                         title.setText(str_title);
                         content.setText(str_content);
                         day.setText(str_day);
                         time.setText(str_time);
                         location.setText(str_location);
+                        if(image_urls.isEmpty()){
+                            rcv_img.setVisibility(View.GONE);
+                        }
                         if (!isURLEmpty) {
                             site_url.setText(str_url);
                         } else {
-                            site_url.setText("");
                             site_url.setVisibility(View.GONE);
                         }
                         if (!isETCEmpty) {
                             etc.setText(str_etc);
                         } else {
-                            etc.setText("");
+                            etc_title.setVisibility(View.GONE);
                             etc.setVisibility(View.GONE);
                         }
                         Glide.with(getApplicationContext()).load(str_mainimg_url).into(mainimg);

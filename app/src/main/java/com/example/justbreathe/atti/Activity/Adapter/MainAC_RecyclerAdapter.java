@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,6 @@ import java.util.ArrayList;
 
 public class MainAC_RecyclerAdapter extends RecyclerView.Adapter<MainAC_RecyclerAdapter.ViewHolder> {
     ArrayList<MainAC_Post> items;
-
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView title,content,date,name,more;
         LinearLayout like,LL_intent;
@@ -33,7 +33,6 @@ public class MainAC_RecyclerAdapter extends RecyclerView.Adapter<MainAC_Recycler
             title = itemView.findViewById(R.id.main_item_tv_title);
             date = itemView.findViewById(R.id.main_item_tv_date);
             name = itemView.findViewById(R.id.main_item_tv_name);
-            more = itemView.findViewById(R.id.main_item_tv_more);
             like = itemView.findViewById(R.id.main_item_LL_like);
             korean = itemView.findViewById(R.id.main_item_img_korean);
             mainimg= itemView.findViewById(R.id.main_item_img_mainimg);
@@ -64,6 +63,8 @@ public class MainAC_RecyclerAdapter extends RecyclerView.Adapter<MainAC_Recycler
                 holder.itemView.getContext().startActivity(maindetail);
             }
         });
+
+
         holder.like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,9 +87,8 @@ public class MainAC_RecyclerAdapter extends RecyclerView.Adapter<MainAC_Recycler
             holder.korean.setImageResource(R.drawable.ic_korean_flag);
         }else{
             //외국인용 국기
-            holder.korean.setImageResource(R.drawable.ic_location);
+            holder.korean.setImageResource(R.drawable.ic_foreigner_flag);
         }
-        //추가중
     }
 
     @Override
