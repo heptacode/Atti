@@ -7,10 +7,172 @@
     android:orientation="vertical"
     tools:context=".Activity.Activities.Main.MainActivity_Detail">
 
-    <TextView
-        android:textSize="30sp"
-        android:id="@+id/main_detail_tv"
-        android:text="dfakljadslkf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_logo" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/nanumbarungothic"
+                android:gravity="center"
+                android:text="추천하기"
+                android:textColor="#fff"
+                android:textSize="24sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/main_dt_relative"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true">
+
+
+                    <ImageView
+                        android:id="@+id/main_dt_img_profile"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_default_proifle2" />
+
+                    <ImageView
+                        android:id="@+id/main_dt_img_korean"
+                        android:layout_width="30dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentBottom="true"
+                        android:src="@drawable/ic_korean_flag" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_toRightOf="@id/main_dt_relative"
+                    android:gravity="center|left"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/main_dt_tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nanumbarungothic"
+                        android:textColor="#000"
+                        android:textSize="24sp"
+                        tools:text="엄희성" />
+
+                    <TextView
+                        android:id="@+id/main_dt_tv_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/nanumbarungothic"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        tools:text="2019.06.07" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/main_dt_tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/nanumbarungothic"
+                    android:lineHeight="30sp"
+                    android:textColor="#000"
+                    android:textSize="24sp"
+                    tools:text="오늘은 올림픽 공원에 있는 나홀로 나무에 가봤습니다" />
+
+                <TextView
+                    android:id="@+id/main_dt_tv_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/nanumbarungothiclight"
+                    android:lineHeight="30sp"
+                    android:textColor="#000"
+                    android:textSize="18sp"
+                    tools:text="1925년에 완공된 서울역사입니다. 개보수 작업을 걸쳐 대중들의 문화공간으로 사용하는 곳이라 의미있고 인상적이었습니다. 보고싶은 전..." />
+
+                <ImageView
+                    android:id="@+id/main_dt_img_mainimg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/main_dt_LL_like"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/main_like_background"
+                android:gravity="center"
+                android:padding="5dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp">
+
+                <ImageView
+                    android:id="@+id/main_dt_like_img"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_liked_x" />
+
+                <TextView
+                    android:id="@+id/main_dt_like_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/nanumbarungothic"
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="0"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="17sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

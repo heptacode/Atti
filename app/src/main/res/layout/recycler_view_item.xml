@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/nanumbarungothic"
-                android:text="문화역서울 284"
+                tools:text="문화역서울 284"
                 android:textColor="#000"
                 android:textSize="24sp" />
 
@@ -89,7 +89,7 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/nanumbarungothiclight"
                 android:lineHeight="28sp"
-                android:text="1925년에 완공된 서울역사입니다. 개보수 작업을 걸쳐 대중들의 문화공간으로 사용하는 곳이라 의미있고 인상적이었습니다. 보고싶은 전..."
+                tools:text="1925년에 완공된 서울역사입니다. 개보수 작업을 걸쳐 대중들의 문화공간으로 사용하는 곳이라 의미있고 인상적이었습니다. 보고싶은 전..."
                 android:textColor="#000"
                 android:textSize="18sp" />
 
@@ -101,7 +101,7 @@
                 android:layout_below="@id/main_item_tv_content"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
-                android:src="@drawable/ic_map" />
+                tools:src="@drawable/ic_map" />
 
         </LinearLayout>
     </RelativeLayout>
@@ -122,7 +122,7 @@
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:id="@+id/main_like_img"
+            android:id="@+id/main_item_like_img"
             android:src="@drawable/ic_liked_x" />
 
         <TextView
@@ -131,7 +131,7 @@
             android:gravity="center"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:id="@+id/main_like_num"
+            android:id="@+id/main_item_like_num"
             android:textSize="17sp"
             android:fontFamily="@font/nanumbarungothic"
             android:text="0"

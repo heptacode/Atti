@@ -176,7 +176,6 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            Log.e("tasK", String.valueOf(task.getResult().getDocuments().size()));
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 try {
                                     jsonObject = new JSONObject(document.getData());
@@ -194,10 +193,8 @@ public class MainActivity extends AppCompatActivity {
                                         db_title = db_title.substring(0, 15) + "...";
                                     }
                                     db_ID= document.getId();
-                                    Log.e("db_ID","돌아감"+db_ID);
 
                                 } catch (JSONException e) {
-                                    Log.e("db_ID","에러"+db_ID+"이후");
                                     e.printStackTrace();
                                 }
                                 Log.e("db", String.valueOf(document));

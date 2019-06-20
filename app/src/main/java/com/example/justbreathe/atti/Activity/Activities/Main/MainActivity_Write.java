@@ -2,8 +2,13 @@ package com.example.justbreathe.atti.Activity.Activities.Main;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,16 +23,18 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.gson.JsonArray;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class MainActivity_Write extends AppCompatActivity {
@@ -42,6 +49,13 @@ public class MainActivity_Write extends AppCompatActivity {
     boolean korean;
     String ID;
     ArrayList<String> images,like_people;
+    ImageView prev;
+    ImageView image_add;
+    Uri filePath=null;
+    SimpleDateFormat formatter;
+    String filename;
+    StorageReference storageReference;
+    FirebaseStorage storage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +64,9 @@ public class MainActivity_Write extends AppCompatActivity {
         et_content = findViewById(R.id.main_write_content);
         et_title = findViewById(R.id.main_write_title);
         write = findViewById(R.id.main_write_write);
+        image_add=findViewById(R.id.main_write_btn_float);
+        prev=findViewById(R.id.main_write_previmg);
+
         asyncDialog = new ProgressDialog(this);
         db = FirebaseFirestore.getInstance();
         user = new HashMap<>();
@@ -59,24 +76,56 @@ public class MainActivity_Write extends AppCompatActivity {
         images=new ArrayList<>();
         like_people=new ArrayList<>();
         like_people.add("");
-        //수정하기
-        images.add("");
 
-
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReferenceFromUrl("gs://atti-core.appspot.com");
 
         write.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 SharedPreferences mprefs = getSharedPreferences("Profile_Data",MODE_PRIVATE);
                 korean=mprefs.getBoolean("S_korean",true);
                 name=mprefs.getString("S_name","Error");
                 Date time = new Date(System.currentTimeMillis());
+
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
                 String getTime = sdf.format(time);
-                Log.e("current Time",getTime);
 
                 asyncDialog.setMessage("요청중입니다.");
                 asyncDialog.show();
+
+                if(filePath!=null) {
+                    formatter = new SimpleDateFormat("yyyyMMHH_mmss");
+                    filename = formatter.format(time) + ".jpg";
+                    images.add("https://firebasestorage.googleapis.com/v0/b/atti-core.appspot.com/o/images%2Frecommend%2F"+filename+"?alt=media");
+                    StorageReference ref = storageReference.child("images/recommend/"+filename);
+
+                    ref.putFile(filePath)
+                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                @Override
+                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                    Log.e("이미지","업로드 성공");
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.e("이미지","업로드 실패");
+                                }
+                            })
+                            .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                                @Override
+                                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                                    double progress = (100*taskSnapshot.getBytesTransferred())/taskSnapshot.getTotalByteCount();
+                                    asyncDialog.setMessage("Uploaded "+((int)progress+"%..."));
+                                }
+                            });
+                }
+                if(images.size()==0){
+                    images.add("");
+                }
+
                 user.put("date", getTime);
                 user.put("title",et_title.getText().toString());
                 user.put("desc", et_content.getText().toString());
@@ -125,6 +174,37 @@ public class MainActivity_Write extends AppCompatActivity {
 
             }
         });
+        image_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
+                intent.setType("image/*");
+                startActivityForResult(Intent.createChooser(intent, "이미지를 선택하세요."), 123);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(resultCode==RESULT_OK){
+            switch(requestCode){
+                case 123:
+                    filePath = data.getData();
+                    Log.e("경로", "uri: " + filePath);
+                    try {
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                        //DB로 전송할 사진 용량 줄이기
+                        //대책1 : bitmap resize해서 저장한 후 서버로 전송 후 파일 삭제
+
+                        prev.setImageBitmap(bitmap);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+            }
+        }
+
     }
 
     @Override
