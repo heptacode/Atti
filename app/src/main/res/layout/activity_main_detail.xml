@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activity.Activities.Main.MainActivity_Detail">
+    tools:context="app.atti.justbreathe.atti.Activity.Activities.Main.MainActivity_Detail">
 
 
     <LinearLayout
