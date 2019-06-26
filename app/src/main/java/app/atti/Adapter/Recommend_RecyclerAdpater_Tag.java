@@ -1,4 +1,4 @@
-package app.atti.justbreathe.atti.Activity.Adapter;
+package app.atti.Adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import app.atti.justbreathe.atti.R;
+import app.atti.R;
 
 import java.util.ArrayList;
 

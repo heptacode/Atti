@@ -1,4 +1,4 @@
-package app.atti.justbreathe.atti.Activity.Activities.Main;
+package app.atti.Activities.Main;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,11 +17,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import app.atti.justbreathe.atti.Activity.Activities.LoginActivity;
-import app.atti.justbreathe.atti.Activity.Activities.Recommend.RecommendActiivity;
-import app.atti.justbreathe.atti.Activity.Adapter.MainAC_RecyclerAdapter;
-import app.atti.justbreathe.atti.Activity.Object.MainAC_Post;
-import app.atti.justbreathe.atti.R;
+import app.atti.Activities.LoginActivity;
+import app.atti.Activities.Recommend.RecommendActiivity;
+import app.atti.Adapter.MainAC_RecyclerAdapter;
+import app.atti.Object.MainAC_Post;
+import app.atti.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;

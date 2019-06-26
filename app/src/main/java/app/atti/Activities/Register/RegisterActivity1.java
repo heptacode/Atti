@@ -1,4 +1,4 @@
-package app.atti.justbreathe.atti.Activity.Activities.Register;
+package app.atti.Activities.Register;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import app.atti.justbreathe.atti.R;
+import app.atti.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;

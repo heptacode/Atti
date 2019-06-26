@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:913785973409:android:afd966bfd7da240d",
+        "mobilesdk_app_id": "1:913785973409:android:5776210167538a05",
         "android_client_info": {
-          "package_name": "app.atti.justbreathe.atti"
+          "package_name": "app.atti"
         }
       },
       "oauth_client": [

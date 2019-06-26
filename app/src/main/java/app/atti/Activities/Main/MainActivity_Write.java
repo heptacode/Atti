@@ -1,4 +1,4 @@
-package app.atti.justbreathe.atti.Activity.Activities.Main;
+package app.atti.Activities.Main;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -18,7 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import app.atti.justbreathe.atti.R;
+import app.atti.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

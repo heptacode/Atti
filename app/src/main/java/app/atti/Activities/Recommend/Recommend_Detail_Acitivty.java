@@ -1,4 +1,4 @@
-package app.atti.justbreathe.atti.Activity.Activities.Recommend;
+package app.atti.Activities.Recommend;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -14,9 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import app.atti.justbreathe.atti.Activity.Adapter.Recommend_Detail_RecyclerAdapter;
-import app.atti.justbreathe.atti.Activity.Adapter.Recommend_RecyclerAdpater_Tag;
-import app.atti.justbreathe.atti.R;
+import app.atti.Adapter.Recommend_Detail_RecyclerAdapter;
+import app.atti.Adapter.Recommend_RecyclerAdpater_Tag;
+import app.atti.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;

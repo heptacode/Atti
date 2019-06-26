@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="app.atti.justbreathe.atti.Activity.Activities.Recommend.RecommendActiivity">
+    tools:context="app.atti.Activities.Recommend.RecommendActiivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:background="@color/colorPrimary"

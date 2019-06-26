@@ -1,11 +1,11 @@
-package app.atti.justbreathe.atti.Activity.Activities;
+package app.atti.Activities;
 
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import app.atti.justbreathe.atti.R;
+import app.atti.R;
 
 public class SplashActivty extends AppCompatActivity {
 

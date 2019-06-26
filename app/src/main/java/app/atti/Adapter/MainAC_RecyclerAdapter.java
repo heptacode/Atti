@@ -1,4 +1,4 @@
-package app.atti.justbreathe.atti.Activity.Adapter;
+package app.atti.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,9 +12,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import app.atti.justbreathe.atti.Activity.Activities.Main.MainActivity_Detail;
-import app.atti.justbreathe.atti.Activity.Object.MainAC_Post;
-import app.atti.justbreathe.atti.R;
+import app.atti.Activities.Main.MainActivity_Detail;
+import app.atti.Object.MainAC_Post;
+import app.atti.R;
 
 import java.util.ArrayList;
 

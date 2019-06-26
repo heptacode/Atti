@@ -1,4 +1,4 @@
-package app.atti.justbreathe.atti.Activity.Activities;
+package app.atti.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -13,9 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import app.atti.justbreathe.atti.Activity.Activities.Main.MainActivity;
-import app.atti.justbreathe.atti.Activity.Activities.Register.RegisterActivity1;
-import app.atti.justbreathe.atti.R;
+import app.atti.Activities.Main.MainActivity;
+import app.atti.Activities.Register.RegisterActivity1;
+import app.atti.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;

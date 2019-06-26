@@ -1,4 +1,4 @@
-package app.atti.justbreathe.atti.Activity.Activities.Recommend;
+package app.atti.Activities.Recommend;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -8,9 +8,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-import app.atti.justbreathe.atti.Activity.Adapter.Recommend_RecyclerAdapter;
-import app.atti.justbreathe.atti.Activity.Object.RecAC_list;
-import app.atti.justbreathe.atti.R;
+import app.atti.Adapter.Recommend_RecyclerAdapter;
+import app.atti.Object.RecAC_list;
+import app.atti.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;

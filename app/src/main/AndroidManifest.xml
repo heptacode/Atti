@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="app.atti.justbreathe.atti">
+    package="app.atti">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -12,26 +12,26 @@
         android:roundIcon="@drawable/ic_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="app.atti.justbreathe.atti.Activity.Activities.Main.MainActivity_Write"></activity>
-        <activity android:name="app.atti.justbreathe.atti.Activity.Activities.Main.MainActivity_Detail" />
-        <activity android:name="app.atti.justbreathe.atti.Activity.Activities.Recommend.Recommend_Detail_Acitivty" />
-        <activity android:name="app.atti.justbreathe.atti.Activity.Activities.Recommend.RecommendActiivity" />
-        <activity android:name="app.atti.justbreathe.atti.Activity.Activities.Chatting.ChattingActivity" />
-        <activity android:name="app.atti.justbreathe.atti.Activity.Activities.Chatting.ChattingLobbyActivity" />
-        <activity android:name="app.atti.justbreathe.atti.Activity.Activities.SplashActivty">
+        <activity android:name="app.atti.Activities.Main.MainActivity_Write"></activity>
+        <activity android:name="app.atti.Activities.Main.MainActivity_Detail" />
+        <activity android:name="app.atti.Activities.Recommend.Recommend_Detail_Acitivty" />
+        <activity android:name="app.atti.Activities.Recommend.RecommendActiivity" />
+        <activity android:name="app.atti.Activities.Chatting.ChattingActivity" />
+        <activity android:name="app.atti.Activities.Chatting.ChattingLobbyActivity" />
+        <activity android:name="app.atti.Activities.SplashActivty">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="app.atti.justbreathe.atti.Activity.Activities.LoginActivity" />
-        <activity android:name="app.atti.justbreathe.atti.Activity.Activities.Register.RegisterActivity4" />
-        <activity android:name="app.atti.justbreathe.atti.Activity.Activities.Register.RegisterActivity3" />
-        <activity android:name="app.atti.justbreathe.atti.Activity.Activities.Register.RegisterActivity1" />
-        <activity android:name="app.atti.justbreathe.atti.Activity.Activities.Register.RegisterActivity2" />
-        <activity android:name="app.atti.justbreathe.atti.Activity.Activities.Register.RegisterActivity5" />
-        <activity android:name="app.atti.justbreathe.atti.Activity.Activities.Main.MainActivity" />
+        <activity android:name="app.atti.Activities.LoginActivity" />
+        <activity android:name="app.atti.Activities.Register.RegisterActivity4" />
+        <activity android:name="app.atti.Activities.Register.RegisterActivity3" />
+        <activity android:name="app.atti.Activities.Register.RegisterActivity1" />
+        <activity android:name="app.atti.Activities.Register.RegisterActivity2" />
+        <activity android:name="app.atti.Activities.Register.RegisterActivity5" />
+        <activity android:name="app.atti.Activities.Main.MainActivity" />
     </application>
 
 </manifest>

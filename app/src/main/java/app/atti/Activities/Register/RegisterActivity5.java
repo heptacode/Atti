@@ -1,4 +1,4 @@
-package app.atti.justbreathe.atti.Activity.Activities.Register;
+package app.atti.Activities.Register;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import app.atti.justbreathe.atti.R;
+import app.atti.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;

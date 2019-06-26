@@ -1,4 +1,4 @@
-package app.atti.justbreathe.atti.Activity.Activities.Main;
+package app.atti.Activities.Main;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import app.atti.justbreathe.atti.R;
+import app.atti.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;

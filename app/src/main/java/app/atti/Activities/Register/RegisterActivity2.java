@@ -1,4 +1,4 @@
-package app.atti.justbreathe.atti.Activity.Activities.Register;
+package app.atti.Activities.Register;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import app.atti.justbreathe.atti.R;
+import app.atti.R;
 
 public class RegisterActivity2 extends AppCompatActivity {
     private LinearLayout next;

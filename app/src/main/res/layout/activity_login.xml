@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#fff"
     android:orientation="vertical"
-    tools:context="app.atti.justbreathe.atti.Activity.Activities.LoginActivity">
+    tools:context="app.atti.Activities.LoginActivity">
 
     <ImageView
         android:layout_width="match_parent"

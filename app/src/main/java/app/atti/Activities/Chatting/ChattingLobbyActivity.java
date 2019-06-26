@@ -1,9 +1,9 @@
-package app.atti.justbreathe.atti.Activity.Activities.Chatting;
+package app.atti.Activities.Chatting;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import app.atti.justbreathe.atti.R;
+import app.atti.R;
 
 public class ChattingLobbyActivity extends AppCompatActivity {
 

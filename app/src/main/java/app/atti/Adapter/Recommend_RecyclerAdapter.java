@@ -1,4 +1,4 @@
-package app.atti.justbreathe.atti.Activity.Adapter;
+package app.atti.Adapter;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -13,9 +13,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import app.atti.justbreathe.atti.Activity.Activities.Recommend.Recommend_Detail_Acitivty;
-import app.atti.justbreathe.atti.Activity.Object.RecAC_list;
-import app.atti.justbreathe.atti.R;
+import app.atti.Activities.Recommend.Recommend_Detail_Acitivty;
+import app.atti.Object.RecAC_list;
+import app.atti.R;
 
 import java.util.ArrayList;
 

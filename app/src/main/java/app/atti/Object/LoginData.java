@@ -1,4 +1,4 @@
-package app.atti.justbreathe.atti.Activity.Object;
+package app.atti.Object;
 
 public class LoginData {
     private boolean korean;

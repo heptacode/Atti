@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
-    tools:context="app.atti.justbreathe.atti.Activity.Activities.Register.RegisterActivity4">
+    tools:context="app.atti.Activities.Register.RegisterActivity4">
 
     <ImageView
         android:id="@+id/step1_shape"

@@ -1,4 +1,4 @@
-package app.atti.justbreathe.atti.Activity.Adapter;
+package app.atti.Adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -10,7 +10,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import app.atti.justbreathe.atti.R;
+import app.atti.R;
 
 import java.util.ArrayList;
 
