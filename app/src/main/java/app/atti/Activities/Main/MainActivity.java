@@ -171,6 +171,7 @@ public class MainActivity extends AppCompatActivity {
         items.clear();
         Log.e("items",items.toString());
         db.collection("recommend")
+                .orderBy("date", "desc")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
