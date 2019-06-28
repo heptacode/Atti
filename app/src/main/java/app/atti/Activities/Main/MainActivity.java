@@ -25,9 +25,12 @@ import app.atti.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.gson.JsonObject;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -42,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     TextView profile_korean;
     ImageView profile_flag;
     ImageView logout, write;
+    String email="";
 
     //메인화면 Recyclerview
     RecyclerView rcv;
@@ -53,8 +57,7 @@ public class MainActivity extends AppCompatActivity {
     //recyclerview item
     String db_date,db_content,db_writer,db_title,db_image0,db_ID;
     int db_like;
-    boolean db_korean;
-    MainAC_Post tmp;
+    boolean db_korean,db_i_like=false;
 
 
     @Override
@@ -146,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void DrawerAppearance(){
         SharedPreferences mprefs = getSharedPreferences("Profile_Data",MODE_PRIVATE);
+        email = mprefs.getString("S_email","");
         String name = mprefs.getString("S_name","Null");
         if(mprefs.getBoolean("S_korean",false)){//한국인이면
             profile_korean.setText("한국인");
@@ -169,9 +173,8 @@ public class MainActivity extends AppCompatActivity {
     }
     void ListLoading(){
         items.clear();
-        Log.e("items",items.toString());
         db.collection("recommend")
-                .orderBy("date", "desc")
+                .orderBy("date", Query.Direction.DESCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -185,8 +188,14 @@ public class MainActivity extends AppCompatActivity {
                                     db_date = jsonObject.getString("date");
                                     db_content = jsonObject.getString("desc");
                                     db_korean = jsonObject.getBoolean("korean");
-                                    db_like = jsonObject.getInt("like");
                                     db_title = jsonObject.getString("title");
+                                    db_like=jsonObject.getInt("like");
+
+                                    for(int i=0;i<jsonObject.getJSONArray("likes").length();i++){
+                                        if(jsonObject.getJSONArray("likes").get(i).equals(email)){
+                                            db_i_like=true;
+                                        }
+                                    }
                                     if(db_content.length()>81) {
                                         db_content = db_content.substring(0, 81) + "...";
                                     }
@@ -198,8 +207,7 @@ public class MainActivity extends AppCompatActivity {
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-                                Log.e("db", String.valueOf(document));
-                                items.add(new MainAC_Post(db_title,db_date,db_writer,db_content,db_image0,db_like,db_ID,db_korean));
+                                items.add(new MainAC_Post(db_title,db_date,db_writer,db_content,db_image0,db_like,db_ID,db_korean,db_i_like));
                                 adapter.notifyDataSetChanged();
                             }
                         } else {
