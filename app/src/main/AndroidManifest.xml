@@ -8,15 +8,16 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@drawable/ic_app_logo"
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="API키" />
+            android:value="AIzaSyD5EzVJTG9migGbdHiH8rj7PqfsILuW1nE" />
         <activity android:name=".Activities.Map.MapActivity"></activity>
         <activity android:name=".Activities.Main.MainActivity_Write" />
         <activity android:name=".Activities.Main.MainActivity_Detail" />

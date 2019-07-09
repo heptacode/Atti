@@ -15,6 +15,8 @@ import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 
+import com.google.type.LatLng;
+
 public class GpsInfo extends Service implements LocationListener {
     public GpsInfo() {
         stopSelf();
@@ -56,8 +58,7 @@ public class GpsInfo extends Service implements LocationListener {
             isNetworkEnabled = false;
         } else {
             try {
-                locationManager = (LocationManager) mContext
-                        .getSystemService(LOCATION_SERVICE);
+                locationManager = (LocationManager) mContext.getSystemService(LOCATION_SERVICE);
 
                 // GPS 정보 가져오기
                 isGPSEnabled = locationManager
@@ -110,6 +111,7 @@ public class GpsInfo extends Service implements LocationListener {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
         }
     }
 
