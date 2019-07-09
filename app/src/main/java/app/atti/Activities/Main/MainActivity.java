@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import app.atti.Activities.LoginActivity;
+import app.atti.Activities.Map.MapActivity;
 import app.atti.Activities.Recommend.RecommendActiivity;
 import app.atti.Adapter.MainAC_RecyclerAdapter;
 import app.atti.Object.MainAC_Post;
@@ -28,9 +29,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.gson.JsonObject;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -105,6 +104,8 @@ public class MainActivity extends AppCompatActivity {
         med_conv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MapActivity.class);
+                startActivity(intent);
                 drawerLayout.closeDrawers();
             }
         });

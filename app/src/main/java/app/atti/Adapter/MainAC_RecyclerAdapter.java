@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -171,7 +172,8 @@ public class MainAC_RecyclerAdapter extends RecyclerView.Adapter<MainAC_Recycler
             }
         });
 
-        Glide.with(holder.itemView.getContext()).load(imgurl).into(holder.mainimg);
+        Glide.with(holder.itemView.getContext()).setDefaultRequestOptions(new RequestOptions().override(400)).load(imgurl).into(holder.mainimg);
+
         if (korean) {
             holder.korean.setImageResource(R.drawable.ic_korean_flag);
         } else {

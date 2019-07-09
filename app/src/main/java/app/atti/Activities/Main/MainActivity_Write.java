@@ -205,9 +205,6 @@ public class MainActivity_Write extends AppCompatActivity {
                     Log.e("경로", "uri: " + filePath);
                     try {
                         Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                        //DB로 전송할 사진 용량 줄이기
-                        //대책1 : bitmap resize해서 저장한 후 서버로 전송 후 파일 삭제
-
                         prev.setImageBitmap(bitmap);
                     } catch (IOException e) {
                         e.printStackTrace();

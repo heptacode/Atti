@@ -2,8 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="app.atti">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -12,26 +14,30 @@
         android:roundIcon="@drawable/ic_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="app.atti.Activities.Main.MainActivity_Write"></activity>
-        <activity android:name="app.atti.Activities.Main.MainActivity_Detail" />
-        <activity android:name="app.atti.Activities.Recommend.Recommend_Detail_Acitivty" />
-        <activity android:name="app.atti.Activities.Recommend.RecommendActiivity" />
-        <activity android:name="app.atti.Activities.Chatting.ChattingActivity" />
-        <activity android:name="app.atti.Activities.Chatting.ChattingLobbyActivity" />
-        <activity android:name="app.atti.Activities.SplashActivty">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="API키" />
+        <activity android:name=".Activities.Map.MapActivity"></activity>
+        <activity android:name=".Activities.Main.MainActivity_Write" />
+        <activity android:name=".Activities.Main.MainActivity_Detail" />
+        <activity android:name=".Activities.Recommend.Recommend_Detail_Acitivty" />
+        <activity android:name=".Activities.Recommend.RecommendActiivity" />
+        <activity android:name=".Activities.Chatting.ChattingActivity" />
+        <activity android:name=".Activities.Chatting.ChattingLobbyActivity" />
+        <activity android:name=".Activities.SplashActivty">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="app.atti.Activities.LoginActivity" />
-        <activity android:name="app.atti.Activities.Register.RegisterActivity4" />
-        <activity android:name="app.atti.Activities.Register.RegisterActivity3" />
-        <activity android:name="app.atti.Activities.Register.RegisterActivity1" />
-        <activity android:name="app.atti.Activities.Register.RegisterActivity2" />
-        <activity android:name="app.atti.Activities.Register.RegisterActivity5" />
-        <activity android:name="app.atti.Activities.Main.MainActivity" />
+        <activity android:name=".Activities.LoginActivity" />
+        <activity android:name=".Activities.Register.RegisterActivity4" />
+        <activity android:name=".Activities.Register.RegisterActivity3" />
+        <activity android:name=".Activities.Register.RegisterActivity1" />
+        <activity android:name=".Activities.Register.RegisterActivity2" />
+        <activity android:name=".Activities.Register.RegisterActivity5" />
+        <activity android:name=".Activities.Main.MainActivity" />
     </application>
 
 </manifest>
