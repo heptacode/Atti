@@ -14,9 +14,12 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -53,24 +56,31 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     double mlng;
     LinearLayout tab;
     private GpsInfo gpsinfo;
-    CheckBox cb1;
+
+    RadioGroup radioGroup;
+    RadioButton rd1, rd2,rd3;
 
     LatLng currentPosition;
-    Marker current_marker =null;
+    Marker current_marker = null;
     List<Marker> previous_marker = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+        rd1 = findViewById(R.id.radio1);
+        rd2 = findViewById(R.id.radio2);
+        rd3 = findViewById(R.id.radio3);
 
-        previous_marker= new ArrayList<>();
+        radioGroup = findViewById(R.id.radiogroup);
+        previous_marker = new ArrayList<>();
 
         tab = findViewById(R.id.tab);
         tab.bringToFront();
-
-        cb1 = findViewById(R.id.map_checkbox1);
-        cb1.bringToFront();
+        rd1.bringToFront();
+        rd2.bringToFront();
+        rd3.bringToFront();
+        radioGroup.bringToFront();
 
         gpsinfo = new GpsInfo(this);
         mlat = gpsinfo.getLatitude();
@@ -80,24 +90,57 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_map);
         mapFragment.getMapAsync(this);
+        Log.e("GPS ON?",((LocationManager)this.getSystemService(LOCATION_SERVICE)).isProviderEnabled(LocationManager.GPS_PROVIDER)+"");
 
-        cb1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        rd1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
-                    //체크 되면
-                    new NRPlaces.Builder()
-                            .listener(MapActivity.this)
-                            .key("AIzaSyD5EzVJTG9migGbdHiH8rj7PqfsILuW1nE")
-                            .latlng(mlat, mlng)//현재 위치
-                            .radius(500) //500 미터 내에서 검색
-                            .type(PlaceType.DOCTOR)
-                            .build()
-                            .execute();
-                } else {
-                    //체크 해제
-                    mMap.clear();
-                }
+            public void onClick(View view) {
+                mMap.clear();
+                new NRPlaces.Builder()
+                        .listener(MapActivity.this)
+                        .key("AIzaSyD5EzVJTG9migGbdHiH8rj7PqfsILuW1nE")
+                        .latlng(mlat, mlng)
+                        .radius(500)
+                        .type(PlaceType.CONVENIENCE_STORE)
+                        .build()
+                        .execute();
+            }
+        });
+
+        rd2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mMap.clear();
+                new NRPlaces.Builder()
+                        .listener(MapActivity.this)
+                        .key("AIzaSyD5EzVJTG9migGbdHiH8rj7PqfsILuW1nE")
+                        .latlng(mlat, mlng)
+                        .radius(500)
+                        .type(PlaceType.DOCTOR)
+                        .build()
+                        .execute();
+                new NRPlaces.Builder()
+                        .listener(MapActivity.this)
+                        .key("AIzaSyD5EzVJTG9migGbdHiH8rj7PqfsILuW1nE")
+                        .latlng(mlat, mlng)
+                        .radius(500)
+                        .type(PlaceType.HOSPITAL)
+                        .build()
+                        .execute();
+            }
+        });
+        rd3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mMap.clear();
+                new NRPlaces.Builder()
+                        .listener(MapActivity.this)
+                        .key("AIzaSyD5EzVJTG9migGbdHiH8rj7PqfsILuW1nE")
+                        .latlng(mlat, mlng)
+                        .radius(500)
+                        .type(PlaceType.PHARMACY)
+                        .build()
+                        .execute();
             }
         });
     }
@@ -157,8 +200,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             };
 
 
-
-
     private GoogleApiClient mGoogleApiClient = null;
 
     protected synchronized void buildGoogleApiClient() {
@@ -177,8 +218,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     @Override
 
     public void onConnected(@Nullable Bundle bundle) {
-        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
+        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             setGPS = true;
+        }
+
         mLocationRequest = new LocationRequest();
         //mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
@@ -195,6 +238,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 if (location == null) return;
             }
         }
+
     }
 
     @Override
@@ -206,12 +250,15 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     @Override
     public void onConnectionSuspended(int cause) {
         //구글 플레이 서비스 연결이 해제되었을 때, 재연결 시도
+        Log.d("asd", "Connection Suspended");
         mGoogleApiClient.connect();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+        Log.d("asd", "OnStart");
+
         if (mGoogleApiClient != null)
             mGoogleApiClient.connect();
     }
@@ -219,6 +266,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     @Override
     public void onResume() {
         super.onResume();
+        Log.d("asd", "OnResume");
+
         if (mGoogleApiClient != null)
             mGoogleApiClient.connect();
     }
@@ -265,6 +314,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         markerOptions.position(latLng);
         markerOptions.title("현재위치");
         current_marker = mMap.addMarker(markerOptions);
+        Log.d("asd", "OnStart");
+
         //지도 상에서 보여주는 영역 이동
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
@@ -302,14 +353,17 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             Toast.makeText(this, address.getAddressLine(0).toString(), Toast.LENGTH_LONG).show();
         }
     }
+
     @Override
     public void onPlacesFailure(PlacesException e) {
         Log.i("PlacesAPI", "onPlacesFailure()");
     }
+
     @Override
     public void onPlacesStart() {
         Log.i("PlacesAPI", "onPlacesStart()");
     }
+
     @Override
     public void onPlacesSuccess(final List<noman.googleplaces.Place> places) {
         Log.i("PlacesAPI", "onPlacesSuccess()");
@@ -333,6 +387,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             }
         });
     }
+
     @Override
     public void onPlacesFinished() {
         Log.i("PlacesAPI", "onPlacesFinished()");

@@ -1,13 +1,13 @@
 package app.atti.Object;
 
 public class MainAC_Post {
-    private String title, writer, content,date,ID;
+    private String title, writer, content,date,ID,writer_email;
     private int like;
     private boolean korean,i_like;
     private String image_url;
 
 
-    public MainAC_Post(String title,String date, String writer, String content, String image_url, int like, String ID,boolean korean, boolean i_like) {
+    public MainAC_Post(String title,String date, String writer, String content, String image_url, int like, String ID,boolean korean, boolean i_like,String writer_email) {
         this.title = title;
         this.date = date;
         this.writer = writer;
@@ -17,6 +17,15 @@ public class MainAC_Post {
         this.ID = ID;
         this.korean = korean;
         this.i_like = i_like;
+        this.writer_email=writer_email;
+    }
+
+    public String getWriter_email() {
+        return writer_email;
+    }
+
+    public void setWriter_email(String writer_email) {
+        this.writer_email = writer_email;
     }
 
     public boolean isI_like() {

@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     String db_date,db_content,db_writer,db_title,db_image0,db_ID;
     int db_like;
     boolean db_korean,db_i_like=false;
+    private String db_writer_email;
 
 
     @Override
@@ -144,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,MainActivity_Write.class);
+                intent.putExtra("tmp_email",email);
                 startActivityForResult(intent,1999);
             }
         });
@@ -172,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-    void ListLoading(){
+    public void ListLoading(){
         items.clear();
         db.collection("recommend")
                 .orderBy("date", Query.Direction.DESCENDING)
@@ -191,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
                                     db_korean = jsonObject.getBoolean("korean");
                                     db_title = jsonObject.getString("title");
                                     db_like=jsonObject.getInt("like");
+                                    db_writer_email = jsonObject.getString("email");
 
                                     for(int i=0;i<jsonObject.getJSONArray("likes").length();i++){
                                         if(jsonObject.getJSONArray("likes").get(i).equals(email)){
@@ -208,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-                                items.add(new MainAC_Post(db_title,db_date,db_writer,db_content,db_image0,db_like,db_ID,db_korean,db_i_like));
+                                items.add(new MainAC_Post(db_title,db_date,db_writer,db_content,db_image0,db_like,db_ID,db_korean,db_i_like,db_writer_email));
                                 adapter.notifyDataSetChanged();
                             }
                         } else {

@@ -1,9 +1,11 @@
 package app.atti.Adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,27 +14,26 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import app.atti.Activities.Main.MainActivity;
 import app.atti.Activities.Main.MainActivity_Detail;
 import app.atti.Object.MainAC_Post;
 import app.atti.R;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class MainAC_RecyclerAdapter extends RecyclerView.Adapter<MainAC_RecyclerAdapter.ViewHolder> {
     ArrayList<MainAC_Post> items;
@@ -43,12 +44,13 @@ public class MainAC_RecyclerAdapter extends RecyclerView.Adapter<MainAC_Recycler
         LinearLayout like, LL_intent;
         ImageView korean;
         ImageView mainimg;
-        ImageView likeimg;
+        ImageView likeimg,delimg;
         SharedPreferences mprefs = itemView.getContext().getSharedPreferences("Profile_Data",itemView.getContext().MODE_PRIVATE);
 
 
         public ViewHolder(View itemView) {
             super(itemView);
+            delimg=itemView.findViewById(R.id.main_item_img_del);
             likeimg = itemView.findViewById(R.id.main_item_like_img);
             like_num = itemView.findViewById(R.id.main_item_like_num);
             LL_intent = itemView.findViewById(R.id.main_item_LL_intent);
@@ -79,6 +81,46 @@ public class MainAC_RecyclerAdapter extends RecyclerView.Adapter<MainAC_Recycler
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         final String ID = items.get(position).getID();
+        if(items.get(position).getWriter_email().equals(email)) {
+            holder.delimg.setVisibility(View.VISIBLE);
+        }else{
+            holder.delimg.setVisibility(View.GONE);
+        }
+        holder.delimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //데이터 삭제
+                AlertDialog.Builder builder;
+                builder = new AlertDialog.Builder(holder.itemView.getContext());
+                builder.setIcon(android.R.drawable.ic_dialog_alert);
+                builder.setTitle("Atti");
+                builder.setMessage("저장되지 않았습니다.\n정말로 나가시겠습니까?");
+                builder.setNegativeButton("아니오", null);
+                builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //삭제하기!!
+                        FirebaseFirestore db = FirebaseFirestore.getInstance();
+                        db.collection("recommend").document(items.get(position).getID()).delete()
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Toast.makeText(holder.itemView.getContext(), "게시물을 삭제했습니다.", Toast.LENGTH_SHORT).show();
+                                ((MainActivity) holder.itemView.getContext()).ListLoading();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(holder.itemView.getContext(), "게시물 삭제 실패", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                    }
+                });
+                builder.show();
+            }
+        });
         holder.LL_intent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

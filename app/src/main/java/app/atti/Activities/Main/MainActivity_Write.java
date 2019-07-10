@@ -60,6 +60,7 @@ public class MainActivity_Write extends AppCompatActivity {
     StorageReference storageReference;
     FirebaseStorage storage;
     boolean clicked = false;
+    String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +71,9 @@ public class MainActivity_Write extends AppCompatActivity {
         write = findViewById(R.id.main_write_write);
         image_add = findViewById(R.id.main_write_btn_float);
         prev = findViewById(R.id.main_write_previmg);
+
+
+        email = getIntent().getStringExtra("tmp_email");
 
         asyncDialog = new ProgressDialog(this);
         db = FirebaseFirestore.getInstance();
@@ -148,6 +152,7 @@ public class MainActivity_Write extends AppCompatActivity {
                     user.put("like", 0);
                     user.put("likes", likes);
                     user.put("name", name);
+                    user.put("email",email);
                     db.collection("recommend")
                             .get()
                             .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -228,7 +233,6 @@ public class MainActivity_Write extends AppCompatActivity {
                 }
             });
             builder.show();
-            builder.setCancelable(false);
         } else {
             finish();
         }
