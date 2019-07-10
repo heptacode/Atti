@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import app.atti.Activities.Chatting.ChattingActivity;
+import app.atti.Activities.Chatting.ChattingLobbyActivity;
 import app.atti.Activities.LoginActivity;
 import app.atti.Activities.Map.MapActivity;
 import app.atti.Activities.Recommend.RecommendActiivity;
@@ -89,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         rcv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         rcv.setAdapter(adapter);
 
+
         drawer_background.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,6 +102,8 @@ public class MainActivity extends AppCompatActivity {
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ChattingActivity.class);
+                startActivity(intent);
                 drawerLayout.closeDrawers();
             }
         });

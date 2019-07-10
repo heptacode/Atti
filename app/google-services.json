@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "913785973409-9dnodda8i3fao1uinmlrj2t3a7utbhfg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "app.atti",
+            "certificate_hash": "3162df8871e255b6f3e543b0f47700ec1a3358a3"
+          }
+        },
+        {
           "client_id": "913785973409-h9la1rmrhdir7dts6smnlqf258i8or87.apps.googleusercontent.com",
           "client_type": 3
         }

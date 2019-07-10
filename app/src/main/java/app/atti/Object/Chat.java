@@ -5,7 +5,8 @@ public class Chat {
     private String sender;
     private String message;
 
-    public Chat(String timestamp, String sender, String message) {
+    public Chat(){}
+    public Chat(String message, String sender,String timestamp) {
         this.timestamp = timestamp;
         this.sender = sender;
         this.message = message;
