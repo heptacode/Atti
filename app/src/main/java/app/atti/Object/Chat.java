@@ -4,12 +4,25 @@ public class Chat {
     private String timestamp;
     private String sender;
     private String message;
+    private String date;
+    public Chat() {
+    }
 
-    public Chat(){}
-    public Chat(String message, String sender,String timestamp) {
+
+
+    public Chat(String message, String sender, String timestamp, String date) {
         this.timestamp = timestamp;
         this.sender = sender;
         this.message = message;
+        this.date = date;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getTimestamp() {

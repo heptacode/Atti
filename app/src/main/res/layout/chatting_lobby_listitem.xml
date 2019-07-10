@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/chatting_lobby_listitem_LL"
+    android:layout_height="wrap_content"
+    android:background="#ff0"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="채팅방 이름!!!"
+        android:padding="10dp"
+        android:id="@+id/chattingLobby_listitem_tv_chatname"
+        android:textSize="30sp"/>
+</LinearLayout>

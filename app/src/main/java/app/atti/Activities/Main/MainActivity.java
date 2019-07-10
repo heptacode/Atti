@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ChattingActivity.class);
+                Intent intent = new Intent(MainActivity.this, ChattingLobbyActivity.class);
                 startActivity(intent);
                 drawerLayout.closeDrawers();
             }

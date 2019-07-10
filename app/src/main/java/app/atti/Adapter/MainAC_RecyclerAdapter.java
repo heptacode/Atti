@@ -94,7 +94,7 @@ public class MainAC_RecyclerAdapter extends RecyclerView.Adapter<MainAC_Recycler
                 builder = new AlertDialog.Builder(holder.itemView.getContext());
                 builder.setIcon(android.R.drawable.ic_dialog_alert);
                 builder.setTitle("Atti");
-                builder.setMessage("저장되지 않았습니다.\n정말로 나가시겠습니까?");
+                builder.setMessage("정말로 게시물을 삭제하시겠습니까?");
                 builder.setNegativeButton("아니오", null);
                 builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
                     @Override

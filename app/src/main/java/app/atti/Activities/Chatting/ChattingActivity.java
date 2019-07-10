@@ -1,8 +1,7 @@
 package app.atti.Activities.Chatting;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -21,6 +21,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import app.atti.Adapter.Chatting_RecyclerAdapter;
 import app.atti.Object.Chat;
@@ -29,58 +31,76 @@ import app.atti.R;
 public class ChattingActivity extends AppCompatActivity {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference databaseReference = database.getReference("message");
+    DatabaseReference databaseReference = database.getReference("chat");
 
     SharedPreferences prefs;
 
     Button send;
     EditText edt_message;
-    String name,email;
+    String name, email;
 
     ArrayList<Chat> items;
     Chatting_RecyclerAdapter adapter;
     RecyclerView rcv;
+
+    TextView who;
+    String op_name,op_email;
+    String Current_chatName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chatting);
         send = findViewById(R.id.chat_btn_send);
-        edt_message=findViewById(R.id.chat_edt_message);
-        rcv=findViewById(R.id.chat_speech_bubble_recyclerview);
-        prefs = getSharedPreferences("Profile_Data",MODE_PRIVATE);
-        email = prefs.getString("S_email","");
-        name = prefs.getString("S_name","Null");
-        items=new ArrayList<>();
+        edt_message = findViewById(R.id.chat_edt_message);
+        rcv = findViewById(R.id.chat_speech_bubble_recyclerview);
+        who=findViewById(R.id.chat_tv_who);
 
-        adapter= new Chatting_RecyclerAdapter(items);
+        prefs = getSharedPreferences("Profile_Data", MODE_PRIVATE);
+        email = prefs.getString("S_email", "");
+        name = prefs.getString("S_name", "Null");
+        items = new ArrayList<>();
+
+//        Intent intent = getIntent();
+//        op_name = intent.getStringExtra("op_name");
+//        op_email = intent.getStringExtra("op_email");
+//        Current_chatName=intent.getStringExtra("ChatName");
+//        who.setText(op_name);
+
         rcv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        adapter = new Chatting_RecyclerAdapter(items, name);
         rcv.setAdapter(adapter);
 
-        openChat("a@a.a:a@a.a");
+        openChat("a@aa,a@aa");
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Date time = new Date(System.currentTimeMillis());
-                SimpleDateFormat sdf = new SimpleDateFormat("a hh:mm");
-                String current_time = sdf.format(time);
+                if (edt_message.getText().toString() != null) {
+                    Date time = new Date(System.currentTimeMillis());
+                    SimpleDateFormat sdf = new SimpleDateFormat("a hh:mm");
+                    SimpleDateFormat sdfd = new SimpleDateFormat("yyyymmdd");
+                    String current_time = sdf.format(time);
+                    String date = sdfd.format(time);
 
-                Chat chatData = new Chat( edt_message.getText().toString(),name,current_time);  // 유저 이름과 메세지로 chatData 만들기
-                databaseReference.child("chat").child("a@a.a:a@a.a").push().setValue(chatData);  // 기본 database 하위 message라는 child에 chatData를 list로 만들기
-                edt_message.setText("");
+                    Chat chatData = new Chat(edt_message.getText().toString(), name, current_time, date);  // 유저 이름과 메세지로 chatData 만들기
+                    databaseReference.child("a@aa,a@aa").child("chatLog").push().setValue(chatData);  // 기본 database 하위 message라는 child에 chatData를 list로 만들기
+
+                    edt_message.setText("");
+                }
             }
         });
     }
-    private void openChat(String chatName) {
-        // 리스트 어댑터 생성 및 세팅
 
+    private void openChat(String chatName) {
         // 데이터 받아오기 및 어댑터 데이터 추가 및 삭제 등..리스너 관리
-        databaseReference.child("chat").child(chatName).addChildEventListener(new ChildEventListener() {
+        databaseReference.child(chatName).child("chatLog").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Chat chat = dataSnapshot.getValue(Chat.class);
-//                (ArrayList<String>임 adapter.add(chatDTO.getUserName() + " : " + chatDTO.getMessage());
+                items.add(chat);
+                rcv.scrollToPosition(items.size() - 1);
+                adapter.notifyItemInserted(items.size() - 1);
             }
 
             @Override
