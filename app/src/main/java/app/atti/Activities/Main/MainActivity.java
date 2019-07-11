@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import app.atti.Activities.Chatting.ChattingLobbyActivity;
 import app.atti.Activities.LoginActivity;
 import app.atti.Activities.Map.MapActivity;
+import app.atti.Activities.Profile.ProfileActivity;
 import app.atti.Activities.Recommend.RecommendActiivity;
 import app.atti.Adapter.MainAC_RecyclerAdapter;
 import app.atti.Object.MainAC_Post;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     TextView profile_korean;
     ImageView profile_flag;
     ImageView logout, write;
+    ImageView profile_img;
     String email="";
 
     //메인화면 Recyclerview
@@ -76,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         rcv=findViewById(R.id.recycler_view);
         drawer_background=findViewById(R.id.drawer_background);
         write = findViewById(R.id.main_write);
+        profile_img=findViewById(R.id.drawer_img);
 
         items=new ArrayList<>();
         adapter = new MainAC_RecyclerAdapter(items);
@@ -91,7 +94,14 @@ public class MainActivity extends AppCompatActivity {
         rcv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         rcv.setAdapter(adapter);
 
-
+        profile_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                intent.putExtra("toprofile_email", email);
+                startActivity(intent);
+            }
+        });
         drawer_background.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
