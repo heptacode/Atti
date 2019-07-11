@@ -14,7 +14,7 @@
         android:roundIcon="@drawable/ic_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.Profile.ProfileActivity"></activity>
+        <activity android:name=".Activities.Profile.ProfileActivity" />
 
         <uses-library
             android:name="org.apache.http.legacy"

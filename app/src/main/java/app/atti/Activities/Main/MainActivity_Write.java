@@ -150,7 +150,6 @@ public class MainActivity_Write extends AppCompatActivity {
                     user.put("desc", et_content.getText().toString());
                     user.put("images", images);
                     user.put("korean", korean);
-                    user.put("like", 0);
                     user.put("likes", likes);
                     user.put("name", name);
                     user.put("email",email);

@@ -202,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
+                                db_i_like=false;
                                 try {
                                     jsonObject = new JSONObject(document.getData());
                                     db_image0 = jsonObject.getJSONArray("images").getString(0);
@@ -210,10 +211,10 @@ public class MainActivity extends AppCompatActivity {
                                     db_content = jsonObject.getString("desc");
                                     db_korean = jsonObject.getBoolean("korean");
                                     db_title = jsonObject.getString("title");
-                                    db_like=jsonObject.getInt("like");
+                                    db_like=jsonObject.getJSONArray("likes").length()-1;
                                     db_writer_email = jsonObject.getString("email");
 
-                                    for(int i=0;i<jsonObject.getJSONArray("likes").length();i++){
+                                    for(int i=1;i<jsonObject.getJSONArray("likes").length();i++){
                                         if(jsonObject.getJSONArray("likes").get(i).equals(email)){
                                             db_i_like=true;
                                         }

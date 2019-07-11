@@ -2,11 +2,12 @@ package app.atti.Activities.Profile;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.annotation.NonNull;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,9 +17,6 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
@@ -31,6 +29,7 @@ import org.json.JSONObject;
 import java.util.Arrays;
 
 import app.atti.Activities.Chatting.ChattingActivity;
+import app.atti.Adapter.Profile_ViewpagerAdapter;
 import app.atti.R;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -46,6 +45,9 @@ public class ProfileActivity extends AppCompatActivity {
     String myemail,email_exept_dot,myname;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = database.getReference("chat");
+    ViewPager viewPager;
+    Profile_ViewpagerAdapter pageradapter;
+    TabLayout tab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,8 @@ public class ProfileActivity extends AppCompatActivity {
         tochat = findViewById(R.id.profile_btn_tochat);
         flag = findViewById(R.id.profile_profile_img_flag);
         tv_name= findViewById(R.id.profile_profile_tv_name);
+        viewPager=findViewById(R.id.profile_viewpager);
+        tab=findViewById(R.id.profile_tablayout);
 
         prefs = getSharedPreferences("Profile_Data",MODE_PRIVATE);
         myemail=prefs.getString("S_email","");
@@ -62,6 +66,34 @@ public class ProfileActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         profile_email = intent.getStringExtra("toprofile_email");
+
+        pageradapter=new Profile_ViewpagerAdapter(getSupportFragmentManager(),profile_email);
+        viewPager.setAdapter(pageradapter);
+        viewPager.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return true;
+            }
+        });
+        tab.addTab(tab.newTab().setText("추천"));
+        tab.addTab(tab.newTab().setText("Q&A"));
+
+        tab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
         if(profile_email.equals(myemail)) {
             tochat.setVisibility(View.GONE);

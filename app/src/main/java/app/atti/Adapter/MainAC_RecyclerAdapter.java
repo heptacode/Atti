@@ -108,6 +108,7 @@ public class MainAC_RecyclerAdapter extends RecyclerView.Adapter<MainAC_Recycler
         });
         if (items.get(position).isI_like()) {
             holder.likeimg.setImageResource(R.drawable.ic_liked);
+
         } else {
             holder.likeimg.setImageResource(R.drawable.ic_liked_x);
         }
@@ -125,6 +126,7 @@ public class MainAC_RecyclerAdapter extends RecyclerView.Adapter<MainAC_Recycler
         holder.date.setText(date);
         holder.name.setText(name);
         holder.like_num.setText("" + like);
+
         holder.like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
