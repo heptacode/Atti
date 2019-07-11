@@ -1,40 +1,30 @@
 package app.atti.Object;
 
 public class Chat_Lobby {
-    String sender_name;
-    String sender_email;
-    String chatName;
+    String chatName_Eng;
+    String chatName_Kor;
 
     public Chat_Lobby() {
     }
 
-    public Chat_Lobby(String sender_name, String sender_email, String chatName) {
-        this.sender_name = sender_name;
-        this.sender_email = sender_email;
-        this.chatName = chatName;
+    public Chat_Lobby(String chatName_Eng, String chatName_Kor) {
+        this.chatName_Eng = chatName_Eng;//방 이름 구하려고
+        this.chatName_Kor = chatName_Kor;//사람 이름
     }
 
-    public String getSender_name() {
-        return sender_name;
+    public String getchatName_Eng() {
+        return chatName_Eng;
     }
 
-    public void setSender_name(String sender_name) {
-        this.sender_name = sender_name;
+    public void setchatName_Eng(String chatName_Eng) {
+        this.chatName_Eng = chatName_Eng;
     }
 
-    public String getSender_email() {
-        return sender_email;
+    public String getchatName_Kor() {
+        return chatName_Kor;
     }
 
-    public void setSender_email(String sender_email) {
-        this.sender_email = sender_email;
-    }
-
-    public String getChatName() {
-        return chatName;
-    }
-
-    public void setChatName(String chatName) {
-        this.chatName = chatName;
+    public void setchatName_Kor(String chatName_Kor) {
+        this.chatName_Kor = chatName_Kor;
     }
 }

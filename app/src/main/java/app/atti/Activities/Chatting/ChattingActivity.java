@@ -24,6 +24,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import app.atti.Adapter.Chatting_Lobby_RecyclerAdapter;
 import app.atti.Adapter.Chatting_RecyclerAdapter;
 import app.atti.Object.Chat;
 import app.atti.R;
@@ -44,7 +45,7 @@ public class ChattingActivity extends AppCompatActivity {
     RecyclerView rcv;
 
     TextView who;
-    String op_name,op_email;
+    String op_name;
     String Current_chatName;
 
     @Override
@@ -58,25 +59,23 @@ public class ChattingActivity extends AppCompatActivity {
 
         prefs = getSharedPreferences("Profile_Data", MODE_PRIVATE);
         email = prefs.getString("S_email", "");
-        name = prefs.getString("S_name", "Null");
+        name = prefs.getString("S_name", "");
         items = new ArrayList<>();
 
-//        Intent intent = getIntent();
-//        op_name = intent.getStringExtra("op_name");
-//        op_email = intent.getStringExtra("op_email");
-//        Current_chatName=intent.getStringExtra("ChatName");
-//        who.setText(op_name);
+        Intent intent = getIntent();
+        Current_chatName=intent.getStringExtra("ChatName");
+        who.setText(op_name);
 
         rcv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         adapter = new Chatting_RecyclerAdapter(items, name);
         rcv.setAdapter(adapter);
 
-        openChat("a@aa,a@aa");
+        openChat(Current_chatName);
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (edt_message.getText().toString() != null) {
+                if (!edt_message.getText().toString().equals("")) {
                     Date time = new Date(System.currentTimeMillis());
                     SimpleDateFormat sdf = new SimpleDateFormat("a hh:mm");
                     SimpleDateFormat sdfd = new SimpleDateFormat("yyyymmdd");
@@ -84,7 +83,7 @@ public class ChattingActivity extends AppCompatActivity {
                     String date = sdfd.format(time);
 
                     Chat chatData = new Chat(edt_message.getText().toString(), name, current_time, date);  // 유저 이름과 메세지로 chatData 만들기
-                    databaseReference.child("a@aa,a@aa").child("chatLog").push().setValue(chatData);  // 기본 database 하위 message라는 child에 chatData를 list로 만들기
+                    databaseReference.child(Current_chatName).child("chatLog").push().setValue(chatData);  // 기본 database 하위 message라는 child에 chatData를 list로 만들기
 
                     edt_message.setText("");
                 }

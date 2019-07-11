@@ -17,7 +17,7 @@ import app.atti.Object.Chat_Lobby;
 import app.atti.R;
 
 public class Chatting_Lobby_RecyclerAdapter extends RecyclerView.Adapter<Chatting_Lobby_RecyclerAdapter.ViewHolder> {
-    ArrayList<String> items;
+    ArrayList<Chat_Lobby> items;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView chatname;
@@ -30,7 +30,7 @@ public class Chatting_Lobby_RecyclerAdapter extends RecyclerView.Adapter<Chattin
         }
     }
 
-    public Chatting_Lobby_RecyclerAdapter(ArrayList<String> items) {
+    public Chatting_Lobby_RecyclerAdapter(ArrayList<Chat_Lobby> items) {
         this.items = items;
     }
 
@@ -45,17 +45,18 @@ public class Chatting_Lobby_RecyclerAdapter extends RecyclerView.Adapter<Chattin
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final Chatting_Lobby_RecyclerAdapter.ViewHolder vh, int i) {
+    public void onBindViewHolder(@NonNull final Chatting_Lobby_RecyclerAdapter.ViewHolder vh, final int i) {
         vh.LL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //채팅방 클릭
                 Intent intent = new Intent(view.getContext(), ChattingActivity.class);
-                intent.putExtra("ChatName","a@aa,a@aa");
+                intent.putExtra("ChatName",items.get(i).getchatName_Eng());
                 vh.itemView.getContext().startActivity(intent);
             }
         });
-        vh.chatname.setText(items.get(i));
+
+        vh.chatname.setText(items.get(i).getchatName_Kor());
     }
 
     @Override

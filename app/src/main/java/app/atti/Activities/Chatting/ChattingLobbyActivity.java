@@ -34,8 +34,9 @@ public class ChattingLobbyActivity extends AppCompatActivity {
     RecyclerView rcv;
     Chatting_Lobby_RecyclerAdapter madapter;
 
-    ArrayList<String> items;
-    String email;
+    ArrayList<Chat_Lobby> items;
+    String email, email_exept_dot;
+    String name;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = database.getReference("chat");
@@ -52,29 +53,15 @@ public class ChattingLobbyActivity extends AppCompatActivity {
         items = new ArrayList<>();
 
         prefs = getSharedPreferences("Profile_Data", MODE_PRIVATE);
+        name = prefs.getString("S_name", "");
         email = prefs.getString("S_email", "");
+        email_exept_dot = email.split("\\.")[0] + email.split("\\.")[1];
 
         madapter = new Chatting_Lobby_RecyclerAdapter(items);
         rcv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         rcv.setAdapter(madapter);
 
         showChatList();
-
-        LL.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Date time = new Date(System.currentTimeMillis());
-                SimpleDateFormat sdf = new SimpleDateFormat("a hh:mm");
-                SimpleDateFormat sdfd = new SimpleDateFormat("yyyymmdd");
-                String current_time = sdf.format(time);
-                String date = sdfd.format(time);
-
-                Chat chatData = new Chat("", "asd", current_time, date);  // 유저 이름과 메세지로 chatData 만들기
-                Chat_Lobby cat = new Chat_Lobby("sender","email","a@aa,a@aa");
-                databaseReference.child("a@aa,a@aa").setValue(cat);
-                databaseReference.child("a@aa,a@aa").child("chatLog").push().setValue(chatData);  // 기본 database 하위 message라는 child에 chatData를 list로 만들기
-            }
-        });
     }
 
     private void showChatList() {
@@ -82,9 +69,18 @@ public class ChattingLobbyActivity extends AppCompatActivity {
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Log.e("LOG", "dataSnapshot.getKey() : " + dataSnapshot.child("chatName").getValue());
-                items.add(dataSnapshot.getKey());
-                madapter.notifyItemInserted(items.size() - 1);
+                Log.e("LOG", "dataSnapshot.getKey() : " + dataSnapshot.getKey());
+                String chatname = dataSnapshot.getKey();
+                if (chatname.split(",")[0].equals(email_exept_dot) || chatname.split(",")[1].equals(email_exept_dot)) {//나의 채팅방인가?
+                    String op_name;
+                    if (dataSnapshot.child("name1").getValue().equals(name)) {//상대 이름은?
+                        op_name = (String) dataSnapshot.child("name2").getValue();
+                    } else {
+                        op_name = (String) dataSnapshot.child("name1").getValue();
+                    }
+                    items.add(new Chat_Lobby(dataSnapshot.getKey(),op_name));//채팅방 이름을 상대 이름으로
+                    madapter.notifyItemInserted(items.size() - 1);
+                }
             }
 
             @Override

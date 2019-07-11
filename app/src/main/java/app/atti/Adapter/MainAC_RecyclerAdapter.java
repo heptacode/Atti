@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ import org.json.JSONObject;
 
 import app.atti.Activities.Main.MainActivity;
 import app.atti.Activities.Main.MainActivity_Detail;
+import app.atti.Activities.Profile.ProfileActivity;
 import app.atti.Object.MainAC_Post;
 import app.atti.R;
 
@@ -46,10 +48,12 @@ public class MainAC_RecyclerAdapter extends RecyclerView.Adapter<MainAC_Recycler
         ImageView mainimg;
         ImageView likeimg,delimg;
         SharedPreferences mprefs = itemView.getContext().getSharedPreferences("Profile_Data",itemView.getContext().MODE_PRIVATE);
+        RelativeLayout RL;
 
 
         public ViewHolder(View itemView) {
             super(itemView);
+            RL=itemView.findViewById(R.id.main_item_relative);
             delimg=itemView.findViewById(R.id.main_item_img_del);
             likeimg = itemView.findViewById(R.id.main_item_like_img);
             like_num = itemView.findViewById(R.id.main_item_like_num);
@@ -81,6 +85,16 @@ public class MainAC_RecyclerAdapter extends RecyclerView.Adapter<MainAC_Recycler
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         final String ID = items.get(position).getID();
+
+        holder.RL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(holder.itemView.getContext(), ProfileActivity.class);
+                intent.putExtra("toprofile_email",items.get(position).getWriter_email());
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
+
         if(items.get(position).getWriter_email().equals(email)) {
             holder.delimg.setVisibility(View.VISIBLE);
         }else{
