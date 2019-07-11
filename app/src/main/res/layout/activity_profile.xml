@@ -76,7 +76,7 @@
             android:layout_marginLeft="20dp"
             android:gravity="center"
             android:id="@+id/profile_profile_tv_name"
-            android:text="홍길동"
+            tools:text="홍길동"
             android:textSize="28sp"
             android:textStyle="bold" />
     </LinearLayout>

@@ -26,7 +26,7 @@
         android:paddingBottom="5dp"
         android:fontFamily="@font/nanumbarungothic"
         android:gravity="center"
-        android:text="세글자"
+        tools:text="세글자"
         android:textColor="#666"
         android:textSize="30sp" />
 
@@ -52,7 +52,7 @@
                 android:fontFamily="@font/nanumbarungothiclight"
                 android:gravity="left|center"
                 android:paddingLeft="2dp"
-                android:text="서울특별시 중구 을지로 281"
+                tools:text="서울특별시 중구 을지로 281"
                 android:id="@+id/recom_rec_location"
                 android:textColor="@color/colorPrimary"
                 android:textSize="12sp" />
@@ -77,7 +77,7 @@
                 android:gravity="left|center"
                 android:id="@+id/recom_rec_day"
                 android:paddingLeft="5dp"
-                android:text="전시관별 참여"
+                tools:text="전시관별 참여"
                 android:textColor="@color/colorPrimary"
                 android:textSize="12sp"
                 tools:ignore="RtlCompat" />
