@@ -46,7 +46,6 @@ public class ProfileActivity extends AppCompatActivity {
     String myemail,email_exept_dot,myname;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = database.getReference("chat");
-    boolean exist=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,33 +108,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                 final String tmpchatname = array[0]+","+array[1];
                 //만약 채팅방이 존재하면 안하면
-                //if()
-                databaseReference.addChildEventListener(new ChildEventListener() {
-                    @Override
-                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                        if(dataSnapshot.getKey().equals(tmpchatname)){
-                            exist=true;
-                        }
-                    }
-                    @Override
-                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                    }
-                    @Override
-                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                    }
-                    @Override
-                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-
-                if (exist) {
+                if (databaseReference.child(tmpchatname).child("name1").getKey()!=null&&databaseReference.child(tmpchatname).child("name2")!=null) {
                 }else{
                     //존재 안하면 채팅방 새로 만들기
                 databaseReference.child(tmpchatname).setValue("");

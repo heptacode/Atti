@@ -1,11 +1,11 @@
 package app.atti.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -29,32 +28,32 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import app.atti.Activities.Main.MainActivity;
+import java.util.ArrayList;
+
 import app.atti.Activities.Main.MainActivity_Detail;
 import app.atti.Activities.Profile.ProfileActivity;
 import app.atti.Object.MainAC_Post;
 import app.atti.R;
 
-import java.util.ArrayList;
-
 public class MainAC_RecyclerAdapter extends RecyclerView.Adapter<MainAC_RecyclerAdapter.ViewHolder> {
     ArrayList<MainAC_Post> items;
     String email;
+    JSONArray array, array1;
+    boolean pressed = false;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView title, content, date, name,like_num;
+        TextView title, content, date, name, like_num;
         LinearLayout like, LL_intent;
         ImageView korean;
         ImageView mainimg;
-        ImageView likeimg,delimg;
-        SharedPreferences mprefs = itemView.getContext().getSharedPreferences("Profile_Data",itemView.getContext().MODE_PRIVATE);
+        ImageView likeimg;
+        SharedPreferences mprefs = itemView.getContext().getSharedPreferences("Profile_Data", itemView.getContext().MODE_PRIVATE);
         RelativeLayout RL;
 
 
         public ViewHolder(View itemView) {
             super(itemView);
-            RL=itemView.findViewById(R.id.main_item_relative);
-            delimg=itemView.findViewById(R.id.main_item_img_del);
+            RL = itemView.findViewById(R.id.main_item_relative);
             likeimg = itemView.findViewById(R.id.main_item_like_img);
             like_num = itemView.findViewById(R.id.main_item_like_num);
             LL_intent = itemView.findViewById(R.id.main_item_LL_intent);
@@ -65,7 +64,7 @@ public class MainAC_RecyclerAdapter extends RecyclerView.Adapter<MainAC_Recycler
             like = itemView.findViewById(R.id.main_item_LL_like);
             korean = itemView.findViewById(R.id.main_item_img_korean);
             mainimg = itemView.findViewById(R.id.main_item_img_mainimg);
-            email = mprefs.getString("S_email","");
+            email = mprefs.getString("S_email", "");
         }
     }
 
@@ -90,63 +89,26 @@ public class MainAC_RecyclerAdapter extends RecyclerView.Adapter<MainAC_Recycler
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(holder.itemView.getContext(), ProfileActivity.class);
-                intent.putExtra("toprofile_email",items.get(position).getWriter_email());
+                intent.putExtra("toprofile_email", items.get(position).getWriter_email());
                 holder.itemView.getContext().startActivity(intent);
             }
         });
 
-        if(items.get(position).getWriter_email().equals(email)) {
-            holder.delimg.setVisibility(View.VISIBLE);
-        }else{
-            holder.delimg.setVisibility(View.GONE);
-        }
-        holder.delimg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //데이터 삭제
-                AlertDialog.Builder builder;
-                builder = new AlertDialog.Builder(holder.itemView.getContext());
-                builder.setIcon(android.R.drawable.ic_dialog_alert);
-                builder.setTitle("Atti");
-                builder.setMessage("정말로 게시물을 삭제하시겠습니까?");
-                builder.setNegativeButton("아니오", null);
-                builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //삭제하기!!
-                        FirebaseFirestore db = FirebaseFirestore.getInstance();
-                        db.collection("recommend").document(items.get(position).getID()).delete()
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                Toast.makeText(holder.itemView.getContext(), "게시물을 삭제했습니다.", Toast.LENGTH_SHORT).show();
-                                ((MainActivity) holder.itemView.getContext()).ListLoading();
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(holder.itemView.getContext(), "게시물 삭제 실패", Toast.LENGTH_SHORT).show();
-                            }
-                        });
 
-                    }
-                });
-                builder.show();
-            }
-        });
         holder.LL_intent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //document 이름 값
                 Intent maindetail = new Intent(holder.itemView.getContext(), MainActivity_Detail.class);
                 maindetail.putExtra("ID", ID);
-                holder.itemView.getContext().startActivity(maindetail);
+                maindetail.putExtra("Writer_email",items.get(position).getWriter_email());
+//                holder.itemView.getContext().startActivity(maindetail);
+                ((Activity)holder.itemView.getContext()).startActivityForResult(maindetail,1233);
             }
         });
-        if(items.get(position).isI_like()){
+        if (items.get(position).isI_like()) {
             holder.likeimg.setImageResource(R.drawable.ic_liked);
-        }else{
+        } else {
             holder.likeimg.setImageResource(R.drawable.ic_liked_x);
         }
 
@@ -162,69 +124,82 @@ public class MainAC_RecyclerAdapter extends RecyclerView.Adapter<MainAC_Recycler
         holder.content.setText(content);
         holder.date.setText(date);
         holder.name.setText(name);
-        holder.like_num.setText(""+like);
-
+        holder.like_num.setText("" + like);
         holder.like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final FirebaseFirestore db = FirebaseFirestore.getInstance();
-                db.collection("recommend").document(ID)
-                        .get()
-                        .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                if (!items.get(position).isI_like()) {  //좋아요 과거에 안눌었다면
-                                    //like_people에 자신 추가
-                                    ArrayList tmp = new ArrayList();
-                                    try {
-                                        JSONArray array = new JSONObject(task.getResult().getData()).getJSONArray("likes");
-                                        for(int i=0;i<array.length();i++){//문자열 배열만큼 반복
-                                            tmp.add(array.getString(i));
-                                        }
-                                        tmp.add(email);
-                                        //서버로 전송
-                                        db.collection("recommend").document(ID).update("likes",tmp);
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
-                                    }
-                                    db.collection("recommend").document(ID).update("like", Integer.parseInt(task.getResult().get("like").toString()) + 1);
-                                    items.get(position).setLike(Integer.parseInt(task.getResult().get("like").toString()) + 1);
-                                    items.get(position).setI_like(true);
-                                    MainAC_RecyclerAdapter.this.notifyDataSetChanged();
-                                    holder.likeimg.setImageResource(R.drawable.ic_liked);
+                if (!pressed) {
+                    pressed=true;
 
-                                }else { //좋아요 과거에 눌렀다면
-                                    //like_people에 자신 삭제
-                                    ArrayList tmp = new ArrayList();
-                                    try {
-                                        JSONArray array = new JSONObject(task.getResult().getData()).getJSONArray("likes");
-                                        for(int i=0;i<array.length();i++){//문자열 배열만큼 반복
-                                            if(array.getString(i).equals(email)){//좋아요 삭제
-                                                continue;
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            pressed=false;
+                        }
+                    },500);
+
+                    final FirebaseFirestore db = FirebaseFirestore.getInstance();
+                    db.collection("recommend").document(ID)
+                            .get()
+                            .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                    if (!items.get(position).isI_like()) {  //좋아요 과거에 안눌었다면
+                                        //like_people에 자신 추가
+                                        ArrayList tmp = new ArrayList();
+                                        try {
+                                            array = new JSONObject(task.getResult().getData()).getJSONArray("likes");
+                                            for (int i = 0; i < array.length(); i++) {//문자열 배열만큼 반복
+                                                tmp.add(array.getString(i));
                                             }
-                                            tmp.add(array.getString(i));
+                                            tmp.add(email);
+                                            //서버로 전송
+                                            db.collection("recommend").document(ID).update("likes", tmp);
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
                                         }
-                                        //서버로 전송
-                                        db.collection("recommend").document(ID).update("likes",tmp);
+//                                    items.get(position).setLike(Integer.parseInt(task.getResult().get("like").toString()) + 1);
+                                        items.get(position).setLike(tmp.size() - 1);
+                                        Log.e("array", tmp.size() - 1 + "");
+                                        items.get(position).setI_like(true);
+                                        MainAC_RecyclerAdapter.this.notifyDataSetChanged();
+                                        holder.likeimg.setImageResource(R.drawable.ic_liked);
 
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
+                                    } else { //좋아요 과거에 눌렀다면
+                                        //like_people에 자신 삭제
+                                        ArrayList tmp = new ArrayList();
+                                        try {
+                                            array1 = new JSONObject(task.getResult().getData()).getJSONArray("likes");
+                                            for (int i = 0; i < array1.length(); i++) {//문자열 배열만큼 반복
+                                                if (array1.getString(i).equals(email)) {//좋아요 삭제
+                                                    continue;
+                                                }
+                                                tmp.add(array1.getString(i));
+                                            }
+                                            //서버로 전송
+                                            db.collection("recommend").document(ID).update("likes", tmp);
+
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+//                                    items.get(position).setLike(Integer.parseInt(task.getResult().get("like").toString()) - 1);
+                                        items.get(position).setLike(tmp.size() - 1);
+                                        Log.e("array", tmp.size() - 1 + "");
+
+                                        items.get(position).setI_like(false);
+                                        MainAC_RecyclerAdapter.this.notifyDataSetChanged();
+                                        holder.likeimg.setImageResource(R.drawable.ic_liked_x);
+
                                     }
-                                    db.collection("recommend").document(ID).update("like", Integer.parseInt(task.getResult().get("like").toString()) - 1);
-                                    items.get(position).setLike(Integer.parseInt(task.getResult().get("like").toString()) - 1);
-                                    items.get(position).setI_like(false);
-                                    MainAC_RecyclerAdapter.this.notifyDataSetChanged();
-                                    holder.likeimg.setImageResource(R.drawable.ic_liked_x);
-
                                 }
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.e("좋아요","누르기 실패");
-                            }
-                        });
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.e("좋아요", "누르기 실패");
+                                }
+                            });
+                }
             }
         });
 
@@ -236,6 +211,7 @@ public class MainAC_RecyclerAdapter extends RecyclerView.Adapter<MainAC_Recycler
             //외국인용 국기
             holder.korean.setImageResource(R.drawable.ic_foreigner_flag);
         }
+
     }
 
     @Override

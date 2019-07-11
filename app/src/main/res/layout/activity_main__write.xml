@@ -53,11 +53,11 @@
 
             <ImageView
                 android:id="@+id/main_write_write"
-                android:layout_width="50dp"
+                android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:src="@drawable/ic_write_white" />
+                android:src="@drawable/ic_upload_white" />
         </LinearLayout>
 
         <android.support.v4.widget.NestedScrollView

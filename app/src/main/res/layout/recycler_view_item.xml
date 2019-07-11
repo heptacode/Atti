@@ -69,12 +69,7 @@
                     android:textSize="16sp"
                     tools:text="2019.06.07" />
             </LinearLayout>
-            <ImageView
-                android:id="@+id/main_item_img_del"
-                android:layout_width="45dp"
-                android:layout_height="match_parent"
-                android:visibility="gone"
-                android:src="@drawable/ic_map"/>
+
         </LinearLayout>
 
         <LinearLayout

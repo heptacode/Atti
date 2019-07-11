@@ -2,11 +2,11 @@ package app.atti.Activities.Main;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,14 +17,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import app.atti.Activities.Chatting.ChattingActivity;
-import app.atti.Activities.Chatting.ChattingLobbyActivity;
-import app.atti.Activities.LoginActivity;
-import app.atti.Activities.Map.MapActivity;
-import app.atti.Activities.Recommend.RecommendActiivity;
-import app.atti.Adapter.MainAC_RecyclerAdapter;
-import app.atti.Object.MainAC_Post;
-import app.atti.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -36,7 +28,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
+import app.atti.Activities.Chatting.ChattingLobbyActivity;
+import app.atti.Activities.LoginActivity;
+import app.atti.Activities.Map.MapActivity;
+import app.atti.Activities.Recommend.RecommendActiivity;
+import app.atti.Adapter.MainAC_RecyclerAdapter;
+import app.atti.Object.MainAC_Post;
+import app.atti.R;
 
 public class MainActivity extends AppCompatActivity {
     //drawer 관련
@@ -175,6 +174,9 @@ public class MainActivity extends AppCompatActivity {
         if(resultCode==RESULT_OK){
             switch (requestCode){
                 case 1999:
+                    ListLoading();
+                    break;
+                case 1233:
                     ListLoading();
                     break;
             }

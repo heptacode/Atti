@@ -36,6 +36,7 @@
                 android:textColor="#fff"
                 android:textSize="24sp" />
         </LinearLayout>
+
     </LinearLayout>
 
     <android.support.v4.widget.NestedScrollView
@@ -80,29 +81,46 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
+                    android:gravity="center_vertical"
                     android:layout_toRightOf="@id/main_dt_relative"
-                    android:gravity="center|left"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/main_dt_tv_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nanumbarungothic"
-                        android:textColor="#000"
-                        android:textSize="24sp"
-                        tools:text="엄희성" />
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center|left"
+                        android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/main_dt_tv_date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="@font/nanumbarungothic"
-                        android:textColor="#000000"
-                        android:textSize="16sp"
-                        tools:text="2019.06.07" />
+                        <TextView
+                            android:id="@+id/main_dt_tv_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nanumbarungothic"
+                            android:textColor="#000"
+                            android:textSize="24sp"
+                            tools:text="엄희성" />
+
+                        <TextView
+                            android:id="@+id/main_dt_tv_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/nanumbarungothic"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            tools:text="2019.06.07" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/main_item_img_del"
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/ic_delete"
+                        android:visibility="visible" />
                 </LinearLayout>
+
             </RelativeLayout>
 
             <LinearLayout
