@@ -103,7 +103,7 @@ public class QNA_RecyclerAdapter extends   RecyclerView.Adapter<QNA_RecyclerAdap
                 maindetail.putExtra("ID", ID);
                 maindetail.putExtra("Writer_email",items.get(position).getWriter_email());
 //                holder.itemView.getContext().startActivity(maindetail);
-                ((Activity)holder.itemView.getContext()).startActivityForResult(maindetail,1233);
+                ((Activity)holder.itemView.getContext()).startActivityForResult(maindetail,2233);
             }
         });
         if (items.get(position).isI_like()) {

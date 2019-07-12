@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="app.atti.Activities.Main.MainActivity_Detail">
+    tools:context="app.atti.Activities.QNAActivity.QNA_Detail_activity">
 
 
     <LinearLayout
@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content">
 
                 <RelativeLayout
-                    android:id="@+id/main_dt_relative"
+                    android:id="@+id/qna_dt_relative"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:layout_alignParentLeft="true"
@@ -62,14 +62,14 @@
 
 
                     <ImageView
-                        android:id="@+id/main_dt_img_profile"
+                        android:id="@+id/qna_dt_img_profile"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_centerInParent="true"
                         android:src="@drawable/ic_default_proifle2" />
 
                     <ImageView
-                        android:id="@+id/main_dt_img_korean"
+                        android:id="@+id/qna_dt_img_korean"
                         android:layout_width="30dp"
                         android:layout_height="20dp"
                         android:layout_alignParentLeft="true"
@@ -82,7 +82,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:gravity="center_vertical"
-                    android:layout_toRightOf="@id/main_dt_relative"
+                    android:layout_toRightOf="@id/qna_dt_relative"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -93,7 +93,7 @@
                         android:layout_height="wrap_content">
 
                         <TextView
-                            android:id="@+id/main_dt_tv_name"
+                            android:id="@+id/qna_dt_tv_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nanumbarungothic"
@@ -102,7 +102,7 @@
                             tools:text="엄희성" />
 
                         <TextView
-                            android:id="@+id/main_dt_tv_date"
+                            android:id="@+id/qna_dt_tv_date"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
@@ -113,7 +113,7 @@
                     </LinearLayout>
 
                     <ImageView
-                        android:id="@+id/main_item_img_del"
+                        android:id="@+id/qna_item_img_del"
                         android:layout_width="40dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="5dp"
@@ -129,7 +129,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/main_dt_tv_title"
+                    android:id="@+id/qna_dt_tv_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -140,7 +140,7 @@
                     tools:text="오늘은 올림픽 공원에 있는 나홀로 나무에 가봤습니다" />
 
                 <TextView
-                    android:id="@+id/main_dt_tv_content"
+                    android:id="@+id/qna_dt_tv_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -151,7 +151,7 @@
                     tools:text="1925년에 완공된 서울역사입니다. 개보수 작업을 걸쳐 대중들의 문화공간으로 사용하는 곳이라 의미있고 인상적이었습니다. 보고싶은 전..." />
 
                 <ImageView
-                    android:id="@+id/main_dt_img_mainimg"
+                    android:id="@+id/qna_dt_img_qnaimg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -161,7 +161,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/main_dt_LL_like"
+                android:id="@+id/qna_dt_LL_like"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
@@ -174,13 +174,13 @@
                 android:paddingBottom="10dp">
 
                 <ImageView
-                    android:id="@+id/main_dt_like_img"
+                    android:id="@+id/qna_dt_like_img"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_liked_x" />
 
                 <TextView
-                    android:id="@+id/main_dt_like_num"
+                    android:id="@+id/qna_dt_like_num"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/nanumbarungothic"
@@ -192,11 +192,13 @@
                     android:textSize="17sp" />
             </LinearLayout>
             <LinearLayout
+                android:layout_marginTop="20dp"
                 android:background="@drawable/prac_chat_background"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
                     android:layout_width="0dp"
+                    android:id="@+id/qna_dt_comment_edt"
                     android:layout_weight="1"
                     android:padding="10dp"
                     android:textSize="16sp"
@@ -204,6 +206,7 @@
                     android:background="#00000000"
                     android:layout_height="50dp" />
                 <TextView
+                    android:id="@+id/qna_dt_comment_tv_send"
                     android:background="@drawable/prac_chat_background"
                     android:layout_width="50dp"
                     android:gravity="center"
@@ -215,6 +218,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/qna_detail_comment"
                 android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

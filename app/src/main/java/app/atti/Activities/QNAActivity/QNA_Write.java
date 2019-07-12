@@ -37,6 +37,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import app.atti.Object.QNA_Comment;
 import app.atti.R;
 
 public class QNA_Write extends AppCompatActivity {
@@ -153,6 +154,7 @@ public class QNA_Write extends AppCompatActivity {
                     user.put("likes", likes);
                     user.put("name", name);
                     user.put("email",email);
+                    user.put("comments",new ArrayList<QNA_Comment>());
                     db.collection("qna")
                             .get()
                             .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

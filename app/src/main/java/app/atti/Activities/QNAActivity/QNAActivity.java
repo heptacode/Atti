@@ -80,6 +80,7 @@ public class QNAActivity extends AppCompatActivity {
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        Log.e("asd",requestCode+"");
         if(resultCode==RESULT_OK){
             switch (requestCode){
                 case 2999:
@@ -135,5 +136,9 @@ public class QNAActivity extends AppCompatActivity {
                         }
                     }
                 });
+        Log.e("asd", String.valueOf(items.size()));
+        if(items.size()==0) {
+            rcv.removeAllViews();
+        }
     }
 }
