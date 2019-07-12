@@ -5,7 +5,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -41,7 +40,7 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/nanumbarungothic"
                     android:gravity="center"
-                    android:text="추천하기"
+                    android:text="질문하기"
                     android:textColor="#fff"
                     android:textSize="24sp" />
             </LinearLayout>
@@ -52,7 +51,7 @@
                 android:layout_weight="1" />
 
             <ImageView
-                android:id="@+id/main_write_write"
+                android:id="@+id/qna_write_write"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="10dp"
@@ -72,7 +71,7 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/main_write_title"
+                    android:id="@+id/qna_write_title"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:backgroundTint="@color/colorPrimary"
@@ -83,7 +82,7 @@
                     android:textSize="25sp" />
 
                 <EditText
-                    android:id="@+id/main_write_content"
+                    android:id="@+id/qna_write_content"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:backgroundTint="#ffffffff"
@@ -93,7 +92,7 @@
                     android:padding="20dp"
                     android:textSize="22sp"/>
                 <ImageView
-                    android:id="@+id/main_write_previmg"
+                    android:id="@+id/qna_write_previmg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -105,7 +104,7 @@
         </android.support.v4.widget.NestedScrollView>
     </LinearLayout>
     <ImageView
-        android:id="@+id/main_write_btn_float"
+        android:id="@+id/qna_write_btn_float"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginRight="20dp"

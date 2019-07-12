@@ -33,6 +33,7 @@ import app.atti.Activities.Chatting.ChattingLobbyActivity;
 import app.atti.Activities.LoginActivity;
 import app.atti.Activities.Map.MapActivity;
 import app.atti.Activities.Profile.ProfileActivity;
+import app.atti.Activities.QNAActivity.QNAActivity;
 import app.atti.Activities.Recommend.RecommendActiivity;
 import app.atti.Adapter.MainAC_RecyclerAdapter;
 import app.atti.Object.MainAC_Post;
@@ -42,9 +43,9 @@ public class MainActivity extends AppCompatActivity {
     //drawer 관련
     ImageView menu;
     DrawerLayout drawerLayout;
-    LinearLayout chat,recommend,med_conv,drawer_background;
+    LinearLayout chat,recommend,med_conv,drawer_background,drawer_qna;
     TextView profile_name;
-    TextView profile_korean;
+    TextView profile_korean, drawer_tv_qna;
     ImageView profile_flag;
     ImageView logout, write;
     ImageView profile_img;
@@ -79,6 +80,10 @@ public class MainActivity extends AppCompatActivity {
         drawer_background=findViewById(R.id.drawer_background);
         write = findViewById(R.id.main_write);
         profile_img=findViewById(R.id.drawer_img);
+        drawer_tv_qna =findViewById(R.id.drawer_tv_qna);
+        drawer_qna=findViewById(R.id.drawer_qna);
+
+        drawer_tv_qna.setText("Q&A");
 
         items=new ArrayList<>();
         adapter = new MainAC_RecyclerAdapter(items);
@@ -94,6 +99,14 @@ public class MainActivity extends AppCompatActivity {
         rcv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         rcv.setAdapter(adapter);
 
+        drawer_qna.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, QNAActivity.class);
+                intent.putExtra("myemail",email);
+                startActivity(intent);
+            }
+        });
         profile_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -184,8 +197,6 @@ public class MainActivity extends AppCompatActivity {
         if(resultCode==RESULT_OK){
             switch (requestCode){
                 case 1999:
-                    ListLoading();
-                    break;
                 case 1233:
                     ListLoading();
                     break;

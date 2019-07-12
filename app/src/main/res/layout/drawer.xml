@@ -83,7 +83,48 @@
             android:layout_height="0dp"
             android:layout_weight="0.5" />
 
+        <LinearLayout
+            android:id="@+id/drawer_qna"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/drawer_tv_qna"
+                android:text="QA"
+                android:fontFamily="@font/nanumbarungothic"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:textSize="22sp" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/ic_open_days" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.15" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/colorPrimary" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.15" />
         <LinearLayout
             android:id="@+id/drawer_chat"
             android:layout_width="match_parent"

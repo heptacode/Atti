@@ -32,7 +32,7 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/nanumbarungothic"
                 android:gravity="center"
-                android:text="추천하기"
+                android:text="질문하기"
                 android:textColor="#fff"
                 android:textSize="24sp" />
         </LinearLayout>
@@ -191,6 +191,31 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="17sp" />
             </LinearLayout>
+            <LinearLayout
+                android:background="@drawable/prac_chat_background"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    android:textSize="16sp"
+                    android:hint="댓글을 입력해주세요."
+                    android:background="#00000000"
+                    android:layout_height="50dp" />
+                <TextView
+                    android:background="@drawable/prac_chat_background"
+                    android:layout_width="50dp"
+                    android:gravity="center"
+                    android:layout_margin="10dp"
+                    android:layout_height="match_parent"
+                    android:text="send"/>
+
+            </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/qna_detail_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </LinearLayout>
