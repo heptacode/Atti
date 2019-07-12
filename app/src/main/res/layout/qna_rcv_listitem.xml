@@ -54,13 +54,14 @@
         </LinearLayout>
         <TextView
             android:id="@+id/qna_dt_comment_tv_comment"
+            android:ellipsize="none"
+            android:singleLine="false"
             tools:text="대앳글미ㅏ어니ㅏㅁ어ㅏ니머이ㅏㄴ머아ㅣㄴ머이ㅏㄴ머이ㅏㅓㄴ마ㅣㅇ
 ㅁ너ㅣ아ㅓㅁ니ㅏ언미ㅏ어니ㅏㅁ어니ㅏㅁ어ㅏㅣㄴ머인머ㅏㅣ어ㅣㅏㄴㅁ어ㅏ님어ㅏㅣㄴ먼마이"
             android:textSize="18sp"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 </LinearLayout>

@@ -136,54 +136,6 @@ public class QNA_Detail_activity extends AppCompatActivity {
             delimg.setVisibility(View.GONE);
         }
 
-
-        send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                String written_commend = edt_comment.getText().toString();
-                edt_comment.setText("");
-
-                Date time = new Date(System.currentTimeMillis());
-                SimpleDateFormat sdfd = new SimpleDateFormat("MM.dd");
-                mydate = sdfd.format(time);
-
-                tmp = new QNA_Comment(myname, myemail, mydate, mykorean, written_commend);
-//                db.collection("qna").document(ID)
-//                        .get()
-//                        .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                                if (task.isSuccessful()) {
-//                                    JSONArray jsonArray;
-//                                    JSONObject tmpjsonobject;
-//                                    try {
-//                                        jsonArray = new JSONObject(task.getResult().getData()).getJSONArray("comments");
-//                                        for (int i = 0; i < jsonArray.length(); i++) {//문자열 배열만큼 반복
-//                                            tmpjsonobject=jsonArray.getJSONObject(i);
-//                                            String tmpname = tmpjsonobject.getString("name");
-//                                            String tmpemail = tmpjsonobject.getString("email");
-//                                            String tmpdate = tmpjsonobject.getString("date");
-//                                            String tmpcomment= tmpjsonobject.getString("comment");
-//                                            boolean tmpkorean = tmpjsonobject.getBoolean("korean");
-//                                            tmparray.add(new QNA_Comment(tmpname,tmpemail,tmpdate,tmpkorean,tmpcomment));
-//                                        }
-//                                    } catch (JSONException e) {
-//                                        e.printStackTrace();
-//                                    }
-//
-//
-//                                }
-//                            }
-//                        });
-                items.add(0,tmp);
-                adapter.notifyDataSetChanged();
-                db.collection("qna").document(ID).update("comments", items);
-
-            }
-        });
-
-
         delimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -220,6 +172,27 @@ public class QNA_Detail_activity extends AppCompatActivity {
                 builder.show();
             }
         });
+
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Collections.reverse(items);
+
+                String written_commend = edt_comment.getText().toString();
+                edt_comment.setText("");
+
+                Date time = new Date(System.currentTimeMillis());
+                SimpleDateFormat sdfd = new SimpleDateFormat("MM.dd");
+                mydate = sdfd.format(time);
+
+                tmp = new QNA_Comment(myname, myemail, mydate, mykorean, written_commend);
+                items.add(tmp);
+                db.collection("qna").document(ID).update("comments", items);
+                Collections.reverse(items);
+                adapter.notifyDataSetChanged();
+
+            }
+        });
     }
 
     private void CommentLoading() {
@@ -243,10 +216,11 @@ public class QNA_Detail_activity extends AppCompatActivity {
                                     boolean tmpkorean = tmpjsonobject.getBoolean("korean");
                                     items.add(new QNA_Comment(tmpname,tmpemail,tmpdate,tmpkorean,tmpcomment));
                                 }
+                                Collections.reverse(items);
+                                adapter.notifyDataSetChanged();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-                            adapter.notifyDataSetChanged();
 
                         }
                     }
