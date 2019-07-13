@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -19,8 +20,13 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -51,6 +57,8 @@ public class ProfileActivity extends AppCompatActivity {
     MeasuredViewPager viewPager;
     Profile_ViewpagerAdapter pageradapter;
     TabLayout tab;
+    String tmpchatname;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,20 +149,33 @@ public class ProfileActivity extends AppCompatActivity {
                 String[] array = new String[]{tmp_myemail, tmp_opemail};
                 Arrays.sort(array);
 
-                final String tmpchatname = array[0] + "," + array[1];
+                tmpchatname = array[0] + "," + array[1];
                 //만약 채팅방이 존재하면 안하면
-                if (databaseReference.child(tmpchatname).child("name1").getKey()!=null && databaseReference.child(tmpchatname).child("name2").getKey()!=null) {
-                } else {
-                    //존재 안하면 채팅방 새로 만들기
-                    databaseReference.child(tmpchatname).setValue("");
-                    databaseReference.child(tmpchatname).child("name1").setValue(myname);
-                    databaseReference.child(tmpchatname).child("name2").setValue(profile_name);
+                databaseReference.child(tmpchatname).child("name1").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    Log.e(myname, profile_name);
-                }
-                Intent tochat = new Intent(ProfileActivity.this, ChattingActivity.class);
-                tochat.putExtra("ChatName", tmpchatname);
-                startActivity(tochat);
+                        if(dataSnapshot.exists()){
+                        } else {
+                            //존재 안하면 채팅방 새로 만들기
+                            databaseReference.child(tmpchatname).setValue("");
+                            databaseReference.child(tmpchatname).child("name1").setValue(myname);
+                            databaseReference.child(tmpchatname).child("name2").setValue(profile_name);
+                        }
+                        Intent tochat = new Intent(ProfileActivity.this, ChattingActivity.class);
+                        tochat.putExtra("ChatName", tmpchatname);
+                        startActivity(tochat);
+                        // ...
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        // ...
+                    }
+                });
+
+
+
             }
         });
     }

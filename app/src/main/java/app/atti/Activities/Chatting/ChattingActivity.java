@@ -79,7 +79,7 @@ public class ChattingActivity extends AppCompatActivity {
                 if (!edt_message.getText().toString().equals("")) {
                     Date time = new Date(System.currentTimeMillis());
                     SimpleDateFormat sdf = new SimpleDateFormat("a hh:mm");
-                    SimpleDateFormat sdfd = new SimpleDateFormat("yyyymmdd");
+                    SimpleDateFormat sdfd = new SimpleDateFormat("yyyyMMdd");
                     String current_time = sdf.format(time);
                     String date = sdfd.format(time);
 
@@ -122,5 +122,11 @@ public class ChattingActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        setResult(RESULT_OK);
+        super.onBackPressed();
     }
 }
