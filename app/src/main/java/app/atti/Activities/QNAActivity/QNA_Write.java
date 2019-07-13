@@ -93,108 +93,113 @@ public class QNA_Write extends AppCompatActivity {
         write.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (clicked) {
-                } else {
-                    clicked = true;
+                if(et_title.getText().toString().equals("")){
+                    Toast.makeText(QNA_Write.this, "제목을 입력해주세요.", Toast.LENGTH_SHORT).show();
+                }else if(et_content.getText().toString().equals("")){
+                    Toast.makeText(QNA_Write.this, "내용을 입력해주세요.", Toast.LENGTH_SHORT).show();
+                }else {
+                    if (clicked) {
+                    } else {
+                        clicked = true;
 
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            clicked=false;
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                clicked = false;
+                            }
+                        }, 5000);
+
+                        SharedPreferences mprefs = getSharedPreferences("Profile_Data", MODE_PRIVATE);
+                        korean = mprefs.getBoolean("S_korean", true);
+                        name = mprefs.getString("S_name", "Error");
+                        Date time = new Date(System.currentTimeMillis());
+
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+                        String getTime = sdf.format(time);
+
+                        asyncDialog.setMessage("요청중입니다.");
+                        asyncDialog.show();
+
+                        if (filePath != null) {
+                            formatter = new SimpleDateFormat("yyyyMMHH_mmss");
+                            filename = formatter.format(time) + ".jpg";
+                            images.add("https://firebasestorage.googleapis.com/v0/b/atti-core.appspot.com/o/images%2Fqna%2F" + filename + "?alt=media");
+                            StorageReference ref = storageReference.child("images/qna/" + filename);
+
+                            ref.putFile(filePath)
+                                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                        @Override
+                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                            Log.e("이미지", "업로드 성공");
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.e("이미지", "업로드 실패");
+                                        }
+                                    })
+                                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                                        @Override
+                                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                                            double progress = (100 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+                                            asyncDialog.setMessage("Uploaded " + ((int) progress + "%..."));
+                                        }
+                                    });
                         }
-                    },5000);
+                        if (images.size() == 0) {
+                            images.add("");
+                        }
 
-                    SharedPreferences mprefs = getSharedPreferences("Profile_Data", MODE_PRIVATE);
-                    korean = mprefs.getBoolean("S_korean", true);
-                    name = mprefs.getString("S_name", "Error");
-                    Date time = new Date(System.currentTimeMillis());
-
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
-                    String getTime = sdf.format(time);
-
-                    asyncDialog.setMessage("요청중입니다.");
-                    asyncDialog.show();
-
-                    if (filePath != null) {
-                        formatter = new SimpleDateFormat("yyyyMMHH_mmss");
-                        filename = formatter.format(time) + ".jpg";
-                        images.add("https://firebasestorage.googleapis.com/v0/b/atti-core.appspot.com/o/images%2Fqna%2F" + filename + "?alt=media");
-                        StorageReference ref = storageReference.child("images/qna/" + filename);
-
-                        ref.putFile(filePath)
-                                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        user.put("date", getTime);
+                        user.put("title", et_title.getText().toString());
+                        user.put("desc", et_content.getText().toString());
+                        user.put("images", images);
+                        user.put("korean", korean);
+                        user.put("likes", likes);
+                        user.put("name", name);
+                        user.put("email", email);
+                        user.put("comments", new ArrayList<QNA_Comment>());
+                        db.collection("qna")
+                                .get()
+                                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                     @Override
-                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                        Log.e("이미지", "업로드 성공");
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Log.e("이미지", "업로드 실패");
-                                    }
-                                })
-                                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                                    @Override
-                                    public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                                        double progress = (100 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
-                                        asyncDialog.setMessage("Uploaded " + ((int) progress + "%..."));
+                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                        if (task.getResult().getDocuments().size() == 0) {
+                                            ID = "001";
+                                        } else {
+
+                                            Log.e("asd", task.getResult().getDocuments().size() + "");
+                                            int int_id = Integer.parseInt(task.getResult().getDocuments().get(task.getResult().getDocuments().size() - 1).getId()) + 1;
+                                            if (int_id < 10) {
+                                                ID = "00" + int_id;
+                                            } else if (int_id < 100) {
+                                                ID = "0" + int_id;
+                                            } else {
+                                                ID = "" + int_id;
+                                            }
+                                        }
+                                        db.collection("qna").document(ID)
+                                                .set(user)
+                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void aVoid) {
+                                                        asyncDialog.dismiss();
+                                                        Toast.makeText(QNA_Write.this, "글 작성을 완료하였습니다.", Toast.LENGTH_SHORT).show();
+                                                        setResult(RESULT_OK);
+                                                        finish();
+                                                    }
+                                                })
+                                                .addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        asyncDialog.dismiss();
+                                                        Toast.makeText(QNA_Write.this, "서버에 문제가 생겼습니다. 잠시후 다시 시도해주세요", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
                                     }
                                 });
                     }
-                    if (images.size() == 0) {
-                        images.add("");
-                    }
-
-                    user.put("date", getTime);
-                    user.put("title", et_title.getText().toString());
-                    user.put("desc", et_content.getText().toString());
-                    user.put("images", images);
-                    user.put("korean", korean);
-                    user.put("likes", likes);
-                    user.put("name", name);
-                    user.put("email",email);
-                    user.put("comments",new ArrayList<QNA_Comment>());
-                    db.collection("qna")
-                            .get()
-                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                @Override
-                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                    if(task.getResult().getDocuments().size()==0) {
-                                        ID="001";
-                                    }
-                                    else {
-
-                                        Log.e("asd", task.getResult().getDocuments().size() + "");
-                                        int int_id = Integer.parseInt(task.getResult().getDocuments().get(task.getResult().getDocuments().size() - 1).getId()) + 1;
-                                        if (int_id < 10) {
-                                            ID = "00" + int_id;
-                                        } else if (int_id < 100) {
-                                            ID = "0" + int_id;
-                                        } else {
-                                            ID = "" + int_id;
-                                        }
-                                    }
-                                    db.collection("qna").document(ID)
-                                            .set(user)
-                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                @Override
-                                                public void onSuccess(Void aVoid) {
-                                                    asyncDialog.dismiss();
-                                                    Toast.makeText(QNA_Write.this, "글 작성을 완료하였습니다.", Toast.LENGTH_SHORT).show();
-                                                    setResult(RESULT_OK);
-                                                    finish();
-                                                }
-                                            })
-                                            .addOnFailureListener(new OnFailureListener() {
-                                                @Override
-                                                public void onFailure(@NonNull Exception e) {
-                                                    asyncDialog.dismiss();
-                                                    Toast.makeText(QNA_Write.this, "서버에 문제가 생겼습니다. 잠시후 다시 시도해주세요", Toast.LENGTH_SHORT).show();
-                                                }
-                                            });
-                                }
-                            });
                 }
             }
         });

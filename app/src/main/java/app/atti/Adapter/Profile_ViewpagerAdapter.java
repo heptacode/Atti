@@ -23,7 +23,9 @@ public class Profile_ViewpagerAdapter extends FragmentStatePagerAdapter {
             case 0:RecommendFragment fragment = new RecommendFragment();
                 fragment.setArguments(bundle);
                 return fragment;
-            case 1:return new QNAFragment();
+            case 1:QNAFragment fragment1 = new QNAFragment();
+                fragment1.setArguments(bundle);
+                return fragment1;
         }
         return null;
     }

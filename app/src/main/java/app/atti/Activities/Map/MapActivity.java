@@ -58,7 +58,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private GpsInfo gpsinfo;
 
     RadioGroup radioGroup;
-    RadioButton rd1, rd2,rd3;
+    RadioButton rd1, rd2, rd3;
 
     LatLng currentPosition;
     Marker current_marker = null;
@@ -90,20 +90,21 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_map);
         mapFragment.getMapAsync(this);
-        Log.e("GPS ON?",((LocationManager)this.getSystemService(LOCATION_SERVICE)).isProviderEnabled(LocationManager.GPS_PROVIDER)+"");
+        Log.e("GPS ON?", ((LocationManager) this.getSystemService(LOCATION_SERVICE)).isProviderEnabled(LocationManager.GPS_PROVIDER) + "");
 
         rd1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mMap.clear();
-                new NRPlaces.Builder()
-                        .listener(MapActivity.this)
-                        .key("AIzaSyD5EzVJTG9migGbdHiH8rj7PqfsILuW1nE")
-                        .latlng(mlat, mlng)
-                        .radius(500)
-                        .type(PlaceType.CONVENIENCE_STORE)
-                        .build()
-                        .execute();
+                ShowPlaces(PlaceType.CONVENIENCE_STORE);
+//                new NRPlaces.Builder()
+//                        .listener(MapActivity.this)
+//                        .key("AIzaSyD5EzVJTG9migGbdHiH8rj7PqfsILuW1nE")
+//                        .latlng(mlat, mlng)
+//                        .radius(500)
+//                        .type(PlaceType.CONVENIENCE_STORE)
+//                        .build()
+//                        .execute();
             }
         });
 
@@ -111,38 +112,53 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             @Override
             public void onClick(View view) {
                 mMap.clear();
-                new NRPlaces.Builder()
-                        .listener(MapActivity.this)
-                        .key("AIzaSyD5EzVJTG9migGbdHiH8rj7PqfsILuW1nE")
-                        .latlng(mlat, mlng)
-                        .radius(500)
-                        .type(PlaceType.DOCTOR)
-                        .build()
-                        .execute();
-                new NRPlaces.Builder()
-                        .listener(MapActivity.this)
-                        .key("AIzaSyD5EzVJTG9migGbdHiH8rj7PqfsILuW1nE")
-                        .latlng(mlat, mlng)
-                        .radius(500)
-                        .type(PlaceType.HOSPITAL)
-                        .build()
-                        .execute();
+                ShowPlaces(PlaceType.DOCTOR);
+                ShowPlaces(PlaceType.HOSPITAL);
+
+//                new NRPlaces.Builder()
+//                        .listener(MapActivity.this)
+//                        .key("AIzaSyD5EzVJTG9migGbdHiH8rj7PqfsILuW1nE")
+//                        .latlng(mlat, mlng)
+//                        .radius(500)
+//                        .type(PlaceType.DOCTOR)
+//                        .build()
+//                        .execute();
+//                new NRPlaces.Builder()
+//                        .listener(MapActivity.this)
+//                        .key("AIzaSyD5EzVJTG9migGbdHiH8rj7PqfsILuW1nE")
+//                        .latlng(mlat, mlng)
+//                        .radius(500)
+//                        .type(PlaceType.HOSPITAL)
+//                        .build()
+//                        .execute();
             }
         });
         rd3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mMap.clear();
-                new NRPlaces.Builder()
-                        .listener(MapActivity.this)
-                        .key("AIzaSyD5EzVJTG9migGbdHiH8rj7PqfsILuW1nE")
-                        .latlng(mlat, mlng)
-                        .radius(500)
-                        .type(PlaceType.PHARMACY)
-                        .build()
-                        .execute();
+                ShowPlaces(PlaceType.PHARMACY);
+//                new NRPlaces.Builder()
+//                        .listener(MapActivity.this)
+//                        .key("AIzaSyD5EzVJTG9migGbdHiH8rj7PqfsILuW1nE")
+//                        .latlng(mlat, mlng)
+//                        .radius(500)
+//                        .type(PlaceType.PHARMACY)
+//                        .build()
+//                        .execute();
             }
         });
+    }
+
+    private void ShowPlaces(String placeType) {
+        new NRPlaces.Builder()
+                .listener(MapActivity.this)
+                .key("AIzaSyD5EzVJTG9migGbdHiH8rj7PqfsILuW1nE")
+                .latlng(mlat, mlng)
+                .radius(500)
+                .type(placeType)
+                .build()
+                .execute();
     }
 
     @Override
@@ -305,6 +321,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     @Override
     public void onLocationChanged(Location location) {
         currentPosition = new LatLng(location.getLatitude(), location.getLongitude());
+        mlat=location.getLatitude();
+        mlng=location.getLongitude();
+
         String errorMessage = "";
         if (current_marker != null)
             current_marker.remove();
@@ -320,6 +339,19 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
         mMap.getUiSettings().setCompassEnabled(true);
+
+        if(rd1.isChecked()){
+            mMap.clear();
+            ShowPlaces(PlaceType.CONVENIENCE_STORE);
+        }else if(rd2.isChecked()){
+            mMap.clear();
+            ShowPlaces(PlaceType.HOSPITAL);
+            ShowPlaces(PlaceType.DOCTOR);
+        }else if(rd3.isChecked()){
+            mMap.clear();
+            ShowPlaces(PlaceType.PHARMACY);
+        }
+
         //지오코더... GPS를 주소로 변환
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
         // Address found using the Geocoder.

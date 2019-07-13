@@ -52,6 +52,7 @@ public class Chatting_Lobby_RecyclerAdapter extends RecyclerView.Adapter<Chattin
                 //채팅방 클릭
                 Intent intent = new Intent(view.getContext(), ChattingActivity.class);
                 intent.putExtra("ChatName",items.get(i).getchatName_Eng());
+                intent.putExtra("opname",items.get(i).getchatName_Kor());
                 vh.itemView.getContext().startActivity(intent);
             }
         });

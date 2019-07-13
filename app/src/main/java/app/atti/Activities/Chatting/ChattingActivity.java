@@ -64,6 +64,7 @@ public class ChattingActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Current_chatName=intent.getStringExtra("ChatName");
+        op_name=intent.getStringExtra("opname");
         who.setText(op_name);
 
         rcv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
