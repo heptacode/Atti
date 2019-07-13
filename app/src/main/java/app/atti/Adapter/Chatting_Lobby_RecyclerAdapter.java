@@ -71,9 +71,9 @@ public class Chatting_Lobby_RecyclerAdapter extends RecyclerView.Adapter<Chattin
         vh.chat.setText(items.get(i).getRecent_chat());
         vh.chatname.setText(items.get(i).getChatName_Kor());
         if(date.equals(items.get(i).getRecent_date())){
-            vh.time.setText(items.get(i).getRecent_time());
+            vh.time.setText(items.get(i).getRecent_time().substring(0,items.get(i).getRecent_time().length()-2));
         }else{
-            vh.time.setText(items.get(i).getRecent_date());
+            vh.time.setText(items.get(i).getRecent_date().substring(4,6)+"월 "+items.get(i).getRecent_date().substring(6)+"일");
         }
     }
 

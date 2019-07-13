@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -63,7 +64,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     LatLng currentPosition;
     Marker current_marker = null;
     List<Marker> previous_marker = null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +74,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         radioGroup = findViewById(R.id.radiogroup);
         previous_marker = new ArrayList<>();
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_map);
+        mapFragment.getMapAsync(this);
 
         tab = findViewById(R.id.tab);
         tab.bringToFront();
@@ -88,8 +91,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         Log.e("GoogleMapCreated", "OnComplete");
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_map);
-        mapFragment.getMapAsync(this);
+
         Log.e("GPS ON?", ((LocationManager) this.getSystemService(LOCATION_SERVICE)).isProviderEnabled(LocationManager.GPS_PROVIDER) + "");
 
         rd1.setOnClickListener(new View.OnClickListener() {
@@ -97,14 +99,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             public void onClick(View view) {
                 mMap.clear();
                 ShowPlaces(PlaceType.CONVENIENCE_STORE);
-//                new NRPlaces.Builder()
-//                        .listener(MapActivity.this)
-//                        .key("AIzaSyD5EzVJTG9migGbdHiH8rj7PqfsILuW1nE")
-//                        .latlng(mlat, mlng)
-//                        .radius(500)
-//                        .type(PlaceType.CONVENIENCE_STORE)
-//                        .build()
-//                        .execute();
             }
         });
 
@@ -114,23 +108,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 mMap.clear();
                 ShowPlaces(PlaceType.DOCTOR);
                 ShowPlaces(PlaceType.HOSPITAL);
-
-//                new NRPlaces.Builder()
-//                        .listener(MapActivity.this)
-//                        .key("AIzaSyD5EzVJTG9migGbdHiH8rj7PqfsILuW1nE")
-//                        .latlng(mlat, mlng)
-//                        .radius(500)
-//                        .type(PlaceType.DOCTOR)
-//                        .build()
-//                        .execute();
-//                new NRPlaces.Builder()
-//                        .listener(MapActivity.this)
-//                        .key("AIzaSyD5EzVJTG9migGbdHiH8rj7PqfsILuW1nE")
-//                        .latlng(mlat, mlng)
-//                        .radius(500)
-//                        .type(PlaceType.HOSPITAL)
-//                        .build()
-//                        .execute();
             }
         });
         rd3.setOnClickListener(new View.OnClickListener() {
@@ -138,14 +115,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             public void onClick(View view) {
                 mMap.clear();
                 ShowPlaces(PlaceType.PHARMACY);
-//                new NRPlaces.Builder()
-//                        .listener(MapActivity.this)
-//                        .key("AIzaSyD5EzVJTG9migGbdHiH8rj7PqfsILuW1nE")
-//                        .latlng(mlat, mlng)
-//                        .radius(500)
-//                        .type(PlaceType.PHARMACY)
-//                        .build()
-//                        .execute();
             }
         });
     }
@@ -165,10 +134,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     public void onMapReady(com.google.android.gms.maps.GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setOnMyLocationButtonClickListener(onMyLocationButtonClickListener);
-        enableMyLocationIfPermitted();
         showDefaultLocation();
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.setMinZoomPreference(13);
+        enableMyLocationIfPermitted();
 
         if (gpsinfo.isGPSEnabled) {
             Log.e("lat lng", mlat + " " + mlng);
@@ -182,6 +151,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
         } else if (mMap != null) {
             mMap.setMyLocationEnabled(true);
+
         }
     }
 
@@ -236,6 +206,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     public void onConnected(@Nullable Bundle bundle) {
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             setGPS = true;
+            enableMyLocationIfPermitted();
         }
 
         mLocationRequest = new LocationRequest();

@@ -78,7 +78,7 @@ public class ChattingActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!edt_message.getText().toString().equals("")) {
                     Date time = new Date(System.currentTimeMillis());
-                    SimpleDateFormat sdf = new SimpleDateFormat("a hh:mm");
+                    SimpleDateFormat sdf = new SimpleDateFormat("a hh:mmss");
                     SimpleDateFormat sdfd = new SimpleDateFormat("yyyyMMdd");
                     String current_time = sdf.format(time);
                     String date = sdfd.format(time);

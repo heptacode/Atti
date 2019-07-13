@@ -106,7 +106,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/ic_open_days" />
+                android:src="@drawable/ic_qna" />
         </LinearLayout>
 
         <View

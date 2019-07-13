@@ -73,12 +73,12 @@ public class Chatting_RecyclerAdapter extends RecyclerView.Adapter<Chatting_Recy
             vh.LL.setGravity(Gravity.RIGHT);//오른쪽에 붙임
             vh.timeleft.setVisibility(View.VISIBLE);
             vh.timeright.setVisibility(View.GONE);
-            vh.timeleft.setText(chat.getTimestamp());
+            vh.timeleft.setText(chat.getTimestamp().substring(0,chat.getTimestamp().length()-2));
         } else {
             vh.LL.setGravity(Gravity.LEFT);//왼쪽에 붙임
             vh.timeleft.setVisibility(View.GONE);
             vh.timeright.setVisibility(View.VISIBLE);
-            vh.timeright.setText(chat.getTimestamp());
+            vh.timeright.setText(chat.getTimestamp().substring(0,chat.getTimestamp().length()-2));
         }
 //        if (items.size() > 1) {
 //            if (items.get(items.size() - 1).getDate().equals(items.get(items.size() - 2).getDate())

@@ -26,6 +26,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 
 import app.atti.Adapter.Chatting_Lobby_RecyclerAdapter;
 import app.atti.Object.Chat;
@@ -89,12 +90,71 @@ public class ChattingLobbyActivity extends AppCompatActivity {
                 if (chatname.split(",")[0].equals(email_exept_dot) || chatname.split(",")[1].equals(email_exept_dot)) {//나의 채팅방인가?
                     String op_name;
                     if (dataSnapshot.child("chatLog").getValue() != null) {
-                        HashMap<String, String> a = (HashMap<String, String>) dataSnapshot.child("chatLog").getValue();
-                        a = (HashMap<String, String>) a.values().toArray()[a.size() - 1];
+                        HashMap<String, String> b = (HashMap<String, String>) dataSnapshot.child("chatLog").getValue();
+                        ArrayList<Chat> c = new ArrayList<>();
+                        HashMap<String,String> a;
+                        for(int i =0;i<b.values().toArray().length;i++){
+                            a = (HashMap<String, String>) b.values().toArray()[i];
+                            c.add(new Chat(a.get("message"),a.get("sender"),a.get("timestamp"),a.get("date")));
+                        }
+                        Collections.sort(c, new Comparator<Chat>() {
+                            @Override
+                            public int compare(Chat t1, Chat t2) {
+                                if (t1.getDate().equals(t2.getDate())) {
+                                    int t1_time_hour = Integer.parseInt(t1.getTimestamp().substring(3, 5));
+                                    int t1_time_min = Integer.parseInt(t1.getTimestamp().substring(6, 8));
+                                    int t1_time_sec = Integer.parseInt(t1.getTimestamp().substring(8, 10));
+                                    int t2_time_hour = Integer.parseInt(t2.getTimestamp().substring(3, 5));
+                                    int t2_time_min = Integer.parseInt(t2.getTimestamp().substring(6, 8));
+                                    int t2_time_sec = Integer.parseInt(t2.getTimestamp().substring(8, 10));
 
-                        recent_time = a.get("timestamp");
-                        recent_chat = a.get("message");
-                        recent_date = a.get("date");
+                                    if (t1.getTimestamp().substring(0, 2).equals("오후") || t1.getTimestamp().substring(0, 2).equals("PM")) {
+                                        t1_time_hour += 12;
+                                    }else{
+                                        if(t1_time_hour==12){
+                                            t1_time_hour-=12;
+                                        }
+                                    }
+                                    if (t2.getTimestamp().substring(0, 2).equals("오후") || t2.getTimestamp().substring(0, 2).equals("PM")) {
+                                        t2_time_hour += 12;
+                                    }else{
+                                        if(t2_time_hour==12){
+                                            t2_time_hour-=12;
+                                        }
+                                    }
+
+                                    if (t1_time_hour > t2_time_hour) {
+                                        return -1;
+                                    } else if (t1_time_hour < t2_time_hour) {
+                                        return 1;
+                                    } else {
+                                        if (t1_time_min > t2_time_min) {
+                                            return -1;
+                                        } else if (t1_time_min < t2_time_min) {
+                                            return 1;
+                                        }else{
+                                            if (t1_time_sec > t2_time_sec) {
+                                                return -1;
+                                            } else if (t1_time_sec < t2_time_sec) {
+                                                return 1;
+                                            }
+                                            return 0;
+                                        }
+                                    }
+                                }
+                                if (Integer.parseInt(t1.getDate()) > Integer.parseInt(t1.getDate())) {
+                                    return -1;
+                                } else if (Integer.parseInt(t1.getDate()) < Integer.parseInt(t1.getDate())) {
+                                    return 1;
+                                } else {
+                                    return 0;
+                                }
+                            }
+                        });
+
+                        recent_time=c.get(0).getTimestamp();
+                        recent_chat=c.get(0).getMessage();
+                        recent_date=c.get(0).getDate();
                     }
 
                     if (dataSnapshot.child("name1").exists() && dataSnapshot.child("name2").exists()) {
@@ -111,14 +171,26 @@ public class ChattingLobbyActivity extends AppCompatActivity {
                                     if (t1.getRecent_date().equals(t2.getRecent_date())) {
                                         int t1_time_hour = Integer.parseInt(t1.getRecent_time().substring(3, 5));
                                         int t1_time_min = Integer.parseInt(t1.getRecent_time().substring(6, 8));
+                                        int t1_time_sec = Integer.parseInt(t1.getRecent_time().substring(8, 10));
                                         int t2_time_hour = Integer.parseInt(t2.getRecent_time().substring(3, 5));
                                         int t2_time_min = Integer.parseInt(t2.getRecent_time().substring(6, 8));
-                                        if (t1.getRecent_time().substring(0, 2) == "오후" || t1.getRecent_time().substring(0, 2) == "PM") {
+                                        int t2_time_sec = Integer.parseInt(t2.getRecent_time().substring(8, 10));
+
+                                        if (t1.getRecent_time().substring(0, 2).equals("오후") || t1.getRecent_time().substring(0, 2).equals("PM")) {
                                             t1_time_hour += 12;
+                                        }else{
+                                            if(t1_time_hour==12){
+                                                t1_time_hour-=12;
+                                            }
                                         }
-                                        if (t2.getRecent_time().substring(0, 2) == "오후" || t2.getRecent_time().substring(0, 2) == "PM") {
+                                        if (t2.getRecent_time().substring(0, 2).equals("오후") || t2.getRecent_time().substring(0, 2).equals("PM")) {
                                             t2_time_hour += 12;
+                                        }else{
+                                            if(t2_time_hour==12){
+                                                t2_time_hour-=12;
+                                            }
                                         }
+
                                         if (t1_time_hour > t2_time_hour) {
                                             return -1;
                                         } else if (t1_time_hour < t2_time_hour) {
@@ -128,8 +200,14 @@ public class ChattingLobbyActivity extends AppCompatActivity {
                                                 return -1;
                                             } else if (t1_time_min < t2_time_min) {
                                                 return 1;
+                                            }else{
+                                                if (t1_time_sec > t2_time_sec) {
+                                                    return -1;
+                                                } else if (t1_time_sec < t2_time_sec) {
+                                                    return 1;
+                                                }
+                                                return 0;
                                             }
-                                            return 0;
                                         }
                                     }
                                     if (Integer.parseInt(t1.getRecent_date()) > Integer.parseInt(t1.getRecent_date())) {
@@ -174,7 +252,9 @@ public class ChattingLobbyActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
                 case 7655:
-
+                    Intent intent = getIntent();
+                    finish();
+                    startActivity(intent);
                     break;
             }
         }
