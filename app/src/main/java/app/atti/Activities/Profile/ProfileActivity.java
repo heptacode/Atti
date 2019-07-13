@@ -7,10 +7,12 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +31,7 @@ import org.json.JSONObject;
 import java.util.Arrays;
 
 import app.atti.Activities.Chatting.ChattingActivity;
+import app.atti.Activities.Profile.Fragment.MeasuredViewPager;
 import app.atti.Adapter.Profile_ViewpagerAdapter;
 import app.atti.R;
 
@@ -42,10 +45,10 @@ public class ProfileActivity extends AppCompatActivity {
     boolean profile_korean;
     JSONObject jsonObject;
     SharedPreferences prefs;
-    String myemail,email_exept_dot,myname;
+    String myemail, email_exept_dot, myname;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = database.getReference("chat");
-    ViewPager viewPager;
+    MeasuredViewPager viewPager;
     Profile_ViewpagerAdapter pageradapter;
     TabLayout tab;
 
@@ -55,19 +58,19 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         tochat = findViewById(R.id.profile_btn_tochat);
         flag = findViewById(R.id.profile_profile_img_flag);
-        tv_name= findViewById(R.id.profile_profile_tv_name);
-        viewPager=findViewById(R.id.profile_viewpager);
-        tab=findViewById(R.id.profile_tablayout);
+        tv_name = findViewById(R.id.profile_profile_tv_name);
+        viewPager = findViewById(R.id.profile_viewpager);
+        tab = findViewById(R.id.profile_tablayout);
 
-        prefs = getSharedPreferences("Profile_Data",MODE_PRIVATE);
-        myemail=prefs.getString("S_email","");
-        email_exept_dot=myemail.split("\\.")[0]+myemail.split("\\.")[1];
-        myname=prefs.getString("S_name","");
+        prefs = getSharedPreferences("Profile_Data", MODE_PRIVATE);
+        myemail = prefs.getString("S_email", "");
+        email_exept_dot = myemail.split("\\.")[0] + myemail.split("\\.")[1];
+        myname = prefs.getString("S_name", "");
 
         Intent intent = getIntent();
         profile_email = intent.getStringExtra("toprofile_email");
 
-        pageradapter=new Profile_ViewpagerAdapter(getSupportFragmentManager(),profile_email);
+        pageradapter = new Profile_ViewpagerAdapter(getSupportFragmentManager(), profile_email);
         viewPager.setAdapter(pageradapter);
         viewPager.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -95,7 +98,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        if(profile_email.equals(myemail)) {
+        if (profile_email.equals(myemail)) {
             tochat.setVisibility(View.GONE);
         }
 
@@ -112,9 +115,9 @@ public class ProfileActivity extends AppCompatActivity {
                         profile_korean = jsonObject.getBoolean("korean");
                     } catch (JSONException e) {
                     }
-                    if(profile_korean){
+                    if (profile_korean) {
                         flag.setImageResource(R.drawable.ic_korean_flag);
-                    }else{
+                    } else {
                         flag.setImageResource(R.drawable.ic_foreigner_flag);
                     }
 
@@ -133,22 +136,24 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //채팅방 만들거나 채팅방이 존재하면 채팅방 이동
-                String tmp_opemail=profile_email.split("\\.")[0]+profile_email.split("\\.")[1];
-                String tmp_myemail=email_exept_dot;
-                String[] array = new String[]{tmp_myemail,tmp_opemail};
+                String tmp_opemail = profile_email.split("\\.")[0] + profile_email.split("\\.")[1];
+                String tmp_myemail = email_exept_dot;
+                String[] array = new String[]{tmp_myemail, tmp_opemail};
                 Arrays.sort(array);
 
-                final String tmpchatname = array[0]+","+array[1];
+                final String tmpchatname = array[0] + "," + array[1];
                 //만약 채팅방이 존재하면 안하면
-                if (databaseReference.child(tmpchatname).child("name1").getKey()!=null&&databaseReference.child(tmpchatname).child("name2")!=null) {
-                }else{
+                if (databaseReference.child(tmpchatname).child("name1").getKey()!=null && databaseReference.child(tmpchatname).child("name2").getKey()!=null) {
+                } else {
                     //존재 안하면 채팅방 새로 만들기
-                databaseReference.child(tmpchatname).setValue("");
-                databaseReference.child(tmpchatname).child("name1").setValue(myname);
-                databaseReference.child(tmpchatname).child("name2").setValue(profile_name);
+                    databaseReference.child(tmpchatname).setValue("");
+                    databaseReference.child(tmpchatname).child("name1").setValue(myname);
+                    databaseReference.child(tmpchatname).child("name2").setValue(profile_name);
+
+                    Log.e(myname, profile_name);
                 }
                 Intent tochat = new Intent(ProfileActivity.this, ChattingActivity.class);
-                tochat.putExtra("ChatName",tmpchatname);
+                tochat.putExtra("ChatName", tmpchatname);
                 startActivity(tochat);
             }
         });
