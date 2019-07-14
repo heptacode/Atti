@@ -97,6 +97,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         rd1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.e("qwe","qwe1");
                 mMap.clear();
                 ShowPlaces(PlaceType.CONVENIENCE_STORE);
             }
@@ -105,6 +106,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         rd2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.e("qwe","qwe2");
+
                 mMap.clear();
                 ShowPlaces(PlaceType.DOCTOR);
                 ShowPlaces(PlaceType.HOSPITAL);
@@ -113,6 +116,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         rd3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.e("qwe","qwe3");
+
                 mMap.clear();
                 ShowPlaces(PlaceType.PHARMACY);
             }
@@ -135,9 +140,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap = googleMap;
         mMap.setOnMyLocationButtonClickListener(onMyLocationButtonClickListener);
         showDefaultLocation();
+
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.setMinZoomPreference(13);
         enableMyLocationIfPermitted();
+
+        mlat = gpsinfo.getLatitude();
+        mlng = gpsinfo.getLongitude();
 
         if (gpsinfo.isGPSEnabled) {
             Log.e("lat lng", mlat + " " + mlng);
