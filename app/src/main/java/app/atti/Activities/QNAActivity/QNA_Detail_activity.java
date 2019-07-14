@@ -47,7 +47,8 @@ public class QNA_Detail_activity extends AppCompatActivity {
     boolean db_korean;
 
     ImageView image, delimg, korean;
-    TextView name, date, title, content, send;
+    TextView name, date, title, content;
+    ImageView send;
     String writer_email;
     String ID;
     EditText edt_comment;
@@ -217,7 +218,7 @@ public class QNA_Detail_activity extends AppCompatActivity {
                     edt_comment.setText("");
 
                     Date time = new Date(System.currentTimeMillis());
-                    SimpleDateFormat sdfd = new SimpleDateFormat("MM.dd");
+                    SimpleDateFormat sdfd = new SimpleDateFormat("MM/dd");
                     mydate = sdfd.format(time);
 
                     tmp = new QNA_Comment(myname, myemail, mydate, mykorean, written_commend);

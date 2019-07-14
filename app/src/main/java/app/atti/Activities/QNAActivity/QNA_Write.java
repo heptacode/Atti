@@ -114,7 +114,7 @@ public class QNA_Write extends AppCompatActivity {
                         name = mprefs.getString("S_name", "Error");
                         Date time = new Date(System.currentTimeMillis());
 
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
                         String getTime = sdf.format(time);
 
                         asyncDialog.setMessage("요청중입니다.");

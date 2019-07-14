@@ -41,7 +41,8 @@
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -191,30 +192,11 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="17sp" />
             </LinearLayout>
-            <LinearLayout
-                android:layout_marginTop="20dp"
-                android:background="@drawable/prac_chat_background"
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <EditText
-                    android:layout_width="0dp"
-                    android:id="@+id/qna_dt_comment_edt"
-                    android:layout_weight="1"
-                    android:padding="10dp"
-                    android:textSize="16sp"
-                    android:hint="댓글을 입력해주세요."
-                    android:background="#00000000"
-                    android:layout_height="50dp" />
-                <TextView
-                    android:id="@+id/qna_dt_comment_tv_send"
-                    android:background="@drawable/prac_chat_background"
-                    android:layout_width="50dp"
-                    android:gravity="center"
-                    android:layout_margin="10dp"
-                    android:layout_height="match_parent"
-                    android:text="send"/>
-
-            </LinearLayout>
+                android:layout_height="1dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/colorPrimary"/>
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/qna_detail_comment"
                 android:layout_width="match_parent"
@@ -222,4 +204,39 @@
                 android:layout_height="wrap_content"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimaryLight"
+        android:orientation="horizontal"
+        android:padding="7dp">
+
+        <EditText
+            android:id="@+id/qna_dt_comment_edt"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1"
+            android:background="@drawable/chat_chat_background"
+            android:gravity="center_vertical"
+            android:nestedScrollingEnabled="true"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="15sp"
+            tools:text="asdasdsad" />
+
+        <ImageView
+            android:id="@+id/qna_dt_comment_tv_send"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingTop="2dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="2dp"
+            android:src="@drawable/ic_send"
+            android:text="Send" />
+    </LinearLayout>
 </LinearLayout>
