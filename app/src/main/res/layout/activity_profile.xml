@@ -45,6 +45,9 @@
         android:id="@+id/profile_scrollview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
         android:fillViewport="true"
         android:scrollbars="none">
 
@@ -56,7 +59,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="15dp">
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="5dp">
 
                 <RelativeLayout
                     android:id="@+id/profile_profile_RL"
@@ -75,8 +80,8 @@
 
                     <ImageView
                         android:id="@+id/profile_profile_img_flag"
-                        android:layout_width="30dp"
-                        android:layout_height="20dp"
+                        android:layout_width="36dp"
+                        android:layout_height="24dp"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentBottom="true"
                         android:src="@drawable/ic_korean_flag" />
@@ -87,29 +92,40 @@
                     android:id="@+id/profile_profile_tv_name"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/nanumbarungothiclight"
                     android:gravity="center"
-                    android:textSize="28sp"
-                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:textSize="25sp"
                     tools:text="홍길동" />
             </LinearLayout>
 
             <Button
                 android:id="@+id/profile_btn_tochat"
+                android:layout_marginTop="7dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="50dp"
-                android:background="@drawable/prac_chat_background"
-                android:padding="10dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="120dp"
+                android:layout_marginRight="120dp"
+                android:background="@drawable/profile_tochat_background"
                 android:text="1:1 대화"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
             <android.support.design.widget.TabLayout
                 android:id="@+id/profile_tablayout"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_marginTop="30dp"
+                app:tabIndicatorHeight="40dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="10dp" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimary"/>
 
             <app.atti.Activities.Profile.Fragment.MeasuredViewPager
                 android:id="@+id/profile_viewpager"

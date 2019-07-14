@@ -226,7 +226,7 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:textSize="15sp"
-            tools:text="asdasdsad" />
+            android:hint="댓글을 입력하세요"/>
 
         <ImageView
             android:id="@+id/qna_dt_comment_tv_send"

@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanumbarungothic"
                 android:gravity="center"
-                android:text="지도"
+                android:text="의료, 편의시설"
                 android:textColor="#fff"
                 android:textSize="24sp" />
                 <ImageView

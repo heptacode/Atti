@@ -14,6 +14,49 @@
         android:orientation="horizontal">
 
         <View
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_logo" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/qna_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanumbarungothic"
+                    android:text="QNA"
+                    android:textColor="#fff"
+                    android:textSize="24sp" />
+                <ImageView
+                    android:layout_width="24dp"
+                    android:background="@drawable/ic_qna"
+                    android:backgroundTint="#fff"
+                    android:layout_marginLeft="5dp"
+                    android:layout_height="24dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
@@ -22,8 +65,8 @@
             android:id="@+id/qna_write"
             android:layout_width="55dp"
             android:layout_height="match_parent"
-            android:paddingRight="15dp"
             android:paddingLeft="10dp"
+            android:paddingRight="15dp"
             android:src="@drawable/ic_write_white" />
     </LinearLayout>
 

@@ -1,7 +1,9 @@
 package app.atti.Activities.Profile;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -60,6 +62,7 @@ public class ProfileActivity extends AppCompatActivity {
     String tmpchatname;
 
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +89,7 @@ public class ProfileActivity extends AppCompatActivity {
                 return true;
             }
         });
+        tab.setSelectedTabIndicatorColor(Color.parseColor("#ffeaa6"));
         tab.addTab(tab.newTab().setText("추천"));
         tab.addTab(tab.newTab().setText("Q&A"));
 

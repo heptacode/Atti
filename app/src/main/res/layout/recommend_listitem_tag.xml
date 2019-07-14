@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginRight="8dp"
     android:layout_height="29dp">
 
     <TextView
         android:id="@+id/tag_text"
-        android:text="태그"
+        tools:text="태그"
         android:gravity="center"
         android:paddingTop="2dp"
         android:paddingBottom="2dp"
