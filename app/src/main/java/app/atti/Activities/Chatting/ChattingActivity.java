@@ -8,8 +8,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.database.ChildEventListener;
@@ -36,7 +38,7 @@ public class ChattingActivity extends AppCompatActivity {
 
     SharedPreferences prefs;
 
-    Button send;
+    ImageView send;
     EditText edt_message;
     String name, email;
 
@@ -73,6 +75,9 @@ public class ChattingActivity extends AppCompatActivity {
 
         openChat(Current_chatName);
 
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
+
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,7 +88,7 @@ public class ChattingActivity extends AppCompatActivity {
                     String current_time = sdf.format(time);
                     String date = sdfd.format(time);
 
-                    Chat chatData = new Chat(edt_message.getText().toString(), name, current_time, date);  // 유저 이름과 메세지로 chatData 만들기
+                    Chat chatData = new Chat(edt_message.getText().toString(), name, current_time, date,false);  // 유저 이름과 메세지로 chatData 만들기
                     databaseReference.child(Current_chatName).child("chatLog").push().setValue(chatData);  // 기본 database 하위 message라는 child에 chatData를 list로 만들기
 
                     edt_message.setText("");
@@ -98,6 +103,12 @@ public class ChattingActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Chat chat = dataSnapshot.getValue(Chat.class);
+                if(items.size()>1) {
+                    if (chat.getSender().equals(items.get(items.size() - 1).getSender()) && chat.getDate().equals(items.get(items.size() - 1).getDate()) && chat.getTimestamp().substring(0, chat.getTimestamp().length() - 3).equals(items.get(items.size() - 1).getTimestamp().substring(0, chat.getTimestamp().length() - 3))) {
+                        items.get(items.size() - 1).setPrev(true);
+                        adapter.notifyDataSetChanged();
+                    }
+                }
                 items.add(chat);
                 rcv.scrollToPosition(items.size() - 1);
                 adapter.notifyItemInserted(items.size() - 1);

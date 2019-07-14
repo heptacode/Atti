@@ -5,16 +5,26 @@ public class Chat {
     private String sender;
     private String message;
     private String date;
+    private boolean prev;
     public Chat() {
     }
 
 
 
-    public Chat(String message, String sender, String timestamp, String date) {
+    public Chat(String message, String sender, String timestamp, String date,boolean prev) {
         this.timestamp = timestamp;
         this.sender = sender;
         this.message = message;
         this.date = date;
+        this.prev=prev;
+    }
+
+    public boolean isPrev() {
+        return prev;
+    }
+
+    public void setPrev(boolean prev) {
+        this.prev = prev;
     }
 
     public String getDate() {

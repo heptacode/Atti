@@ -92,10 +92,10 @@ public class ChattingLobbyActivity extends AppCompatActivity {
                     if (dataSnapshot.child("chatLog").getValue() != null) {
                         HashMap<String, String> b = (HashMap<String, String>) dataSnapshot.child("chatLog").getValue();
                         ArrayList<Chat> c = new ArrayList<>();
-                        HashMap<String,String> a;
-                        for(int i =0;i<b.values().toArray().length;i++){
+                        HashMap<String, String> a;
+                        for (int i = 0; i < b.values().toArray().length; i++) {
                             a = (HashMap<String, String>) b.values().toArray()[i];
-                            c.add(new Chat(a.get("message"),a.get("sender"),a.get("timestamp"),a.get("date")));
+                            c.add(new Chat(a.get("message"), a.get("sender"), a.get("timestamp"), a.get("date"),false));
                         }
                         Collections.sort(c, new Comparator<Chat>() {
                             @Override
@@ -109,17 +109,19 @@ public class ChattingLobbyActivity extends AppCompatActivity {
                                     int t2_time_sec = Integer.parseInt(t2.getTimestamp().substring(8, 10));
 
                                     if (t1.getTimestamp().substring(0, 2).equals("오후") || t1.getTimestamp().substring(0, 2).equals("PM")) {
-                                        t1_time_hour += 12;
-                                    }else{
-                                        if(t1_time_hour==12){
-                                            t1_time_hour-=12;
+                                        if (t1_time_hour != 12)
+                                            t1_time_hour += 12;
+                                    } else {
+                                        if (t1_time_hour == 12) {
+                                            t1_time_hour -= 12;
                                         }
                                     }
                                     if (t2.getTimestamp().substring(0, 2).equals("오후") || t2.getTimestamp().substring(0, 2).equals("PM")) {
-                                        t2_time_hour += 12;
-                                    }else{
-                                        if(t2_time_hour==12){
-                                            t2_time_hour-=12;
+                                        if (t2_time_hour != 12)
+                                            t2_time_hour += 12;
+                                    } else {
+                                        if (t2_time_hour == 12) {
+                                            t2_time_hour -= 12;
                                         }
                                     }
 
@@ -132,7 +134,7 @@ public class ChattingLobbyActivity extends AppCompatActivity {
                                             return -1;
                                         } else if (t1_time_min < t2_time_min) {
                                             return 1;
-                                        }else{
+                                        } else {
                                             if (t1_time_sec > t2_time_sec) {
                                                 return -1;
                                             } else if (t1_time_sec < t2_time_sec) {
@@ -152,9 +154,9 @@ public class ChattingLobbyActivity extends AppCompatActivity {
                             }
                         });
 
-                        recent_time=c.get(0).getTimestamp();
-                        recent_chat=c.get(0).getMessage();
-                        recent_date=c.get(0).getDate();
+                        recent_time = c.get(0).getTimestamp();
+                        recent_chat = c.get(0).getMessage();
+                        recent_date = c.get(0).getDate();
                     }
 
                     if (dataSnapshot.child("name1").exists() && dataSnapshot.child("name2").exists()) {
@@ -177,17 +179,19 @@ public class ChattingLobbyActivity extends AppCompatActivity {
                                         int t2_time_sec = Integer.parseInt(t2.getRecent_time().substring(8, 10));
 
                                         if (t1.getRecent_time().substring(0, 2).equals("오후") || t1.getRecent_time().substring(0, 2).equals("PM")) {
-                                            t1_time_hour += 12;
-                                        }else{
-                                            if(t1_time_hour==12){
-                                                t1_time_hour-=12;
+                                            if (t1_time_hour != 12)
+                                                t1_time_hour += 12;
+                                        } else {
+                                            if (t1_time_hour == 12) {
+                                                t1_time_hour -= 12;
                                             }
                                         }
                                         if (t2.getRecent_time().substring(0, 2).equals("오후") || t2.getRecent_time().substring(0, 2).equals("PM")) {
-                                            t2_time_hour += 12;
-                                        }else{
-                                            if(t2_time_hour==12){
-                                                t2_time_hour-=12;
+                                            if (t2_time_hour != 12)
+                                                t2_time_hour += 12;
+                                        } else {
+                                            if (t2_time_hour == 12) {
+                                                t2_time_hour -= 12;
                                             }
                                         }
 
@@ -200,7 +204,7 @@ public class ChattingLobbyActivity extends AppCompatActivity {
                                                 return -1;
                                             } else if (t1_time_min < t2_time_min) {
                                                 return 1;
-                                            }else{
+                                            } else {
                                                 if (t1_time_sec > t2_time_sec) {
                                                     return -1;
                                                 } else if (t1_time_sec < t2_time_sec) {

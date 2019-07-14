@@ -1,23 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chat_item_LL"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/chat_item_LL"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
     android:layout_marginTop="10dp"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+    <LinearLayout
+        android:layout_width="50dp"
+        android:orientation="vertical"
+        android:layout_marginRight="4dp"
+
+        android:layout_height="wrap_content">
+        <View
+            android:layout_width="1dp"
+            android:id="@+id/chat_item_img_profile_topview"
+            android:layout_height="15dp"/>
+        <ImageView
+            android:id="@+id/chat_item_img_profile"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_default_profile" />
+    </LinearLayout>
 
     <TextView
-        android:layout_marginRight="5dp"
-        android:layout_width="wrap_content"
         android:id="@+id/chat_item_tv_timeleft"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:textSize="11sp"
+        android:layout_marginRight="5dp"
         android:gravity="bottom"
-        android:visibility="gone"
-        android:text="오전 05:12" />
+        android:text="오전 05:12"
+        android:textSize="11sp"
+        android:visibility="gone" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -28,8 +45,8 @@
             android:id="@+id/chat_item_tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
             android:layout_marginLeft="10dp"
+            android:textSize="12sp"
             tools:text="임규원" />
 
         <TextView
@@ -40,16 +57,18 @@
             android:background="@drawable/prac_chat_background"
             android:padding="13dp"
             android:textSize="14sp"
-            tools:text="안녕하세요 저는 임규원입니다." />
+            tools:text="안녕하세요 저는 임규원입니다ㄴㅇ너마리ㅓㅁ나ㅣㅇ럼ㄴ이ㅏ러ㅏㅣㄴㅇ머리ㅏㅁ
+ㅁ너아ㅣ럼ㄴ이ㅏ러ㅏㅣㅁㄴ어라ㅣㅁㄴ어라ㅣ머니
+ㅇㄹㄴㅁ이ㅏㅓㄹ미ㅏ" />
     </LinearLayout>
 
     <TextView
-        android:layout_marginLeft="5dp"
-        android:layout_width="wrap_content"
         android:id="@+id/chat_item_tv_timeright"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:textSize="11sp"
+        android:layout_marginLeft="5dp"
         android:gravity="bottom"
-        android:text="오전 05:12" />
+        android:text="오전 05:12"
+        android:textSize="11sp" />
 
 </LinearLayout>

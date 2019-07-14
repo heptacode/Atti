@@ -32,7 +32,7 @@
         <activity android:name=".Activities.Main.MainActivity_Detail" />
         <activity android:name=".Activities.Recommend.Recommend_Detail_Acitivty" />
         <activity android:name=".Activities.Recommend.RecommendActiivity" />
-        <activity android:name=".Activities.Chatting.ChattingActivity" />
+        <activity android:name=".Activities.Chatting.ChattingActivity"/>
         <activity android:name=".Activities.Chatting.ChattingLobbyActivity" />
         <activity android:name=".Activities.SplashActivty">
             <intent-filter>
