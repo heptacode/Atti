@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +36,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
+import app.atti.Activities.Profile.ProfileActivity;
 import app.atti.Adapter.QNA_Comment_RecyclerAdapter;
 import app.atti.Object.QNA_Comment;
 import app.atti.R;
@@ -69,6 +71,7 @@ public class QNA_Detail_activity extends AppCompatActivity {
     TextView like_num;
     LinearLayout like;
     JSONArray array, array1;
+    RelativeLayout pro_img;
 
 
     @Override
@@ -89,6 +92,7 @@ public class QNA_Detail_activity extends AppCompatActivity {
         like_num = findViewById(R.id.qna_dt_like_num);
         likeimg = findViewById(R.id.qna_dt_like_img);
         like = findViewById(R.id.qna_dt_LL_like);
+        pro_img=findViewById(R.id.qna_dt_relative);
 
         prefs = getSharedPreferences("Profile_Data", MODE_PRIVATE);
         items = new ArrayList<>();
@@ -190,6 +194,14 @@ public class QNA_Detail_activity extends AppCompatActivity {
                     }
                 });
                 builder.show();
+            }
+        });
+        pro_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(QNA_Detail_activity.this, ProfileActivity.class);
+                intent.putExtra("toprofile_email", writer_email);
+                startActivity(intent);
             }
         });
 

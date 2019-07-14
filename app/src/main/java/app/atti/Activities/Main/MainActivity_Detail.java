@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import app.atti.Activities.Profile.ProfileActivity;
 import app.atti.Adapter.MainAC_RecyclerAdapter;
 import app.atti.R;
 
@@ -53,7 +55,8 @@ public class MainActivity_Detail extends AppCompatActivity {
     SharedPreferences prefs;
     Context context;
     ImageView likeimg;
-    boolean pressed=false,db_i_like=false;
+    RelativeLayout pro_img;
+    boolean pressed = false, db_i_like = false;
     TextView like_num;
 
     @Override
@@ -68,9 +71,10 @@ public class MainActivity_Detail extends AppCompatActivity {
         date = findViewById(R.id.main_dt_tv_date);
         title = findViewById(R.id.main_dt_tv_title);
         content = findViewById(R.id.main_dt_tv_content);
-        like=findViewById(R.id.main_dt_LL_like);
-        likeimg=findViewById(R.id.main_dt_like_img);
-        like_num=findViewById(R.id.main_dt_like_num);
+        like = findViewById(R.id.main_dt_LL_like);
+        likeimg = findViewById(R.id.main_dt_like_img);
+        like_num = findViewById(R.id.main_dt_like_num);
+        pro_img = findViewById(R.id.main_dt_relative);
 
         context = this;
         db = FirebaseFirestore.getInstance();
@@ -97,14 +101,14 @@ public class MainActivity_Detail extends AppCompatActivity {
                             db_title = jsonObject.getString("title");
                             db_content = jsonObject.getString("desc");
                             db_image_url = jsonObject.getJSONArray("images").getString(0);
-                            for(int i=1;i<jsonObject.getJSONArray("likes").length();i++){
-                                if(jsonObject.getJSONArray("likes").get(i).equals(myemail)){
-                                    db_i_like=true;
+                            for (int i = 1; i < jsonObject.getJSONArray("likes").length(); i++) {
+                                if (jsonObject.getJSONArray("likes").get(i).equals(myemail)) {
+                                    db_i_like = true;
                                     likeimg.setImageResource(R.drawable.ic_liked);
                                     break;
                                 }
                             }
-                            like_num.setText(jsonObject.getJSONArray("likes").length()-1+"");
+                            like_num.setText(jsonObject.getJSONArray("likes").length() - 1 + "");
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -166,18 +170,26 @@ public class MainActivity_Detail extends AppCompatActivity {
                 builder.show();
             }
         });
+        pro_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity_Detail.this, ProfileActivity.class);
+                intent.putExtra("toprofile_email", writer_email);
+                startActivity(intent);
+            }
+        });
         like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!pressed) {
-                    pressed=true;
+                    pressed = true;
 
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            pressed=false;
+                            pressed = false;
                         }
-                    },500);
+                    }, 500);
 
                     final FirebaseFirestore db = FirebaseFirestore.getInstance();
                     db.collection("recommend").document(ID)
@@ -200,8 +212,8 @@ public class MainActivity_Detail extends AppCompatActivity {
                                             e.printStackTrace();
                                         }
 //                                    items.get(position).setLike(Integer.parseInt(task.getResult().get("like").toString()) + 1);
-                                        like_num.setText(tmp.size() - 1+"");
-                                        db_i_like=true;
+                                        like_num.setText(tmp.size() - 1 + "");
+                                        db_i_like = true;
                                         likeimg.setImageResource(R.drawable.ic_liked);
 
                                     } else { //좋아요 과거에 눌렀다면
@@ -222,9 +234,9 @@ public class MainActivity_Detail extends AppCompatActivity {
                                             e.printStackTrace();
                                         }
 //                                    items.get(position).setLike(Integer.parseInt(task.getResult().get("like").toString()) - 1);
-                                        like_num.setText(tmp.size() - 1+"");
+                                        like_num.setText(tmp.size() - 1 + "");
 
-                                        db_i_like=false;
+                                        db_i_like = false;
                                         likeimg.setImageResource(R.drawable.ic_liked_x);
 
                                     }
