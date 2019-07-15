@@ -168,6 +168,9 @@ public class ProfileActivity extends AppCompatActivity {
                         }
                         Intent tochat = new Intent(ProfileActivity.this, ChattingActivity.class);
                         tochat.putExtra("ChatName", tmpchatname);
+                        if(!profile_name.equals("")) {
+                            tochat.putExtra("opname", profile_name);////////////////
+                        }
                         startActivity(tochat);
                         // ...
                     }
