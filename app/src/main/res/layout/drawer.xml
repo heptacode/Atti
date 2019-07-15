@@ -28,7 +28,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_default_profile" />
+            android:src="@drawable/ic_account_non_picture_white" />
 
         <TextView
             android:id="@+id/drawer_name"

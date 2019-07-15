@@ -93,10 +93,12 @@ public class ProfileActivity extends AppCompatActivity {
         tab.addTab(tab.newTab().setText("추천"));
         tab.addTab(tab.newTab().setText("Q&A"));
 
+
         tab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
+
             }
 
             @Override

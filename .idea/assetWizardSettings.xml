@@ -15,9 +15,9 @@
                           <map>
                             <entry key="assetSourceType" value="FILE" />
                             <entry key="height" value="120" />
-                            <entry key="outputName" value="ic_pharmacy" />
+                            <entry key="outputName" value="ic_account_non_picture_white" />
                             <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="C:\Users\Gyu-Won\AndroidStudioProjects\Atti\app\src\main\res\drawable\pharmacy.svg" />
+                            <entry key="sourceFile" value="C:\Users\dlarb\AndroidStudioProjects\Atti\app\src\main\res\drawable\account non picture white.svg" />
                             <entry key="width" value="120" />
                           </map>
                         </option>

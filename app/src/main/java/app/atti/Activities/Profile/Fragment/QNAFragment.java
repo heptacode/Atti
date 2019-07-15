@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -64,6 +65,10 @@ public class QNAFragment extends Fragment {
 
         ListLoading();
         madapter = new QNA_RecyclerAdapter(items);
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(container.getContext(), new LinearLayoutManager(container.getContext()).getOrientation());
+        dividerItemDecoration.setDrawable(container.getContext().getResources().getDrawable(R.drawable.rec_list_devieder_stroke));
+        rcv.addItemDecoration(dividerItemDecoration);
 
         rcv.setLayoutManager(new LinearLayoutManager(getContext()));
         rcv.setAdapter(madapter);

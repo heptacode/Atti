@@ -121,6 +121,9 @@ public class MainAC_RecyclerAdapter extends RecyclerView.Adapter<MainAC_Recycler
 
         boolean korean = items.get(position).isKorean();
         String imgurl = items.get(position).getImage_url();
+
+        content=content.replaceAll(" ","\u00A0");
+
         holder.title.setText(title);
         holder.content.setText(content);
         holder.date.setText(date);

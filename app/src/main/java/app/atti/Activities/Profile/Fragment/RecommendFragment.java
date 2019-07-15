@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -55,6 +56,10 @@ public class RecommendFragment extends Fragment {
             Toast.makeText(getContext(), "데이터를 불러오지 못했습니다.", Toast.LENGTH_SHORT).show();
             getActivity().finish();
         }
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(container.getContext(), new LinearLayoutManager(container.getContext()).getOrientation());
+        dividerItemDecoration.setDrawable(container.getContext().getResources().getDrawable(R.drawable.rec_list_devieder_stroke));
+        rcv.addItemDecoration(dividerItemDecoration);
 
         ListLoading();
         madapter = new MainAC_RecyclerAdapter(items);

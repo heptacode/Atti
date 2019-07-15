@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -40,6 +41,7 @@ public class QNAActivity extends AppCompatActivity {
     int db_like;
     boolean db_korean,db_i_like=false;
     private String db_writer_email;
+    TextView title;
     JSONObject jsonObject;
 
     String email;
@@ -50,6 +52,8 @@ public class QNAActivity extends AppCompatActivity {
         setContentView(R.layout.activity_qna);
         img_write = findViewById(R.id.qna_write);
         rcv = findViewById(R.id.qna_recycler_view);
+        title =findViewById(R.id.qna_text);
+        title.setText("Q&A");
 
         Intent intent = getIntent();
         email = intent.getStringExtra("myemail");

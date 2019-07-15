@@ -119,6 +119,8 @@ public class QNA_RecyclerAdapter extends   RecyclerView.Adapter<QNA_RecyclerAdap
         String name = items.get(position).getWriter();
         int like = items.get(position).getLike();
 
+        content=content.replaceAll(" ","\u00A0");
+
         boolean korean = items.get(position).isKorean();
         String imgurl = items.get(position).getImage_url();
         holder.title.setText(title);

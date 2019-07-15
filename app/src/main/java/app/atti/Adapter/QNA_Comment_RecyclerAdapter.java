@@ -53,6 +53,7 @@ public class QNA_Comment_RecyclerAdapter extends RecyclerView.Adapter<QNA_Commen
         }
         vh.name.setText(items.get(i).getName());
         vh.date.setText(items.get(i).getDate());
+
         vh.comment.setText(items.get(i).getComment());
     }
 

@@ -146,6 +146,7 @@ public class Recommend_Detail_Acitivty extends AppCompatActivity {
                             }
                         }
                         title.setText(str_title);
+                        str_content=str_content.replaceAll(" ","\u00A0");
                         content.setText(str_content);
                         day.setText(str_day);
                         time.setText(str_time);
