@@ -211,7 +211,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     boolean setGPS = false;
 
     @Override
-
     public void onConnected(@Nullable Bundle bundle) {
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             setGPS = true;

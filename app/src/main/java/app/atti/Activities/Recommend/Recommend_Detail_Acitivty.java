@@ -1,6 +1,7 @@
 package app.atti.Activities.Recommend;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -46,6 +47,8 @@ public class Recommend_Detail_Acitivty extends AppCompatActivity {
     Recommend_Detail_RecyclerAdapter adapter;
     Recommend_RecyclerAdpater_Tag tag_adapter;
     JSONArray tagtmp;
+
+    boolean tomap=false;
 
 
     @Override
@@ -173,5 +176,23 @@ public class Recommend_Detail_Acitivty extends AppCompatActivity {
         });
         rcv_img.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         rcv_img.setAdapter(adapter);
+        location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tomap=true;
+                if(tomap) {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            tomap=false;
+                        }
+                    }, 500);
+                    Intent intent = new Intent(Recommend_Detail_Acitivty.this, Map_Recommend.class);
+                    intent.putExtra("rec_loc", str_location);
+                    intent.putExtra("rec_loc_name", str_title);
+                    startActivity(intent);
+                }
+            }
+        });
     }
 }

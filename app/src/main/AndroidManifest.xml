@@ -14,7 +14,8 @@
         android:roundIcon="@drawable/ic_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.QNAActivity.QNA_Write"></activity>
+        <activity android:name=".Activities.Recommend.Map_Recommend"></activity>
+        <activity android:name=".Activities.QNAActivity.QNA_Write" />
         <activity android:name=".Activities.QNAActivity.QNA_Detail_activity" />
         <activity android:name=".Activities.QNAActivity.QNAActivity" />
         <activity android:name=".Activities.Profile.ProfileActivity" />
@@ -32,7 +33,7 @@
         <activity android:name=".Activities.Main.MainActivity_Detail" />
         <activity android:name=".Activities.Recommend.Recommend_Detail_Acitivty" />
         <activity android:name=".Activities.Recommend.RecommendActiivity" />
-        <activity android:name=".Activities.Chatting.ChattingActivity"/>
+        <activity android:name=".Activities.Chatting.ChattingActivity" />
         <activity android:name=".Activities.Chatting.ChattingLobbyActivity" />
         <activity android:name=".Activities.SplashActivty">
             <intent-filter>

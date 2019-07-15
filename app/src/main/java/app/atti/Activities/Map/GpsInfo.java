@@ -1,6 +1,7 @@
 package app.atti.Activities.Map;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -25,7 +26,7 @@ public class GpsInfo extends Service implements LocationListener {
     private Context mContext;
 
     // 현재 GPS 사용유무
-    boolean isGPSEnabled = false;
+    public boolean isGPSEnabled = false;
 
     // 네트워크 사용유무
     boolean isNetworkEnabled = false;
