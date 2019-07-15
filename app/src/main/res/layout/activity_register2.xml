@@ -21,11 +21,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="120dp"
-        android:fontFamily="@font/nanumbarungothic"
+        android:layout_marginTop="130dp"
+        android:fontFamily="@font/nanumsquarer"
+
         android:text="Step 2"
         android:textColor="#fff"
-        android:textSize="50sp" />
+        android:textSize="42sp" />
 
     <TextView
         android:id="@+id/whatisyourpassword"
@@ -33,8 +34,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/step2"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/nanumbarungothic"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/nanumsquarer"
+
         android:text="@string/step4"
         android:textColor="#fff"
         android:textSize="26sp" />
@@ -45,10 +47,11 @@
         android:layout_height="60dp"
         android:layout_below="@id/whatisyourpassword"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="125dp"
+        android:layout_marginTop="155dp"
         android:layout_marginRight="60dp"
         android:background="@drawable/register_edittext_background"
-        android:fontFamily="@font/nanumbarungothiclight"
+        android:fontFamily="@font/nanumsquarer"
+
         android:hint="@string/step4_hint"
         android:inputType="text"
         android:paddingLeft="18dp"
@@ -70,7 +73,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/nanumbarungothiclight"
+            android:fontFamily="@font/nanumsquarer"
+
             android:text="@string/next"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp"

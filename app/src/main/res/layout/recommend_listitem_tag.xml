@@ -16,7 +16,7 @@
         android:backgroundTint="@color/colorPrimaryLight"
         android:paddingRight="10dp"
         android:textColor="#000"
-        android:fontFamily="@font/nanumbarungothic"
+        android:fontFamily="@font/nanumsquarer"
         android:layout_width="wrap_content"
         android:layout_height="29dp" />
 

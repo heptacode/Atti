@@ -43,7 +43,7 @@
                     android:id="@+id/qna_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/nanumbarungothic"
+                    android:fontFamily="@font/nanumsquarer"
                     android:text="QNA"
                     android:textColor="#fff"
                     android:textSize="24sp" />

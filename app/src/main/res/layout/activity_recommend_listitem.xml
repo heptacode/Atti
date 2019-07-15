@@ -24,7 +24,7 @@
         android:layout_marginTop="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:fontFamily="@font/nanumbarungothic"
+        android:fontFamily="@font/nanumsquarer"
         android:gravity="center"
         tools:text="세글자"
         android:textColor="#666"
@@ -37,8 +37,7 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="32dp"
-            >
+            android:layout_height="32dp">
 
             <ImageView
                 android:layout_width="25dp"
@@ -48,7 +47,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
-                android:fontFamily="@font/nanumbarungothiclight"
+                android:fontFamily="@font/nanumsquarer"
                 android:gravity="left|center"
                 android:paddingLeft="2dp"
                 tools:text="서울특별시 중구 을지로 281"
@@ -72,7 +71,7 @@
                 android:textAlignment="viewEnd"
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
-                android:fontFamily="@font/nanumbarungothiclight"
+                android:fontFamily="@font/nanumsquarer"
                 android:gravity="left|center"
                 android:id="@+id/recom_rec_day"
                 android:paddingLeft="5dp"

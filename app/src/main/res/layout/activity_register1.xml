@@ -21,11 +21,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="120dp"
-        android:fontFamily="@font/nanumbarungothic"
+        android:layout_marginTop="130dp"
+        android:fontFamily="@font/nanumsquarer"
         android:text="Step 1"
         android:textColor="#fff"
-        android:textSize="50sp" />
+        android:textSize="42sp" />
 
     <TextView
         android:id="@+id/whatisyouremail"
@@ -33,8 +33,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/step1"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/nanumbarungothic"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/nanumsquarer"
         android:text="@string/step3"
         android:textColor="#fff"
         android:textSize="26sp" />
@@ -45,10 +45,10 @@
         android:layout_height="60dp"
         android:layout_below="@id/whatisyouremail"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="115dp"
+        android:layout_marginTop="155dp"
         android:layout_marginRight="60dp"
         android:background="@drawable/register_edittext_background"
-        android:fontFamily="@font/nanumbarungothiclight"
+        android:fontFamily="@font/nanumsquarer"
         android:hint="@string/step3_hint"
         android:inputType="textEmailAddress"
         android:paddingLeft="18dp"
@@ -70,7 +70,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/nanumbarungothiclight"
+            android:fontFamily="@font/nanumsquarer"
             android:text="@string/next"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp"

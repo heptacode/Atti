@@ -21,11 +21,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="120dp"
-        android:fontFamily="@font/nanumbarungothic"
+        android:layout_marginTop="130dp"
+        android:fontFamily="@font/nanumsquarer"
+
         android:text="Step 4"
         android:textColor="#fff"
-        android:textSize="50sp" />
+        android:textSize="42sp" />
 
     <TextView
         android:id="@+id/areyoukorean"
@@ -34,7 +35,8 @@
         android:layout_below="@+id/step4"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/nanumbarungothic"
+        android:fontFamily="@font/nanumsquarer"
+
         android:text="@string/step1"
         android:textColor="#fff"
         android:textSize="32sp" />
@@ -45,10 +47,11 @@
         android:layout_height="60dp"
         android:layout_below="@id/areyoukorean"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="155dp"
         android:layout_marginRight="60dp"
         android:background="@drawable/register_edittext_background"
-        android:fontFamily="@font/nanumbarungothic"
+        android:fontFamily="@font/nanumsquarer"
+
         android:text="@string/step1_Korean"
         android:textColor="@color/colorPrimary"
         android:textSize="24sp" />
@@ -62,7 +65,8 @@
         android:layout_marginTop="30dp"
         android:layout_marginRight="60dp"
         android:background="@drawable/register_edittext_background"
-        android:fontFamily="@font/nanumbarungothic"
+        android:fontFamily="@font/nanumsquarer"
+
         android:text="@string/step1_Foreigner"
         android:textAllCaps="false"
         android:textColor="@color/colorPrimary"

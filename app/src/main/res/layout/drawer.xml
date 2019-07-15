@@ -39,7 +39,8 @@
             android:textAlignment="center"
             android:textColor="#fff"
             android:textSize="22sp"
-            android:fontFamily="@font/nanumbarungothiclight"
+            android:fontFamily="@font/nanumsquarer"
+
             tools:text="사용자" />
 
         <LinearLayout
@@ -54,7 +55,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="한국인"
-                android:fontFamily="@font/nanumbarungothic"
+                android:fontFamily="@font/nanumsquarer"
+
                 android:textColor="#fff"
                 android:textSize="16sp" />
 
@@ -97,7 +99,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/drawer_tv_qna"
                 android:text="QA"
-                android:fontFamily="@font/nanumbarungothic"
+                android:fontFamily="@font/nanumsquarer"
+
                 android:textAlignment="center"
                 android:textColor="#000"
                 android:textSize="22sp" />
@@ -138,7 +141,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="실시간 채팅 (1:1)"
-                android:fontFamily="@font/nanumbarungothic"
+                android:fontFamily="@font/nanumsquarer"
+
                 android:textAlignment="center"
                 android:textColor="#000"
                 android:textSize="22sp" />
@@ -181,7 +185,8 @@
                 android:layout_height="wrap_content"
                 android:text="추천명소"
                 android:textAlignment="center"
-                android:fontFamily="@font/nanumbarungothic"
+                android:fontFamily="@font/nanumsquarer"
+
                 android:textColor="#000"
                 android:textSize="22sp" />
 
@@ -225,7 +230,8 @@
                 android:text="의료, 편의시설"
                 android:textAlignment="center"
                 android:textColor="#000"
-                android:fontFamily="@font/nanumbarungothic"
+                android:fontFamily="@font/nanumsquarer"
+
                 android:textSize="22sp" />
 
             <ImageView

@@ -54,7 +54,8 @@
                     android:id="@+id/main_item_tv_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/nanumbarungothic"
+                    android:fontFamily="@font/nanumsquarer"
+
                     android:textColor="#000"
                     android:textSize="24sp"
                     tools:text="엄희성" />
@@ -65,7 +66,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/main_item_tv_name"
                     android:layout_marginTop="5dp"
-                    android:fontFamily="@font/nanumbarungothic"
+                    android:fontFamily="@font/nanumsquarel"
+
                     android:textColor="#000000"
                     android:textSize="16sp"
                     tools:text="2019.06.07" />
@@ -84,8 +86,9 @@
                 android:id="@+id/main_item_tv_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/nanumbarungothic"
+                android:layout_marginTop="17dp"
+                android:fontFamily="@font/nanumsquarer"
+
                 android:textColor="#000"
                 android:textSize="24sp"
                 tools:text="문화역서울 284" />
@@ -96,7 +99,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/main_item_tv_title"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/nanumbarungothiclight"
+                android:fontFamily="@font/nanumsquarel"
+
                 android:lineHeight="28sp"
                 android:textColor="#000"
                 android:textSize="18sp"
@@ -138,7 +142,8 @@
             android:id="@+id/main_item_like_num"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:fontFamily="@font/nanumbarungothic"
+            android:fontFamily="@font/nanumsquarel"
+
             android:gravity="center"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"

@@ -212,7 +212,6 @@ public class QNA_Detail_activity extends AppCompatActivity {
                 if (edt_comment.getText().toString().equals("")) {
                     Toast.makeText(QNA_Detail_activity.this, "내용을 입력해주세요.", Toast.LENGTH_SHORT).show();
                 } else {
-                    Collections.reverse(items);
 
                     String written_commend = edt_comment.getText().toString();
                     edt_comment.setText("");
@@ -224,7 +223,6 @@ public class QNA_Detail_activity extends AppCompatActivity {
                     tmp = new QNA_Comment(myname, myemail, mydate, mykorean, written_commend);
                     items.add(tmp);
                     db.collection("qna").document(ID).update("comments", items);
-                    Collections.reverse(items);
                     adapter.notifyDataSetChanged();
                 }
             }
@@ -325,7 +323,6 @@ public class QNA_Detail_activity extends AppCompatActivity {
                                     boolean tmpkorean = tmpjsonobject.getBoolean("korean");
                                     items.add(new QNA_Comment(tmpname, tmpemail, tmpdate, tmpkorean, tmpcomment));
                                 }
-                                Collections.reverse(items);
                                 adapter.notifyDataSetChanged();
                             } catch (JSONException e) {
                                 e.printStackTrace();

@@ -29,7 +29,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/nanumbarungothic"
+                android:fontFamily="@font/nanumsquarer"
                 android:text="추천명소"
                 android:textColor="#fff"
                 android:textSize="24sp" />
@@ -60,7 +60,7 @@
                 android:id="@+id/rec_dt_ac_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/nanumbarungothic"
+                android:fontFamily="@font/nanumsquarer"
                 android:textAlignment="center"
                 android:textSize="28sp"
                 tools:text="제목제목" />
@@ -80,7 +80,7 @@
                     android:id="@+id/rec_dt_ac_location"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/nanumbarungothic"
+                    android:fontFamily="@font/nanumsquarer"
                     android:gravity="center"
                     android:textColor="@color/colorPrimary"
                     tools:text="서울특별시 종로구 사직로 161" />
@@ -106,7 +106,7 @@
                 android:textSize="18sp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:fontFamily="@font/nanumbarungothiclight"
+                android:fontFamily="@font/nanumsquarer"
                 tools:text="임규원1임규원2임규원3임규원4임규워5임규 원6임규원7" />
 
             <android.support.v7.widget.RecyclerView
@@ -122,7 +122,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:autoLink="web"
-                android:fontFamily="@font/nanumbarungothic"
+                android:fontFamily="@font/nanumsquarer"
                 android:textColorLink="@color/colorPrimary"
                 tools:text="https://naver.com" />
 
@@ -132,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/nanumbarungothiclight"
+                android:fontFamily="@font/nanumsquarer"
                 android:text="이것만은 꼭!"
                 android:textColor="#000"
                 android:textSize="22sp" />
@@ -146,7 +146,7 @@
                 android:lineHeight="22sp"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:fontFamily="@font/nanumbarungothiclight"
+                android:fontFamily="@font/nanumsquarer"
                 android:textAlignment="center"
                 tools:text="기타" />
 
@@ -169,7 +169,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#000"
-                    android:fontFamily="@font/nanumbarungothiclight"
+                    android:fontFamily="@font/nanumsquarer"
                     tools:text="운영요일" />
             </LinearLayout>
             <LinearLayout
@@ -189,7 +189,7 @@
                     android:layout_height="wrap_content"
                     android:lineHeight="24sp"
                     android:layout_marginLeft="5dp"
-                    android:fontFamily="@font/nanumbarungothiclight"
+                    android:fontFamily="@font/nanumsquarer"
                     tools:text="이용시간" />
             </LinearLayout>
 
